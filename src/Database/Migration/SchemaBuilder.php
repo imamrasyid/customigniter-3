@@ -41,12 +41,6 @@ class SchemaBuilder
 		$this->forge->add_field($builder->getFields());
 		$this->forge->add_key($builder->getPrimaryKeys(), true);
 
-		if ( ! empty($builder->getUniqueKeys())) {
-			foreach ($builder->getUniqueKeys() as $key) {
-				$this->forge->add_key($key, false, true);
-			}
-		}
-
 		if ( ! empty($builder->getIndexes())) {
 			foreach ($builder->getIndexes() as $index) {
 				$this->forge->add_key($index);
@@ -54,6 +48,14 @@ class SchemaBuilder
 		}
 
 		$this->forge->create_table($table);
+
+		// CI3's forge has no UNIQUE key support, so unique constraints are
+		// created as CREATE UNIQUE INDEX statements after the table exists.
+		if ( ! empty($builder->getUniqueKeys())) {
+			foreach ($builder->getUniqueKeys() as $key) {
+				$this->addIndex($table, $key, true);
+			}
+		}
 	}
 
 	// --------------------------------------------------------------------
@@ -140,7 +142,13 @@ class SchemaBuilder
 	 */
 	public function renameColumn(string $table, string $oldName, string $newName): void
 	{
-		$this->forge->rename_column($table, $oldName, $newName);
+		$sql = 'ALTER TABLE '.$this->escape($this->prefixed($table))
+			.' RENAME COLUMN '.$this->escape($oldName)
+			.' TO '.$this->escape($newName);
+
+		if ($this->db->query($sql) === FALSE) {
+			throw new \RuntimeException("Failed to rename column '{$oldName}' to '{$newName}' on table '{$table}'.");
+		}
 	}
 
 	// --------------------------------------------------------------------
@@ -176,20 +184,19 @@ class SchemaBuilder
 	 */
 	public function addIndex(string $table, string|array $column, bool $unique = false): void
 	{
-		$columns = array_values(array_filter((array) $column, 'is_string'));
+		$columns = array_values((array) $column);
 
 		if ($columns === []) {
 			throw new \InvalidArgumentException('At least one column name is required to create an index.');
 		}
 
-		$prefix = $this->db->dbprefix;
-		$fullTable = $prefix.$table;
-		$indexName = $prefix.$table.'_'.implode('_', $columns);
+		$fullTable = $this->prefixed($table);
+		$indexName = $fullTable.'_'.implode('_', $columns);
 
 		$sql = 'CREATE '.($unique ? 'UNIQUE ' : '')
-			.'INDEX '.$this->db->escape_identifiers($indexName)
-			.' ON '.$this->db->escape_identifiers($fullTable)
-			.' ('.implode(', ', $this->db->escape_identifiers($columns)).')';
+			.'INDEX '.$this->escape($indexName)
+			.' ON '.$this->escape($fullTable)
+			.' ('.implode(', ', array_map($this->escape(...), $columns)).')';
 
 		if ($this->db->query($sql) === FALSE) {
 			throw new \RuntimeException("Failed to create index '{$indexName}' on table '{$fullTable}'.");
@@ -207,7 +214,42 @@ class SchemaBuilder
 	 */
 	public function dropIndex(string $table, string $column): void
 	{
-		$this->forge->drop_key($table, $column);
+		$indexName = $this->prefixed($table).'_'.$column;
+		$driver = $this->db->dbdriver;
+
+		if ($driver === 'postgre' || $driver === 'sqlite3') {
+			$sql = 'DROP INDEX IF EXISTS '.$this->escape($indexName);
+		}
+		else {
+			$sql = 'ALTER TABLE '.$this->escape($this->prefixed($table))
+				.' DROP INDEX '.$this->escape($indexName);
+		}
+
+		if ($this->db->query($sql) === FALSE) {
+			throw new \RuntimeException("Failed to drop index '{$indexName}'.");
+		}
+	}
+
+	// --------------------------------------------------------------------
+	// Internals
+	// --------------------------------------------------------------------
+
+	/**
+	 * Prefix a table name with the configured database prefix.
+	 */
+	private function prefixed(string $table): string
+	{
+		return $this->db->dbprefix.$table;
+	}
+
+	/**
+	 * Escape a single identifier, guaranteeing a string result.
+	 */
+	private function escape(string $identifier): string
+	{
+		$escaped = $this->db->escape_identifiers($identifier);
+
+		return is_string($escaped) ? $escaped : $identifier;
 	}
 
 	// --------------------------------------------------------------------

@@ -12,14 +12,26 @@ namespace Customigniter\Http;
 #[\AllowDynamicProperties]
 class Request
 {
+    /** @var array<mixed> */
     protected array $query = [];
+    /** @var array<mixed> */
     protected array $post = [];
+    /** @var array<mixed> */
     protected array $server = [];
+    /** @var array<mixed> */
     protected array $cookies = [];
+    /** @var array<mixed> */
     protected array $files = [];
     protected ?string $body = null;
     protected bool $trustProxy = false;
 
+    /**
+     * @param array<mixed>|null $query
+     * @param array<mixed>|null $post
+     * @param array<mixed>|null $server
+     * @param array<mixed>|null $cookies
+     * @param array<mixed>|null $files
+     */
     public function __construct(
         ?array $query = null,
         ?array $post = null,
@@ -61,14 +73,20 @@ class Request
         return $this->cookies[$key] ?? $default;
     }
 
+    /**
+     * @return array<mixed>|null
+     */
     public function file(string $key): ?array
     {
-        return $this->files[$key] ?? null;
+        $file = $this->files[$key] ?? null;
+        return is_array($file) ? $file : null;
     }
 
     public function method(): string
     {
-        return strtoupper($this->server['REQUEST_METHOD'] ?? 'GET');
+        $method = $this->server['REQUEST_METHOD'] ?? 'GET';
+
+        return strtoupper(is_string($method) ? $method : 'GET');
     }
 
     public function isPost(): bool
@@ -136,35 +154,52 @@ class Request
 
     public function userAgent(): string
     {
-        return $this->server('HTTP_USER_AGENT', '');
+        $agent = $this->server('HTTP_USER_AGENT', '');
+        return is_string($agent) ? $agent : '';
     }
 
     public function uri(): string
     {
-        return $this->server('REQUEST_URI', '/');
+        $uri = $this->server('REQUEST_URI', '/');
+        return is_string($uri) ? $uri : '/';
     }
 
     public function contentType(): ?string
     {
-        return $this->server('CONTENT_TYPE');
+        $type = $this->server('CONTENT_TYPE');
+        return is_string($type) ? $type : null;
     }
 
     public function accepts(string $type): bool
     {
         $accept = $this->server('HTTP_ACCEPT', '');
+        if (!is_string($accept)) {
+            return false;
+        }
         return str_contains($accept, $type) || str_contains($accept, '*/*');
     }
 
+    /**
+     * @return array<mixed>
+     */
     public function all(): array
     {
         return array_merge($this->query, $this->post);
     }
 
+    /**
+     * @param array<int|string> $keys
+     * @return array<mixed>
+     */
     public function only(array $keys): array
     {
         return array_intersect_key($this->all(), array_flip($keys));
     }
 
+    /**
+     * @param array<int|string> $keys
+     * @return array<mixed>
+     */
     public function except(array $keys): array
     {
         return array_diff_key($this->all(), array_flip($keys));
@@ -185,7 +220,8 @@ class Request
         if ($this->body !== null) {
             return $this->body;
         }
-        $this->body = file_get_contents('php://input');
+        $body = file_get_contents('php://input');
+        $this->body = $body === false ? '' : $body;
         return $this->body;
     }
 

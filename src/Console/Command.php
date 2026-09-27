@@ -33,7 +33,6 @@ abstract class Command implements CommandInterface
 	 * Write a line to stdout
 	 *
 	 * @param	string	$message
-	 * @param	string	$color
 	 * @return	void
 	 */
 	protected function info(string $message): void
@@ -164,7 +163,7 @@ abstract class Command implements CommandInterface
 	/**
 	 * Check if a flag is set
 	 *
-	 * @param	array<string, mixed>	$parsed
+	 * @param	array{flags: array<int, string>, options: array<string, string>, args: array<int, string>}	$parsed
 	 * @param	string	$flag
 	 * @return	bool
 	 */
@@ -178,7 +177,7 @@ abstract class Command implements CommandInterface
 	/**
 	 * Get an option value with default
 	 *
-	 * @param	array<string, mixed>	$parsed
+	 * @param	array{flags: array<int, string>, options: array<string, string>, args: array<int, string>}	$parsed
 	 * @param	string	$key
 	 * @param	string	$default
 	 * @return	string

@@ -10,6 +10,9 @@ namespace Customigniter\Performance;
 
 class OpcacheConfig
 {
+    /**
+     * @return array<string, int|string>
+     */
     public static function getRecommendedSettings(): array
     {
         return [
@@ -33,8 +36,7 @@ class OpcacheConfig
         $lines[] = '; Paste into your php.ini or a conf.d file';
 
         foreach (self::getRecommendedSettings() as $key => $value) {
-            $iniValue = is_int($value) ? (string) $value : $value;
-            $lines[] = sprintf('%s = %s', $key, $iniValue);
+            $lines[] = sprintf('%s = %s', $key, (string) $value);
         }
 
         return implode("\n", $lines) . "\n";
@@ -54,6 +56,9 @@ class OpcacheConfig
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public static function getCurrentStatus(): array
     {
         if (!function_exists('opcache_get_status')) {
@@ -72,6 +77,9 @@ class OpcacheConfig
         ];
     }
 
+    /**
+     * @return list<string>
+     */
     public static function validate(): array
     {
         $issues = [];
@@ -87,8 +95,14 @@ class OpcacheConfig
         }
 
         $mem = $status['memory_usage'] ?? [];
-        $used  = $mem['used_memory'] ?? 0;
-        $free  = $mem['free_memory'] ?? 0;
+        if (!is_array($mem)) {
+            $mem = [];
+        }
+
+        $used  = $mem['used_memory'] ?? null;
+        $free  = $mem['free_memory'] ?? null;
+        $used  = is_numeric($used) ? (int) $used : 0;
+        $free  = is_numeric($free) ? (int) $free : 0;
         $total = $used + $free;
 
         if ($total > 0) {
@@ -103,11 +117,18 @@ class OpcacheConfig
         $maxFiles = 10000;
         if (function_exists('opcache_get_configuration')) {
             $config = opcache_get_configuration();
-            $maxFiles = (int) ($config['directives']['opcache.max_accelerated_files'] ?? $maxFiles);
+            if (is_array($config)) {
+                $maxFiles = (int) $config['directives']['opcache.max_accelerated_files'];
+            }
         }
 
         $stats = $status['opcache_statistics'] ?? [];
-        $cachedKeys = (int) ($stats['num_cached_keys'] ?? 0);
+        if (!is_array($stats)) {
+            $stats = [];
+        }
+
+        $cachedKeys = $stats['num_cached_keys'] ?? null;
+        $cachedKeys = is_numeric($cachedKeys) ? (int) $cachedKeys : 0;
 
         if ($maxFiles > 0 && $cachedKeys >= $maxFiles * 0.9) {
             $issues[] = sprintf(

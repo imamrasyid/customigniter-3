@@ -16,7 +16,7 @@ class ServiceContainer
 	/**
 	 * Registered services (factory closures or resolved values)
 	 *
-	 * @var array<string, mixed>
+	 * @var array<string, callable(ServiceContainer): mixed>
 	 */
 	private array $services = [];
 
@@ -210,12 +210,19 @@ class ServiceContainer
 	 * @param	string	$className
 	 * @return	object
 	 * @throws	\RuntimeException
-	 * @throws	\ReflectionException
 	 */
 	public function build(string $className): object
 	{
 		if (isset($this->building[$className])) {
 			throw new \RuntimeException("Circular dependency detected while auto-wiring: {$className}");
+		}
+
+		if ( ! class_exists($className)) {
+			throw new \RuntimeException(
+				interface_exists($className)
+					? "Cannot auto-wire abstract class or interface: {$className}"
+					: "Class not found: {$className}"
+			);
 		}
 
 		$ref = new \ReflectionClass($className);
@@ -294,14 +301,10 @@ class ServiceContainer
 		$candidates = [];
 
 		foreach ($type instanceof \ReflectionUnionType ? $type->getTypes() : [$type] as $subType) {
-			if ($subType instanceof \ReflectionNamedType) {
-				if ( ! $subType->isBuiltin()) {
-					$candidates[] = $subType->getName();
-				}
-			}
-			elseif ($subType instanceof \ReflectionUnionType || $subType instanceof \ReflectionIntersectionType) {
-				// Intersection types cannot be container-resolved by name.
-				continue;
+			// Only named types can be container-resolved by name.
+			// Intersection types (DNF) cannot.
+			if ($subType instanceof \ReflectionNamedType && ! $subType->isBuiltin()) {
+				$candidates[] = $subType->getName();
 			}
 		}
 

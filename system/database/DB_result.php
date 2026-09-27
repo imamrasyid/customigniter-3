@@ -271,7 +271,7 @@ class CI_DB_result {
 	/**
 	 * Query result. "array" version.
 	 *
-	 * @return	array
+	 * @return	array<int, array<string, mixed>>
 	 */
 	public function result_array()
 	{
@@ -428,7 +428,7 @@ class CI_DB_result {
 	 * Returns a single result row - array version
 	 *
 	 * @param	int	$n
-	 * @return	array
+	 * @return	array<string, mixed>|null
 	 */
 	public function row_array($n = 0)
 	{

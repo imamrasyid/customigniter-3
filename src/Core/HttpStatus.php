@@ -90,7 +90,7 @@ enum HttpStatus: int
 			504 => 'Gateway Timeout',
 		];
 
-		return $phrases[$this->value] ?? 'Unknown Status';
+		return $phrases[$this->value];
 	}
 
 	/**
@@ -98,7 +98,7 @@ enum HttpStatus: int
 	 */
 	public function isSuccess(): bool
 	{
-		return $this->value >= 200 && $this->value < 300;
+		return $this->value < 300;
 	}
 
 	/**
@@ -122,7 +122,7 @@ enum HttpStatus: int
 	 */
 	public function isServerError(): bool
 	{
-		return $this->value >= 500 && $this->value < 600;
+		return $this->value >= 500;
 	}
 
 	/**

@@ -69,6 +69,16 @@ class CI_Controller {
 	public $load;
 
 	/**
+	 * CI_Config
+	 *
+	 * Assigned by the constructor via is_loaded() - the Config class is
+	 * always loaded during bootstrap.
+	 *
+	 * @var	CI_Config
+	 */
+	public $config;
+
+	/**
 	 * Class constructor
 	 *
 	 * @return	void

@@ -73,20 +73,14 @@ class PasswordHasher
 	 * @param	string	$password
 	 * @param	string	$algorithm
 	 * @return	string	Hashed password
-	 * @throws	\RuntimeException
+	 * @throws	\ValueError	When the algorithm or options are invalid
 	 */
 	public function hash(string $password, string $algorithm = ''): string
 	{
 		$algo = $this->resolveAlgorithm($algorithm);
 		$options = self::DEFAULT_OPTIONS[$algo] ?? [];
 
-		$hash = password_hash($password, self::ALGORITHMS[$algo], $options);
-
-		if ($hash === false) {
-			throw new \RuntimeException("Failed to hash password using algorithm: {$algo}");
-		}
-
-		return $hash;
+		return password_hash($password, self::ALGORITHMS[$algo], $options);
 	}
 
 	/**
@@ -120,7 +114,7 @@ class PasswordHasher
 	 * Get info about a hash
 	 *
 	 * @param	string	$hash
-	 * @return	array{algo: string, algoName: string, options: array}
+	 * @return	array{algo: string|null, algoName: string, options: array<string, mixed>}
 	 */
 	public function info(string $hash): array
 	{
@@ -143,7 +137,7 @@ class PasswordHasher
 			return false;
 		}
 
-		$algoName = self::ALGO_NAMES[$algorithm] ?? $algorithm;
+		$algoName = self::ALGO_NAMES[$algorithm];
 
 		return in_array($algoName, password_algos(), true);
 	}

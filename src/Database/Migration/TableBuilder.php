@@ -13,9 +13,13 @@ namespace Customigniter\Database\Migration;
 class TableBuilder
 {
 	private string $tableName;
+	/** @var array<string, array<string, mixed>> */
 	private array $fields = [];
+	/** @var list<string> */
 	private array $primaryKeys = [];
+	/** @var list<string> */
 	private array $uniqueKeys = [];
+	/** @var list<string> */
 	private array $indexes = [];
 
 	public function __construct(string $tableName)
@@ -336,8 +340,25 @@ class TableBuilder
 	// Getters
 	// --------------------------------------------------------------------
 
+	public function getTableName(): string { return $this->tableName; }
+
+	/**
+	 * @return array<string, array<string, mixed>>
+	 */
 	public function getFields(): array { return $this->fields; }
+
+	/**
+	 * @return list<string>
+	 */
 	public function getPrimaryKeys(): array { return $this->primaryKeys; }
+
+	/**
+	 * @return list<string>
+	 */
 	public function getUniqueKeys(): array { return $this->uniqueKeys; }
+
+	/**
+	 * @return list<string>
+	 */
 	public function getIndexes(): array { return $this->indexes; }
 }

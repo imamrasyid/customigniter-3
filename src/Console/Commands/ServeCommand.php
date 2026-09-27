@@ -45,7 +45,8 @@ class ServeCommand extends Command
 		// Use PHP's built-in server
 		$docRoot = defined('BASEPATH') ? dirname(BASEPATH) : getcwd();
 		if ($docRoot === false) {
-			$docRoot = getcwd();
+			$this->error('Cannot determine the document root directory.');
+			return 1;
 		}
 
 		// Keep the generated router outside the project so it can never

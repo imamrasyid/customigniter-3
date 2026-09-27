@@ -12,6 +12,7 @@ namespace Customigniter\Http;
 class Response
 {
     protected int $statusCode = 200;
+    /** @var array<string, string> */
     protected array $headers = [];
     protected string $body = '';
     protected string $protocol = '1.1';
@@ -37,14 +38,23 @@ class Response
         return $this;
     }
 
+    /**
+     * @param array<array-key, mixed> $headers
+     */
     public function headers(array $headers): static
     {
         foreach ($headers as $name => $value) {
+            if (!is_scalar($value)) {
+                continue;
+            }
             $this->header((string) $name, (string) $value);
         }
         return $this;
     }
 
+    /**
+     * @return array<string, string>
+     */
     public function getHeaders(): array
     {
         return $this->headers;
@@ -95,15 +105,29 @@ class Response
         return $this;
     }
 
+    /**
+     * @param array<mixed> $options
+     */
     public function withCookie(string $name, string $value, array $options = []): static
     {
+        $expire  = $options['expire'] ?? 0;
+        $path    = $options['path'] ?? '/';
+        $domain  = $options['domain'] ?? '';
+        $secure  = $options['secure'] ?? false;
+        $httponly = $options['httponly'] ?? true;
+        $samesite = $options['samesite'] ?? 'Lax';
+
+        if (!in_array($samesite, ['Lax', 'lax', 'None', 'none', 'Strict', 'strict'], true)) {
+            $samesite = 'Lax';
+        }
+
         setcookie($name, $value, [
-            'expires'  => $options['expire'] ?? 0,
-            'path'     => $options['path'] ?? '/',
-            'domain'   => $options['domain'] ?? '',
-            'secure'   => $options['secure'] ?? false,
-            'httponly'  => $options['httponly'] ?? true,
-            'samesite' => $options['samesite'] ?? 'Lax',
+            'expires'  => is_int($expire) ? $expire : 0,
+            'path'     => is_string($path) ? $path : '/',
+            'domain'   => is_string($domain) ? $domain : '',
+            'secure'   => (bool) $secure,
+            'httponly' => (bool) $httponly,
+            'samesite' => $samesite,
         ]);
         return $this;
     }

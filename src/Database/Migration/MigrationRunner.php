@@ -123,7 +123,13 @@ class MigrationRunner
 			->get($this->migrationTable)
 			->row_array();
 
-		return $row !== null ? (int) $row['version'] : 0;
+		if ($row === null) {
+			return 0;
+		}
+
+		$version = $row['version'] ?? 0;
+
+		return is_numeric($version) ? (int) $version : 0;
 	}
 
 	// --------------------------------------------------------------------
@@ -143,7 +149,13 @@ class MigrationRunner
 			->get($this->migrationTable)
 			->row_array();
 
-		return $row !== null ? (int) $row['batch'] : 0;
+		if ($row === null) {
+			return 0;
+		}
+
+		$batch = $row['batch'] ?? 0;
+
+		return is_numeric($batch) ? (int) $batch : 0;
 	}
 
 	// --------------------------------------------------------------------
@@ -238,7 +250,8 @@ class MigrationRunner
 				->result_array();
 
 			foreach ($rows as $row) {
-				$file = $this->migrationPath . $row['class'] . '.php';
+				$class = $row['class'] ?? '';
+				$file = $this->migrationPath . (is_string($class) ? $class : '') . '.php';
 
 				if ( ! file_exists($file)) {
 					throw new \RuntimeException("Migration file not found: {$file}");
@@ -260,7 +273,7 @@ class MigrationRunner
 					$this->db->trans_rollback();
 
 					throw new \RuntimeException(
-						"Rollback of migration '" . $row['class'] . "' failed: " . $e->getMessage(),
+						"Rollback of migration '" . (is_string($class) ? $class : '') . "' failed: " . $e->getMessage(),
 						0,
 						$e
 					);
@@ -289,9 +302,16 @@ class MigrationRunner
 
 		$rows = $this->db->get($this->migrationTable)->result_array();
 		foreach ($rows as $row) {
-			$applied[$row['class']] = [
-				'version' => (int) $row['version'],
-				'batch'   => (int) $row['batch'],
+			$class = $row['class'] ?? null;
+			if (!is_string($class)) {
+				continue;
+			}
+
+			$version = $row['version'] ?? null;
+			$batch = $row['batch'] ?? null;
+			$applied[$class] = [
+				'version' => is_numeric($version) ? (int) $version : 0,
+				'batch'   => is_numeric($batch) ? (int) $batch : 0,
 			];
 		}
 

@@ -60,6 +60,9 @@ class InputSanitizer
         if (is_bool($input)) {
             return $input;
         }
+        if (!is_scalar($input)) {
+            return false;
+        }
 
         $map = ['1', 'true', 'yes', 'on'];
         return in_array(strtolower(trim((string) $input)), $map, true);
@@ -67,26 +70,31 @@ class InputSanitizer
 
     public static function url(string $input): string
     {
-        $input = trim($input);
-        $input = filter_var($input, FILTER_SANITIZE_URL);
-        if ($input && filter_var($input, FILTER_VALIDATE_URL) === false) {
+        $sanitized = filter_var(trim($input), FILTER_SANITIZE_URL);
+        if ($sanitized === false) {
             return '';
         }
-        return $input;
+        if ($sanitized && filter_var($sanitized, FILTER_VALIDATE_URL) === false) {
+            return '';
+        }
+        return $sanitized;
     }
 
     public static function alphanum(string $input): string
     {
-        return preg_replace('/[^a-zA-Z0-9]/', '', $input);
+        return preg_replace('/[^a-zA-Z0-9]/', '', $input) ?? '';
     }
 
     public static function filename(string $input): string
     {
         $input = basename($input);
-        $input = preg_replace('/[^\w\.\-]/', '', $input);
-        return $input;
+        return preg_replace('/[^\w\.\-]/', '', $input) ?? '';
     }
 
+    /**
+     * @param array<mixed> $input
+     * @return array<string, mixed>
+     */
     public static function array(array $input, callable $sanitizer): array
     {
         $clean = [];

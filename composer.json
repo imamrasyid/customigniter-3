@@ -2,13 +2,13 @@
 	"description": "Customigniter 3 - A modernized fork of CodeIgniter 3 for PHP 8.4+",
 	"name": "customigniter/framework",
 	"type": "project",
-	"homepage": "https://github.com/customigniter/customigniter3",
+	"homepage": "https://github.com/imamrasyid/customigniter-3",
 	"license": "MIT",
 	"bin": [
 		"customigniter"
 	],
 	"support": {
-		"source": "https://github.com/customigniter/customigniter3"
+		"source": "https://github.com/imamrasyid/customigniter-3"
 	},
 	"require": {
 		"php": ">=8.4",
@@ -28,6 +28,7 @@
 	},
 	"require-dev": {
 		"mikey179/vfsstream": "^1.6.12",
-		"phpunit/phpunit": "^9.6"
+		"phpunit/phpunit": "^9.6",
+		"phpstan/phpstan": "^2.2"
 	}
 }

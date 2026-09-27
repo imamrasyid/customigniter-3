@@ -42,15 +42,19 @@ class RateLimiter
         $max = $maxAttempts ?? $this->maxAttempts;
 
         return $this->writeLocked($key, function (array &$data) use ($max): bool {
-            if ( ! $this->isExpired($data) && ($data['attempts'] ?? 0) >= $max) {
+            $expired = $this->isExpired($data);
+            $attempts = $data['attempts'] ?? 0;
+
+            if ( ! $expired && is_int($attempts) && $attempts >= $max) {
                 return false;
             }
 
-            if ($this->isExpired($data)) {
+            if ($expired) {
                 $data = ['attempts' => 0, 'timestamp' => time()];
+                $attempts = 0;
             }
 
-            $data['attempts']++;
+            $data['attempts'] = (is_int($attempts) ? $attempts : 0) + 1;
 
             return true;
         });
@@ -131,7 +135,19 @@ class RateLimiter
 
             $data = $raw !== false && $raw !== '' ? (json_decode($raw, true) ?? []) : [];
 
-            return is_array($data) ? $data : [];
+            if ( ! is_array($data)) {
+                return [];
+            }
+
+            $normalized = [];
+            if (isset($data['attempts']) && is_int($data['attempts'])) {
+                $normalized['attempts'] = $data['attempts'];
+            }
+            if (isset($data['timestamp']) && is_int($data['timestamp'])) {
+                $normalized['timestamp'] = $data['timestamp'];
+            }
+
+            return $normalized;
         }
         finally {
             fclose($fp);
@@ -145,8 +161,10 @@ class RateLimiter
      * file is missing or the window expired. Its return value is passed
      * through; whatever it leaves in the array is persisted before
      * unlocking.
+     *
+     * @param callable(array<mixed>&): bool $callback
      */
-    private function writeLocked(string $key, callable $callback): mixed
+    private function writeLocked(string $key, callable $callback): bool
     {
         $file = $this->getPath($key);
 
@@ -186,13 +204,17 @@ class RateLimiter
         }
     }
 
+    /**
+     * @param array<mixed> $data
+     */
     private function isExpired(array $data): bool
     {
-        if (empty($data['timestamp'])) {
+        $timestamp = $data['timestamp'] ?? null;
+        if ( ! is_int($timestamp)) {
             return true;
         }
 
-        return (time() - $data['timestamp']) >= ($this->decayMinutes * 60);
+        return (time() - $timestamp) >= ($this->decayMinutes * 60);
     }
 
     private function getPath(string $key): string

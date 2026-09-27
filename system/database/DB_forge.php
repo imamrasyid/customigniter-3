@@ -235,7 +235,7 @@ abstract class CI_DB_forge {
 	/**
 	 * Add Key
 	 *
-	 * @param	string	$key
+	 * @param	string|string[]	$key
 	 * @param	bool	$primary
 	 * @return	CI_DB_forge
 	 */
@@ -616,7 +616,7 @@ abstract class CI_DB_forge {
 	 * Column Modify
 	 *
 	 * @param	string	$table	Table name
-	 * @param	string	$field	Column definition
+	 * @param	string|array	$field	Column definition
 	 * @return	bool
 	 */
 	public function modify_column($table, $field)
