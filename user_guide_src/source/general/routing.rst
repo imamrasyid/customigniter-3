@@ -21,7 +21,7 @@ For example, let's say you want your URLs to have this prototype::
 
 Normally the second segment of the URL is reserved for the method
 name, but in the example above it instead has a product ID. To
-overcome this, CodeIgniter allows you to remap the URI handler.
+overcome this, Customigniter allows you to remap the URI handler.
 
 Setting your own routing rules
 ==============================

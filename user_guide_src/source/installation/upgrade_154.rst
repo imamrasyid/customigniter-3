@@ -5,8 +5,8 @@ Upgrading from 1.5.3 to 1.5.4
 Before performing an update you should take your site offline by
 replacing the index.php file with a static one.
 
-Step 1: Update your CodeIgniter files
-=====================================
+Step 1: Update your Customigniter files
+=======================================
 
 Replace these files and directories in your "system" folder with the new
 versions:

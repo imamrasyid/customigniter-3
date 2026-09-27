@@ -76,7 +76,7 @@ The following functions are available:
 
 	Additionally, an associative array can be passed to the ``img()`` function
 	for complete control over all attributes and values. If an *alt* attribute
-	is not provided, CodeIgniter will generate an empty string.
+	is not provided, Customigniter will generate an empty string.
 
 	Example::
 

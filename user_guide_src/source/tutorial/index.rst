@@ -2,9 +2,9 @@
 Tutorial
 ########
 
-This tutorial is intended to introduce you to the CodeIgniter framework
+This tutorial is intended to introduce you to the Customigniter framework
 and the basic principles of MVC architecture. It will show you how a
-basic CodeIgniter application is constructed in step-by-step fashion.
+basic Customigniter application is constructed in step-by-step fashion.
 
 In this tutorial, you will be creating a **basic news application**. You
 will begin by writing the code that can load static pages. Next, you
@@ -19,7 +19,7 @@ This tutorial will primarily focus on:
 -  Performing basic database queries using "Query Builder"
 
 The entire tutorial is split up over several pages, each explaining a
-small part of the functionality of the CodeIgniter framework. You'll go
+small part of the functionality of the Customigniter framework. You'll go
 through the following pages:
 
 -  Introduction, this page, which gives you an overview of what to
@@ -33,7 +33,7 @@ through the following pages:
 -  :doc:`Conclusion <conclusion>`, which will give you some pointers on
    further reading and other resources.
 
-Enjoy your exploration of the CodeIgniter framework.
+Enjoy your exploration of the Customigniter framework.
 
 .. toctree::
 	:glob:

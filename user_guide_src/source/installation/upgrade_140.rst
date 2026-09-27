@@ -8,8 +8,8 @@ Upgrading from 1.3.3 to 1.4.0
 Before performing an update you should take your site offline by
 replacing the index.php file with a static one.
 
-Step 1: Update your CodeIgniter files
-=====================================
+Step 1: Update your Customigniter files
+=======================================
 
 Replace the following directories in your "system" folder with the new
 versions:

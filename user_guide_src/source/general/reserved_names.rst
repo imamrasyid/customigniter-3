@@ -2,7 +2,7 @@
 Reserved Names
 ##############
 
-In order to help out, CodeIgniter uses a series of function, method,
+In order to help out, Customigniter uses a series of function, method,
 class and variable names in its operation. Because of this, some names
 cannot be used by a developer. Following is a list of reserved names
 that cannot be used.

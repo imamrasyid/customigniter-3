@@ -96,7 +96,7 @@ The following functions are available:
 		word_is_countable('equipment'); // Returns FALSE
 
 	.. note:: This function used to be called ``is_countable()`` in
-		in previous CodeIgniter versions.
+		in previous Customigniter versions.
 
 .. php:function:: ordinal_format($number)
 

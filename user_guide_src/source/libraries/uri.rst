@@ -68,7 +68,7 @@ Class Reference
 
 		This method is identical to ``segment()``, except that it lets you retrieve
 		a specific segment from your re-routed URI in the event you are
-		using CodeIgniter's :doc:`URI Routing <../general/routing>` feature.
+		using Customigniter's :doc:`URI Routing <../general/routing>` feature.
 
 	.. php:method:: slash_segment($n[, $where = 'trailing'])
 
@@ -100,7 +100,7 @@ Class Reference
 
 		This method is identical to ``slash_segment()``, except that it lets you
 		add slashes a specific segment from your re-routed URI in the event you
-		are using CodeIgniter's :doc:`URI Routing <../general/routing>`
+		are using Customigniter's :doc:`URI Routing <../general/routing>`
 		feature.
 
 	.. php:method:: uri_to_assoc([$n = 3[, $default = array()]])
@@ -154,7 +154,7 @@ Class Reference
 
 		This method is identical to ``uri_to_assoc()``, except that it creates
 		an associative array using the re-routed URI in the event you are using
-		CodeIgniter's :doc:`URI Routing <../general/routing>` feature.
+		Customigniter's :doc:`URI Routing <../general/routing>` feature.
 
 	.. php:method:: assoc_to_uri($array)
 
@@ -189,7 +189,7 @@ Class Reference
 		:rtype:	string
 
 		This method is identical to ``uri_string()``, except that it returns
-		the re-routed URI in the event you are using CodeIgniter's :doc:`URI
+		the re-routed URI in the event you are using Customigniter's :doc:`URI
 		Routing <../general/routing>` feature.
 
 	.. php:method:: total_segments()
@@ -206,7 +206,7 @@ Class Reference
 
 		This method is identical to ``total_segments()``, except that it returns
 		the total number of segments in your re-routed URI in the event you are
-		using CodeIgniter's :doc:`URI Routing <../general/routing>` feature.
+		using Customigniter's :doc:`URI Routing <../general/routing>` feature.
 
 	.. php:method:: segment_array()
 
@@ -230,4 +230,4 @@ Class Reference
 
 		This method is identical to ``segment_array()``, except that it returns
 		the array of segments in your re-routed URI in the event you are using
-		CodeIgniter's :doc:`URI Routing <../general/routing>` feature.
+		Customigniter's :doc:`URI Routing <../general/routing>` feature.

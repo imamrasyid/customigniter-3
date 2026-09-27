@@ -2,9 +2,9 @@
 Hooks - Extending the Framework Core
 ####################################
 
-CodeIgniter's Hooks feature provides a means to tap into and modify the
+Customigniter's Hooks feature provides a means to tap into and modify the
 inner workings of the framework without hacking the core files. When
-CodeIgniter runs it follows a specific execution process, diagramed in
+Customigniter runs it follows a specific execution process, diagramed in
 the :doc:`Application Flow <../overview/appflow>` page. There may be
 instances, however, where you'd like to cause some action to take place
 at a particular stage in the execution process. For example, you might

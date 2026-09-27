@@ -28,7 +28,7 @@ These variables are not actual PHP variables, but rather plain text
 representations that allow you to eliminate PHP from your templates
 (view files).
 
-.. note:: CodeIgniter does **not** require you to use this class since
+.. note:: Customigniter does **not** require you to use this class since
 	using pure PHP in your view pages lets them run a little faster.
 	However, some developers prefer to use a template engine if
         they work with designers who they feel would find some
@@ -52,7 +52,7 @@ Using the Template Parser Class
 Initializing the Class
 ======================
 
-Like most other classes in CodeIgniter, the Parser class is initialized
+Like most other classes in Customigniter, the Parser class is initialized
 in your controller using the ``$this->load->library()`` method::
 
 	$this->load->library('parser');

@@ -5,8 +5,8 @@ Upgrading from 3.0.5 to 3.0.6
 Before performing an update you should take your site offline by
 replacing the index.php file with a static one.
 
-Step 1: Update your CodeIgniter files
-=====================================
+Step 1: Update your Customigniter files
+=======================================
 
 Replace all files and directories in your *system/* directory.
 
@@ -36,7 +36,7 @@ The :doc:`Form Validation Library <../libraries/form_validation>` has a
 ``set_rules()`` to automatically perform HTML encoding on input data.
 
 Automatically encoding input (instead of output) data is a bad practice in
-the first place, and CodeIgniter and PHP itself offer other alternatives
+the first place, and Customigniter and PHP itself offer other alternatives
 to this method anyway.
 For example, :doc:`Form Helper <../helpers/form_helper>` functions will
 automatically perform HTML escaping when necessary.

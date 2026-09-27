@@ -1,12 +1,12 @@
-##############################
+###############################
 Upgrading from 3.1.12 to 3.1.13
-##############################
+###############################
 
 Before performing an update you should take your site offline by
 replacing the index.php file with a static one.
 
-Step 1: Update your CodeIgniter files
-=====================================
+Step 1: Update your Customigniter files
+=======================================
 
 Replace all files and directories in your *system/* directory.
 

@@ -2,7 +2,7 @@
 File Uploading Class
 ####################
 
-CodeIgniter's File Uploading Class permits files to be uploaded. You can
+Customigniter's File Uploading Class permits files to be uploaded. You can
 set various preferences, restricting the type and size of the files.
 
 .. contents::
@@ -138,7 +138,7 @@ The Upload Directory
 ====================
 
 You'll need a destination directory for your uploaded images. Create a
-directory at the root of your CodeIgniter installation called uploads
+directory at the root of your Customigniter installation called uploads
 and set its file permissions to 777.
 
 Try it!
@@ -159,7 +159,7 @@ Reference Guide
 Initializing the Upload Class
 =============================
 
-Like most other classes in CodeIgniter, the Upload class is initialized
+Like most other classes in Customigniter, the Upload class is initialized
 in your controller using the ``$this->load->library()`` method::
 
 	$this->load->library('upload');
@@ -202,7 +202,7 @@ Preference                   Default Value     Options                 Descripti
 **allowed_types**            None              None                    The mime types corresponding to the types of files you allow to be
                                                                        uploaded. Usually the file extension can be used as the mime type.
                                                                        Can be either an array or a pipe-separated string.
-**file_name**                None              Desired file name       If set CodeIgniter will rename the uploaded file to this name. The
+**file_name**                None              Desired file name       If set Customigniter will rename the uploaded file to this name. The
                                                                        extension provided in the file name must also be an allowed file type.
                                                                        If no extension is provided in the original file_name will be used.
 **file_ext_tolower**         FALSE             TRUE/FALSE (boolean)    If set to TRUE, the file extension will be forced to lower case
@@ -222,7 +222,7 @@ Preference                   Default Value     Options                 Descripti
                                                                        limit.
 **max_filename**             0                 None                    The maximum length that a file name can be. Set to zero for no limit.
 **max_filename_increment**   100               None                    When overwrite is set to FALSE, use this to set the maximum filename
-                                                                       increment for CodeIgniter to append to the filename.
+                                                                       increment for Customigniter to append to the filename.
 **encrypt_name**             FALSE             TRUE/FALSE (boolean)    If set to TRUE the file name will be converted to a random encrypted
                                                                        string. This can be useful if you would like the file saved with a name
                                                                        that can not be discerned by the person uploading it.

@@ -2,7 +2,7 @@
 Auto-loading Resources
 ######################
 
-CodeIgniter comes with an "Auto-load" feature that permits libraries,
+Customigniter comes with an "Auto-load" feature that permits libraries,
 helpers, and models to be initialized automatically every time the
 system runs. If you need certain resources globally throughout your
 application you should consider auto-loading them for convenience.
@@ -22,6 +22,6 @@ find instructions in that file corresponding to each type of item.
 .. note:: Do not include the file extension (.php) when adding items to
 	the autoload array.
 
-Additionally, if you want CodeIgniter to use a `Composer <https://getcomposer.org/>`_
+Additionally, if you want Customigniter to use a `Composer <https://getcomposer.org/>`_
 auto-loader, just set ``$config['composer_autoload']`` to ``TRUE`` or
 a custom path in **application/config/config.php**.

@@ -8,8 +8,8 @@ Upgrading from 1.3.2 to 1.3.3
 Before performing an update you should take your site offline by
 replacing the index.php file with a static one.
 
-Step 1: Update your CodeIgniter files
-=====================================
+Step 1: Update your Customigniter files
+=======================================
 
 Replace the following directories in your "system" folder with the new
 versions:
@@ -26,10 +26,10 @@ versions:
 Step 2: Update your Models
 ==========================
 
-If you are **NOT** using CodeIgniter's
+If you are **NOT** using Customigniter's
 :doc:`Models <../general/models>` feature disregard this step.
 
-As of version 1.3.3, CodeIgniter does **not** connect automatically to
+As of version 1.3.3, Customigniter does **not** connect automatically to
 your database when a model is loaded. This allows you greater
 flexibility in determining which databases you would like used with your
 models. If your application is not connecting to your database prior to

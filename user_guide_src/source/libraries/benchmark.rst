@@ -2,7 +2,7 @@
 Benchmarking Class
 ##################
 
-CodeIgniter has a Benchmarking class that is always active, enabling the
+Customigniter has a Benchmarking class that is always active, enabling the
 time difference between any two marked points to be calculated.
 
 .. note:: This class is initialized automatically by the system so there
@@ -89,14 +89,14 @@ Displaying Total Execution Time
 ===============================
 
 If you would like to display the total elapsed time from the moment
-CodeIgniter starts to the moment the final output is sent to the
+Customigniter starts to the moment the final output is sent to the
 browser, simply place this in one of your view templates::
 
 	<?php echo $this->benchmark->elapsed_time();?>
 
 You'll notice that it's the same function used in the examples above to
 calculate the time between two point, except you are **not** using any
-parameters. When the parameters are absent, CodeIgniter does not stop
+parameters. When the parameters are absent, Customigniter does not stop
 the benchmark until right before the final output is sent to the
 browser. It doesn't matter where you use the function call, the timer
 will continue to run until the very end.

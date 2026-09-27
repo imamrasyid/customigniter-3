@@ -14,7 +14,7 @@ Under normal circumstances you won't even notice the Output class since
 it works transparently without your intervention. For example, when you
 use the :doc:`Loader <../libraries/loader>` class to load a view file,
 it's automatically passed to the Output class, which will be called
-automatically by CodeIgniter at the end of system execution. It is
+automatically by Customigniter at the end of system execution. It is
 possible, however, for you to manually intervene with the output if you
 need to.
 
@@ -35,7 +35,7 @@ Class Reference
 
 		Enables/disables parsing of the {elapsed_time} and {memory_usage} pseudo-variables.
 
-		CodeIgniter will parse those tokens in your output by default. To disable this, set
+		Customigniter will parse those tokens in your output by default. To disable this, set
 		this property to FALSE in your controller.
 		::
 
@@ -120,7 +120,7 @@ Class Reference
 			$string = $this->output->get_output();
 
 		Note that data will only be retrievable from this function if it has
-		been previously sent to the output class by one of the CodeIgniter
+		been previously sent to the output class by one of the Customigniter
 		functions like ``$this->load->view()``.
 
 	.. php:method:: append_output($output)

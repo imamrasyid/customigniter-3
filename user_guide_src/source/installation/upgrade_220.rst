@@ -11,8 +11,8 @@ Upgrading from 2.1.4 to 2.2.x
 Before performing an update you should take your site offline by
 replacing the index.php file with a static one.
 
-Step 1: Update your CodeIgniter files
-=====================================
+Step 1: Update your Customigniter files
+=======================================
 
 Replace all files and directories in your "system" folder.
 

@@ -2,7 +2,7 @@
 Compatibility Functions
 #######################
 
-CodeIgniter provides a set of compatibility functions that enable
+Customigniter provides a set of compatibility functions that enable
 you to use functions what are otherwise natively available in PHP,
 but only in higher versions or depending on a certain extension.
 

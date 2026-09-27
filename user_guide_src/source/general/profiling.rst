@@ -69,7 +69,7 @@ in the table below.
 Key                     Description                                                         Default
 ======================= =================================================================== ========
 **benchmarks**          Elapsed time of Benchmark points and total execution time           TRUE
-**config**              CodeIgniter Config variables                                        TRUE
+**config**              Customigniter Config variables                                        TRUE
 **controller_info**     The Controller class and method requested                           TRUE
 **get**                 Any GET data passed in the request                                  TRUE
 **http_headers**        The HTTP headers for the current request                            TRUE

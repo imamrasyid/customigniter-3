@@ -9,7 +9,7 @@ instead describe how you can create your own libraries within your
 application/libraries directory in order to maintain separation between
 your local resources and the global framework resources.
 
-As an added bonus, CodeIgniter permits your libraries to extend native
+As an added bonus, Customigniter permits your libraries to extend native
 classes if you simply need to add some functionality to an existing
 library. Or you can even replace native libraries just by placing
 identically named versions in your *application/libraries* directory.
@@ -29,7 +29,7 @@ Storage
 =======
 
 Your library classes should be placed within your *application/libraries*
-directory, as this is where CodeIgniter will look for them when they are
+directory, as this is where Customigniter will look for them when they are
 initialized.
 
 Naming Conventions
@@ -65,7 +65,7 @@ can initialize your class using the standard::
 	$this->load->library('someclass');
 
 Where *someclass* is the file name, without the ".php" file extension.
-You can submit the file name capitalized or lower case. CodeIgniter
+You can submit the file name capitalized or lower case. Customigniter
 doesn't care.
 
 Once loaded you can access your class using the lower case version::
@@ -102,15 +102,15 @@ your *application/config/* directory. Note that if you dynamically pass
 parameters as described above, the config file option will not be
 available.
 
-Utilizing CodeIgniter Resources within Your Library
-===================================================
+Utilizing Customigniter Resources within Your Library
+=====================================================
 
-To access CodeIgniter's native resources within your library use the
-``get_instance()`` method. This method returns the CodeIgniter super
+To access Customigniter's native resources within your library use the
+``get_instance()`` method. This method returns the Customigniter super
 object.
 
 Normally from within your controller methods you will call any of the
-available CodeIgniter methods using the ``$this`` construct::
+available Customigniter methods using the ``$this`` construct::
 
 	$this->load->helper('url');
 	$this->load->library('session');
@@ -118,10 +118,10 @@ available CodeIgniter methods using the ``$this`` construct::
 	// etc.
 
 ``$this``, however, only works directly within your controllers, your
-models, or your views. If you would like to use CodeIgniter's classes
+models, or your views. If you would like to use Customigniter's classes
 from within your own custom classes you can do so as follows:
 
-First, assign the CodeIgniter object to a variable::
+First, assign the Customigniter object to a variable::
 
 	$CI =& get_instance();
 
@@ -141,11 +141,11 @@ Once you've assigned the object to a variable, you'll use that variable
 		$CI =& get_instance();
 
 	This is very important. Assigning by reference allows you to use the
-	original CodeIgniter object rather than creating a copy of it.
+	original Customigniter object rather than creating a copy of it.
 
 However, since a library is a class, it would be better if you
 take full advantage of the OOP principles. So, in order to
-be able to use the CodeIgniter super-object in all of the class
+be able to use the Customigniter super-object in all of the class
 methods, you're encouraged to assign it to a property instead::
 
 	class Example_library {
@@ -156,7 +156,7 @@ methods, you're encouraged to assign it to a property instead::
 		// from a property definition.
 		public function __construct()
 		{
-			// Assign the CodeIgniter super-object
+			// Assign the Customigniter super-object
 			$this->CI =& get_instance();
 		}
 
@@ -177,7 +177,7 @@ Replacing Native Libraries with Your Versions
 =============================================
 
 Simply by naming your class files identically to a native library will
-cause CodeIgniter to use it instead of the native one. To use this
+cause Customigniter to use it instead of the native one. To use this
 feature you must name the file and the class declaration exactly the
 same as the native library. For example, to replace the native Email
 library you'll create a file named *application/libraries/Email.php*,
@@ -256,5 +256,5 @@ To set your own sub-class prefix, open your
 
 	$config['subclass_prefix'] = 'MY_';
 
-Please note that all native CodeIgniter libraries are prefixed with CI\_
+Please note that all native Customigniter libraries are prefixed with CI\_
 so DO NOT use that as your prefix.

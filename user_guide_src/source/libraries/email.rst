@@ -2,7 +2,7 @@
 Email Class
 ###########
 
-CodeIgniter's robust Email Class supports the following features:
+Customigniter's robust Email Class supports the following features:
 
 -  Multiple Protocols: Mail, Sendmail, and SMTP
 -  TLS and SSL Encryption for SMTP
@@ -92,7 +92,7 @@ sending email.
 =================== ====================== ============================ =======================================================================
 Preference          Default Value          Options                      Description
 =================== ====================== ============================ =======================================================================
-**useragent**       CodeIgniter            None                         The "user agent".
+**useragent**       Customigniter            None                         The "user agent".
 **protocol**        mail                   mail, sendmail, or smtp      The mail sending protocol.
 **mailpath**        /usr/sbin/sendmail     None                         The server path to Sendmail.
 **smtp_host**       No Default             None                         SMTP Server Address.
@@ -123,7 +123,7 @@ Overriding Word Wrapping
 If you have word wrapping enabled (recommended to comply with RFC 822)
 and you have a very long link in your email it can get wrapped too,
 causing it to become un-clickable by the person receiving it.
-CodeIgniter lets you manually override word wrapping within part of your
+Customigniter lets you manually override word wrapping within part of your
 message like this::
 
 	The text of your email that
@@ -252,7 +252,7 @@ Class Reference
 		HTML formatted email. It lets you specify an alternative message
 		with no HTML formatting which is added to the header string for
 		people who do not accept HTML email. If you do not set your own
-		message CodeIgniter will extract the message from your HTML email
+		message Customigniter will extract the message from your HTML email
 		and strip the tags.
 
 	.. php:method:: set_header($header, $value)

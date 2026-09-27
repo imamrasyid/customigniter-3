@@ -3,7 +3,7 @@ Creating Ancillary Classes
 ##########################
 
 In some cases you may want to develop classes that exist apart from your
-controllers but have the ability to utilize all of CodeIgniter's
+controllers but have the ability to utilize all of Customigniter's
 resources. This is easily possible as you'll see.
 
 get_instance()
@@ -15,11 +15,11 @@ get_instance()
 	:rtype:	CI_Controller
 
 **Any class that you instantiate within your controller methods can
-access CodeIgniter's native resources** simply by using the
+access Customigniter's native resources** simply by using the
 ``get_instance()`` function. This function returns the main
-CodeIgniter object.
+Customigniter object.
 
-Normally, to call any of the available methods, CodeIgniter requires
+Normally, to call any of the available methods, Customigniter requires
 you to use the ``$this`` construct::
 
 	$this->load->helper('url');
@@ -28,10 +28,10 @@ you to use the ``$this`` construct::
 	// etc.
 
 ``$this``, however, only works within your controllers, your models,
-or your views. If you would like to use CodeIgniter's classes from
+or your views. If you would like to use Customigniter's classes from
 within your own custom classes you can do so as follows:
 
-First, assign the CodeIgniter object to a variable::
+First, assign the Customigniter object to a variable::
 
 	$CI =& get_instance();
 
@@ -59,7 +59,7 @@ Example::
 		// from a property definition.
 		public function __construct()
 		{
-			// Assign the CodeIgniter super-object
+			// Assign the Customigniter super-object
 			$this->CI =& get_instance();
 		}
 

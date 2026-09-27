@@ -5,11 +5,11 @@ Language Class
 The Language Class provides functions to retrieve language files and
 lines of text for purposes of internationalization.
 
-In your CodeIgniter **system** folder, you will find a **language** sub-directory
+In your Customigniter **system** folder, you will find a **language** sub-directory
 containing a set of language files for the **english** idiom.
 The files in this directory (**system/language/english/**) define the regular messages,
 error messages, and other generally output terms or expressions, for the different parts
-of the CodeIgniter framework.
+of the Customigniter framework.
 
 You can create or incorporate your own language files, as needed, in order to provide
 application-specific error and other messages, or to provide translations of the core
@@ -17,12 +17,13 @@ messages into other languages. These translations or additional messages would g
 your **application/language/** directory, with separate sub-directories for each idiom
 (for instance, 'french' or 'german').
 
-The CodeIgniter framework comes with a set of language files for the "english" idiom.
+The Customigniter framework comes with a set of language files for the "english" idiom.
 Additional approved translations for different idioms may be found in the
-`CodeIgniter 3 Translations repositories <https://github.com/bcit-ci/codeigniter3-translations>`_.
+upstream `CodeIgniter 3 translation repositories <https://github.com/bcit-ci/codeigniter3-translations>`_,
+which use the same language format.
 Each repository deals with a single idiom.
 
-When CodeIgniter loads language files, it will load the one in **system/language/**
+When Customigniter loads language files, it will load the one in **system/language/**
 first and will then look for an override in your **application/language/** directory.
 
 .. note:: Each language should be stored in its own folder. For example,
@@ -89,7 +90,7 @@ Example of switching languages
 Internationalization
 ********************
 
-The Language class in CodeIgniter is meant to provide an easy and lightweight
+The Language class in Customigniter is meant to provide an easy and lightweight
 way to support multiplelanguages in your application. It is not meant to be a
 full implementation of what is commonly called `internationalization and localization
 <https://en.wikipedia.org/wiki/Internationalization_and_localization>`_.
@@ -176,7 +177,7 @@ Auto-loading Languages
 ======================
 
 If you find that you need a particular language globally throughout your
-application, you can tell CodeIgniter to :doc:`auto-load
+application, you can tell Customigniter to :doc:`auto-load
 <../general/autoloader>` it during system initialization. This is done
 by opening the **application/config/autoload.php** file and adding the
 language(s) to the autoload array.

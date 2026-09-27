@@ -2,7 +2,7 @@
 Pagination Class
 ################
 
-CodeIgniter's Pagination class is very easy to use, and it is 100%
+Customigniter's Pagination class is very easy to use, and it is 100%
 customizable, either dynamically or via stored preferences.
 
 .. contents::

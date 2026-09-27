@@ -1,8 +1,17 @@
-#########################
+###########################
 Downloading Customigniter 3
-#########################
+###########################
 
--  `Customigniter 3 v0.0.1 (Current version) <https://github.com/customigniter/customigniter3/releases/download/0.0.1/customigniter3-0.0.1.zip>`_
+Customigniter 3 is distributed from its GitHub repository::
+
+    git clone https://github.com/imamrasyid/customigniter-3.git
+
+or download the source archive of any release from the
+`GitHub repository <https://github.com/imamrasyid/customigniter-3>`_.
+
+The archives below are the **upstream CodeIgniter 3 releases** that
+Customigniter 3 was forked from, kept here for reference:
+
 -  `CodeIgniter v3.1.14 <https://codeload.github.com/bcit-ci/CodeIgniter/zip/3.1.14>`_
 -  `CodeIgniter v3.1.13 <https://codeload.github.com/bcit-ci/CodeIgniter/zip/3.1.13>`_
 -  `CodeIgniter v3.1.12 <https://codeload.github.com/bcit-ci/CodeIgniter/zip/3.1.12>`_
@@ -44,9 +53,10 @@ GitHub
 
 `Git <https://git-scm.com/about>`_ is a distributed version control system.
 
-Public Git access is available at `GitHub <https://github.com/bcit-ci/CodeIgniter>`_.
+Public Git access for Customigniter 3 is available at
+`GitHub <https://github.com/imamrasyid/customigniter-3>`_.
 Please note that while every effort is made to keep this code base
 functional, we cannot guarantee the functionality of code taken from
-the develop branch.
+an unstable branch.
 
-Beginning with version 2.0.3, stable versions are also available via `GitHub Releases <https://github.com/bcit-ci/CodeIgniter/releases>`_.
+Upstream CodeIgniter releases are also available via `GitHub Releases <https://github.com/bcit-ci/CodeIgniter/releases>`_.

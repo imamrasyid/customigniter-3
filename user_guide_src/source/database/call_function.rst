@@ -6,9 +6,9 @@ $this->db->call_function();
 ============================
 
 This function enables you to call PHP database functions that are not
-natively included in CodeIgniter, in a platform independent manner. For
+natively included in Customigniter, in a platform independent manner. For
 example, let's say you want to call the mysql_get_client_info()
-function, which is **not** natively supported by CodeIgniter. You could
+function, which is **not** natively supported by Customigniter. You could
 do so like this::
 
 	$this->db->call_function('get_client_info');

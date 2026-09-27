@@ -5,7 +5,7 @@ Session Library
 The Session class permits you maintain a user's "state" and track their
 activity while they browse your site.
 
-CodeIgniter comes with a few session storage drivers:
+Customigniter comes with a few session storage drivers:
 
   - files (default; file-system based)
   - database
@@ -48,7 +48,7 @@ Once loaded, the Sessions library object will be available using::
 	$this->session
 
 .. important:: Because the :doc:`Loader Class </libraries/loader>` is instantiated
-	by CodeIgniter's base controller, make sure to call
+	by Customigniter's base controller, make sure to call
 	``parent::__construct()`` before trying to load a library from
 	inside a controller constructor.
 
@@ -79,7 +79,7 @@ Unless you're developing a website with heavy AJAX usage, you can skip this
 section. If you are, however, and if you're experiencing performance
 issues, then this note is exactly what you're looking for.
 
-Sessions in previous versions of CodeIgniter didn't implement locking,
+Sessions in previous versions of Customigniter didn't implement locking,
 which meant that two HTTP requests using the same session could run exactly
 at the same time. To use a more appropriate technical term - requests were
 non-blocking.
@@ -88,7 +88,7 @@ However, non-blocking requests in the context of sessions also means
 unsafe, because modifications to session data (or session ID regeneration)
 in one request can interfere with the execution of a second, concurrent
 request. This detail was at the root of many issues and the main reason why
-CodeIgniter 3.0 has a completely re-written Session library.
+Customigniter 3.0 has a completely re-written Session library.
 
 Why are we telling you this? Because it is likely that after trying to
 find the reason for your performance issues, you may conclude that locking
@@ -115,15 +115,15 @@ If you've used sessions in PHP before, you should be familiar with PHP's
 `$_SESSION superglobal <https://secure.php.net/manual/en/reserved.variables.session.php>`_
 (if not, please read the content on that link).
 
-CodeIgniter gives access to its session data through the same means, as it
+Customigniter gives access to its session data through the same means, as it
 uses the session handlers' mechanism provided by PHP. Using session data is
 as simple as manipulating (read, set and unset values) the ``$_SESSION``
 array.
 
-In addition, CodeIgniter also provides 2 special types of session data
+In addition, Customigniter also provides 2 special types of session data
 that are further explained below: flashdata and tempdata.
 
-.. note:: In previous versions, regular session data in CodeIgniter was
+.. note:: In previous versions, regular session data in Customigniter was
 	referred to as 'userdata'. Have this in mind if that term is used
 	elsewhere in the manual. Most of it is written to explain how
 	the custom 'userdata' methods work.
@@ -249,7 +249,7 @@ This method also accepts an array of item keys to unset::
 Flashdata
 =========
 
-CodeIgniter supports "flashdata", or session data that will only be
+Customigniter supports "flashdata", or session data that will only be
 available for the next request, and is then automatically cleared.
 
 This can be very useful, especially for one-time informational, error or
@@ -311,7 +311,7 @@ You can either pass a single item or an array of flashdata items to keep.
 Tempdata
 ========
 
-CodeIgniter also supports "tempdata", or session data with a specific
+Customigniter also supports "tempdata", or session data with a specific
 expiration time. After the value expires, or the session expires or is
 deleted, the value is automatically removed.
 
@@ -409,7 +409,7 @@ same way::
 Accessing session metadata
 ==========================
 
-In previous CodeIgniter versions, the session data array included 4 items
+In previous Customigniter versions, the session data array included 4 items
 by default: 'session_id', 'ip_address', 'user_agent', 'last_activity'.
 
 This was due to the specifics of how sessions worked, but is now no longer
@@ -425,7 +425,7 @@ accessing them:
 Session Preferences
 ===================
 
-CodeIgniter will usually make everything work out of the box. However,
+Customigniter will usually make everything work out of the box. However,
 Sessions are a very sensitive component of any application, so some
 careful configuration must be done. Please take your time to consider
 all of the options and their effects.
@@ -499,7 +499,7 @@ get yourself familiar with them (below) before you make that choice.
 In addition, you may also create and use `Custom Drivers`_, if the ones
 provided by default don't satisfy your use case.
 
-.. note:: In previous CodeIgniter versions, a different, "cookie driver"
+.. note:: In previous Customigniter versions, a different, "cookie driver"
 	was the only option and we have received negative feedback on not
 	providing that option. While we do listen to feedback from the
 	community, we want to warn you that it was dropped because it is
@@ -583,7 +583,7 @@ you would do this::
 	$config['sess_driver'] = 'database';
 	$config['sess_save_path'] = 'ci_sessions';
 
-.. note:: If you've upgraded from a previous version of CodeIgniter and
+.. note:: If you've upgraded from a previous version of Customigniter and
 	you don't have 'sess_save_path' configured, then the Session
 	library will look for the old 'sess_table_name' setting and use
 	it instead. Please don't rely on this behavior as it will get
@@ -660,7 +660,7 @@ link you to it:
 
 	https://github.com/phpredis/phpredis#php-session-handler
 
-.. warning:: CodeIgniter's Session library does NOT use the actual 'redis'
+.. warning:: Customigniter's Session library does NOT use the actual 'redis'
 	``session.save_handler``. Take note **only** of the path format in
 	the link above.
 
@@ -726,7 +726,7 @@ last but not least - how to handle the potential security issues, which
 is far from trivial.
 
 Long story short - if you don't know how to do that already in raw PHP,
-you shouldn't be trying to do it within CodeIgniter either. You've been
+you shouldn't be trying to do it within Customigniter either. You've been
 warned.
 
 If you only want to add some extra functionality to your sessions, just
@@ -735,7 +735,7 @@ extend the base Session class, which is a lot more easier. Read the
 learn how to do that.
 
 Now, to the point - there are three general rules that you must follow
-when creating a session driver for CodeIgniter:
+when creating a session driver for Customigniter:
 
   - Put your driver's file under **application/libraries/Session/drivers/**
     and follow the naming conventions used by the Session class.
@@ -757,7 +757,7 @@ when creating a session driver for CodeIgniter:
     <https://secure.php.net/sessionhandlerinterface>`_ interface.
 
     .. note:: You may notice that ``SessionHandlerInterface`` is provided
-        by PHP since version 5.4.0. CodeIgniter will automatically declare
+        by PHP since version 5.4.0. Customigniter will automatically declare
         the same interface if you're running an older PHP version.
 
     The link will explain why and how.
@@ -842,7 +842,7 @@ Class Reference
 		.. note:: This method is DEPRECATED. Use ``userdata()``
 			with no parameters instead.
 
-	.. php:method:: &get_userdata()
+	.. php:method:: get_userdata()
 
 		:returns:	A reference to ``$_SESSION``
 		:rtype:	array

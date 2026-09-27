@@ -1,6 +1,6 @@
-####################
-CodeIgniter Features
-####################
+######################
+Customigniter Features
+######################
 
 Features in and of themselves are a very poor way to judge an
 application since they tell you nothing about the user experience, or
@@ -8,9 +8,9 @@ how intuitively or intelligently it is designed. Features don't reveal
 anything about the quality of the code, or the performance, or the
 attention to detail, or security practices. The only way to really judge
 an app is to try it and get to know the code.
-:doc:`Installing <../installation/index>` CodeIgniter is child's play so
+:doc:`Installing <../installation/index>` Customigniter is child's play so
 we encourage you to do just that. In the mean time here's a list of
-CodeIgniter's main features.
+Customigniter's main features.
 
 -  Model-View-Controller Based System
 -  Extremely Light Weight

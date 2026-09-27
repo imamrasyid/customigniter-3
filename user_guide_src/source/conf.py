@@ -170,7 +170,7 @@ html_last_updated_fmt = '%b %d, %Y'
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'CodeIgniterdoc'
+htmlhelp_basename = 'Customigniterdoc'
 
 html_copy_source = False
 
@@ -185,8 +185,8 @@ html_copy_source = False
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'CodeIgniter.tex', u'CodeIgniter Documentation',
-   u'British Columbia Institute of Technology', 'manual'),
+  ('index', 'Customigniter.tex', u'Customigniter Documentation',
+   u'Customigniter contributors', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -218,15 +218,15 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'codeigniter', u'CodeIgniter Documentation',
-     [u'British Columbia Institute of Technology'], 1)
+    ('index', 'customigniter', u'Customigniter Documentation',
+     [u'Customigniter contributors'], 1)
 ]
 
 
 # -- Options for Epub output ---------------------------------------------------
 
 # Bibliographic Dublin Core info.
-epub_title = u'CodeIgniter'
+epub_title = u'Customigniter'
 epub_author = u'British Columbia Institute of Technology'
 epub_publisher = u'British Columbia Institute of Technology'
 epub_copyright = u'2014 - 2019, British Columbia Institute of Technology'

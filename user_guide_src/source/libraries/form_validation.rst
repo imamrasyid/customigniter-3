@@ -2,7 +2,7 @@
 Form Validation
 ###############
 
-CodeIgniter provides a comprehensive form validation and data prepping
+Customigniter provides a comprehensive form validation and data prepping
 class that helps minimize the amount of code you'll write.
 
 .. contents:: Page Contents
@@ -11,7 +11,7 @@ class that helps minimize the amount of code you'll write.
 Overview
 ********
 
-Before explaining CodeIgniter's approach to data validation, let's
+Before explaining Customigniter's approach to data validation, let's
 describe the ideal scenario:
 
 #. A form is displayed.
@@ -45,7 +45,7 @@ and tedious to implement.
 Form Validation Tutorial
 ************************
 
-What follows is a "hands on" tutorial for implementing CodeIgniter's Form
+What follows is a "hands on" tutorial for implementing Customigniter's Form
 Validation.
 
 In order to implement form validation you'll need three things:
@@ -186,7 +186,7 @@ form or the success page.
 Setting Validation Rules
 ========================
 
-CodeIgniter lets you set as many validation rules as you need for a
+Customigniter lets you set as many validation rules as you need for a
 given field, cascading them in order, and it even lets you prep and
 pre-process the field data at the same time. To set validation rules you
 will use the ``set_rules()`` method::
@@ -288,7 +288,7 @@ you use this approach, you must name your array keys as indicated::
 Cascading Rules
 ===============
 
-CodeIgniter lets you pipe multiple rules together. Let's try it. Change
+Customigniter lets you pipe multiple rules together. Let's try it. Change
 your rules in the third parameter of rule setting method, like this::
 
 	$this->form_validation->set_rules(
@@ -345,7 +345,7 @@ Re-populating the form
 ======================
 
 Thus far we have only been dealing with errors. It's time to repopulate
-the form field with the submitted data. CodeIgniter offers several
+the form field with the submitted data. Customigniter offers several
 helper functions that permit you to do this. The one you will use most
 commonly is::
 

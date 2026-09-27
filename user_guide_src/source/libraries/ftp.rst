@@ -2,7 +2,7 @@
 FTP Class
 #########
 
-CodeIgniter's FTP Class permits files to be transferred to a remote
+Customigniter's FTP Class permits files to be transferred to a remote
 server. Remote files can also be moved, renamed, and deleted. The FTP
 class also includes a "mirroring" function that permits an entire local
 directory to be recreated remotely via FTP.
@@ -24,7 +24,7 @@ Working with the FTP Class
 Initializing the Class
 ======================
 
-Like most other classes in CodeIgniter, the FTP class is initialized in
+Like most other classes in Customigniter, the FTP class is initialized in
 your controller using the $this->load->library function::
 
 	$this->load->library('ftp');

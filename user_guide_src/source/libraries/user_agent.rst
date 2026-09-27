@@ -21,7 +21,7 @@ Using the User Agent Class
 Initializing the Class
 ======================
 
-Like most other classes in CodeIgniter, the User Agent class is
+Like most other classes in Customigniter, the User Agent class is
 initialized in your controller using the $this->load->library function::
 
 	$this->load->library('user_agent');

@@ -2,7 +2,7 @@
 Caching Driver
 ##############
 
-CodeIgniter features wrappers around some of the most popular forms of
+Customigniter features wrappers around some of the most popular forms of
 fast and dynamic caching. All but file-based caching require specific
 server requirements, and a Fatal Exception will be thrown if server
 requirements are not met.

@@ -91,7 +91,7 @@ Class Reference
 
 		.. note:: We use the terms "class" and "library" interchangeably.
 
-		For example, if you would like to send email with CodeIgniter, the first
+		For example, if you would like to send email with Customigniter, the first
 		step is to load the email class within your controller::
 
 			$this->load->library('email');
@@ -167,7 +167,7 @@ Class Reference
 		This method is used to load driver libraries, acts very much like the
 		``library()`` method.
 
-		As an example, if you would like to use sessions with CodeIgniter, the first
+		As an example, if you would like to use sessions with Customigniter, the first
 		step is to load the session driver within your controller::
 
 			$this->load->driver('session');

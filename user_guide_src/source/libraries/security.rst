@@ -16,7 +16,7 @@ application, processing input data for security.
 XSS Filtering
 *************
 
-CodeIgniter comes with a Cross Site Scripting prevention filter, which
+Customigniter comes with a Cross Site Scripting prevention filter, which
 looks for commonly used techniques to trigger JavaScript or other types
 of code that attempt to hijack cookies or do other malicious things.
 If anything disallowed is encountered it is rendered safe by converting

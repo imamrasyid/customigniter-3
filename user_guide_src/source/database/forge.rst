@@ -66,7 +66,7 @@ Creating and Dropping Tables
 ****************************
 
 There are several things you may wish to do when creating tables. Add
-fields, add keys to the table, alter columns. CodeIgniter provides a
+fields, add keys to the table, alter columns. Customigniter provides a
 mechanism for this.
 
 Adding fields

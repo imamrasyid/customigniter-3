@@ -2,7 +2,7 @@
 Transactions
 ############
 
-CodeIgniter's database abstraction allows you to use transactions with
+Customigniter's database abstraction allows you to use transactions with
 databases that support transaction-safe table types. In MySQL, you'll
 need to be running InnoDB or BDB table types rather than the more common
 MyISAM. Most other database platforms support transactions natively.
@@ -12,10 +12,10 @@ online resource to learn about them for your particular database. The
 information below assumes you have a basic understanding of
 transactions.
 
-CodeIgniter's Approach to Transactions
-======================================
+Customigniter's Approach to Transactions
+========================================
 
-CodeIgniter utilizes an approach to transactions that is very similar to
+Customigniter utilizes an approach to transactions that is very similar to
 the process used by the popular database class ADODB. We've chosen that
 approach because it greatly simplifies the process of running
 transactions. In most cases all that is required are two lines of code.
@@ -48,7 +48,7 @@ or failure of any given query.
 Strict Mode
 ===========
 
-By default CodeIgniter runs all transactions in Strict Mode. When strict
+By default Customigniter runs all transactions in Strict Mode. When strict
 mode is enabled, if you are running multiple groups of transactions, if
 one group fails all groups will be rolled back. If strict mode is
 disabled, each group is treated independently, meaning a failure of one

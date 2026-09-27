@@ -2,10 +2,10 @@
 Managing your Applications
 ##########################
 
-By default it is assumed that you only intend to use CodeIgniter to
+By default it is assumed that you only intend to use Customigniter to
 manage one application, which you will build in your *application/*
 directory. It is possible, however, to have multiple sets of
-applications that share a single CodeIgniter installation, or even to
+applications that share a single Customigniter installation, or even to
 rename or relocate your application directory.
 
 Renaming the Application Directory
@@ -27,10 +27,10 @@ your main index.php and set a *full server path* in the
 
 	$application_folder = '/path/to/your/application';
 
-Running Multiple Applications with one CodeIgniter Installation
-===============================================================
+Running Multiple Applications with one Customigniter Installation
+=================================================================
 
-If you would like to share a common CodeIgniter installation to manage
+If you would like to share a common Customigniter installation to manage
 several different applications simply put all of the directories located
 inside your application directory into their own sub-directory.
 

@@ -17,7 +17,7 @@ Consider this URI::
 
 	example.com/index.php/blog/
 
-In the above example, CodeIgniter would attempt to find a controller
+In the above example, Customigniter would attempt to find a controller
 named Blog.php and load it.
 
 **When a controller's name matches the first segment of a URI, it will
@@ -133,7 +133,7 @@ Your method will be passed URI segments 3 and 4 ("sandals" and "123")::
 Defining a Default Controller
 =============================
 
-CodeIgniter can be told to load a default controller when a URI is not
+Customigniter can be told to load a default controller when a URI is not
 present, as will be the case when only your site root URL is requested.
 To specify a default controller, open your **application/config/routes.php**
 file and set this variable::
@@ -151,7 +151,7 @@ Remapping Method Calls
 ======================
 
 As noted above, the second segment of the URI typically determines which
-method in the controller gets called. CodeIgniter permits you to override
+method in the controller gets called. Customigniter permits you to override
 this behavior through the use of the ``_remap()`` method::
 
 	public function _remap()
@@ -182,7 +182,7 @@ be passed as a parameter to the ``_remap()`` method::
 Any extra segments after the method name are passed into ``_remap()`` as an
 optional second parameter. This array can be used in combination with
 PHP's `call_user_func_array() <https://secure.php.net/call_user_func_array>`_
-to emulate CodeIgniter's default behavior.
+to emulate Customigniter's default behavior.
 
 Example::
 
@@ -199,12 +199,12 @@ Example::
 Processing Output
 =================
 
-CodeIgniter has an output class that takes care of sending your final
+Customigniter has an output class that takes care of sending your final
 rendered data to the web browser automatically. More information on this
 can be found in the :doc:`Views <views>` and :doc:`Output Class
 <../libraries/output>` pages. In some cases, however, you might want to
 post-process the finalized data in some way and send it to the browser
-yourself. CodeIgniter permits you to add a method named ``_output()``
+yourself. Customigniter permits you to add a method named ``_output()``
 to your controller that will receive the finalized output data.
 
 .. important:: If your controller contains a method named ``_output()``,
@@ -267,7 +267,7 @@ Organizing Your Controllers into Sub-directories
 ================================================
 
 If you are building a large application you might want to hierarchically
-organize or structure your controllers into sub-directories. CodeIgniter
+organize or structure your controllers into sub-directories. Customigniter
 permits you to do this.
 
 Simply create sub-directories under the main *application/controllers/*
@@ -288,7 +288,7 @@ called if the URL contains *only* the sub-directory. Simply put a controller
 in there that matches the name of your 'default_controller' as specified in
 your *application/config/routes.php* file.
 
-CodeIgniter also permits you to remap your URIs using its :doc:`URI
+Customigniter also permits you to remap your URIs using its :doc:`URI
 Routing <routing>` feature.
 
 Class Constructors

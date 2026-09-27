@@ -11,7 +11,7 @@ What is a Model?
 ================
 
 Models are PHP classes that are designed to work with information in
-your database. For example, let's say you use CodeIgniter to manage a
+your database. For example, let's say you use Customigniter to manage a
 blog. You might have a model class that contains functions to insert,
 update, and retrieve your blog data. Here is an example of what such a
 model class might look like::
@@ -132,7 +132,7 @@ Auto-loading Models
 ===================
 
 If you find that you need a particular model globally throughout your
-application, you can tell CodeIgniter to auto-load it during system
+application, you can tell Customigniter to auto-load it during system
 initialization. This is done by opening the
 **application/config/autoload.php** file and adding the model to the
 autoload array.

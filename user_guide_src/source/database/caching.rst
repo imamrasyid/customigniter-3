@@ -30,7 +30,7 @@ loaded that contains database queries.
 How Does Caching Work?
 ======================
 
-CodeIgniter's query caching system happens dynamically when your pages
+Customigniter's query caching system happens dynamically when your pages
 are viewed. When caching is enabled, the first time a web page is
 loaded, the query result object will be serialized and stored in a text
 file on your server. The next time the page is loaded the cache file
@@ -69,7 +69,7 @@ should cache your database. It really depends on your situation.
 How are Cache Files Stored?
 ===========================
 
-CodeIgniter places the result of EACH query into its own cache file.
+Customigniter places the result of EACH query into its own cache file.
 Sets of cache files are further organized into sub-folders corresponding
 to your controller functions. To be precise, the sub-folders are named
 identically to the first two segments of your URI (the controller class

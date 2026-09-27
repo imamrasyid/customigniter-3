@@ -29,11 +29,11 @@ method taken. Two numbering styles are available:
 
 * **Sequential:** each migration is numbered in sequence, starting with **001**.
   Each number must be three digits, and there must not be any gaps in the
-  sequence. (This was the numbering scheme prior to CodeIgniter 3.0.)
+  sequence. (This was the numbering scheme prior to Customigniter 3.0.)
 * **Timestamp:** each migration is numbered using the timestamp when the migration
   was created, in **YYYYMMDDHHIISS** format (e.g. **20121031100537**). This
   helps prevent numbering conflicts when working in a team environment, and is
-  the preferred scheme in CodeIgniter 3.0 and later.
+  the preferred scheme in Customigniter 3.0 and later.
 
 The desired style may be selected using the ``$config['migration_type']``
 setting in your *application/config/migration.php* file.

@@ -2,10 +2,10 @@
 Web Page Caching
 ################
 
-CodeIgniter lets you cache your pages in order to achieve maximum
+Customigniter lets you cache your pages in order to achieve maximum
 performance.
 
-Although CodeIgniter is quite fast, the amount of dynamic information
+Although Customigniter is quite fast, the amount of dynamic information
 you display in your pages will correlate directly to the server
 resources, memory, and processing cycles utilized, which affect your
 page load speeds. By caching your pages, since they are saved in their
@@ -41,7 +41,7 @@ The above tag can go anywhere within a method. It is not affected by
 the order that it appears, so place it wherever it seems most logical to
 you. Once the tag is in place, your pages will begin being cached.
 
-.. important:: Because of the way CodeIgniter stores content for output,
+.. important:: Because of the way Customigniter stores content for output,
 	caching will only work if you are generating display for your
 	controller with a :doc:`view <./views>`.
 

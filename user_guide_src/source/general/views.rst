@@ -65,7 +65,7 @@ new view. The URL was similar to this::
 Loading multiple views
 ======================
 
-CodeIgniter will intelligently handle multiple calls to
+Customigniter will intelligently handle multiple calls to
 ``$this->load->view()`` from within a controller. If more than one call
 happens they will be appended together. For example, you may wish to
 have a header view, a menu view, a content view, and a footer view. That

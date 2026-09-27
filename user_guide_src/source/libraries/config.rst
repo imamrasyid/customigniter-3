@@ -23,7 +23,7 @@ Working with the Config Class
 Anatomy of a Config File
 ========================
 
-By default, CodeIgniter has one primary config file, located at
+By default, Customigniter has one primary config file, located at
 application/config/config.php. If you open the file using your text
 editor you'll see that config items are stored in an array called
 $config.
@@ -34,7 +34,7 @@ simply create your own file and save it in config folder.
 
 .. note:: If you do create your own config files use the same format as
 	the primary one, storing your items in an array called $config.
-	CodeIgniter will intelligently manage these files so there will be no
+	Customigniter will intelligently manage these files so there will be no
 	conflict even though the array has the same name (assuming an array
 	index is not named the same as another).
 
@@ -42,7 +42,7 @@ Loading a Config File
 =====================
 
 .. note::
-	CodeIgniter automatically loads the primary config file
+	Customigniter automatically loads the primary config file
 	(application/config/config.php), so you will only need to load a config
 	file if you have created your own.
 
@@ -154,11 +154,11 @@ your new production-only config.php will be loaded.
 You can place the following configuration files in environment-specific
 folders:
 
--  Default CodeIgniter configuration files
+-  Default Customigniter configuration files
 -  Your own custom configuration files
 
 .. note::
-	CodeIgniter always loads the global config file first (i.e., the one in application/config/),
+	Customigniter always loads the global config file first (i.e., the one in application/config/),
 	then tries to load the configuration files for the current environment.
 	This means you are not obligated to place **all** of your configuration files in an
 	environment folder. Only the files that change per environment. Additionally you don't

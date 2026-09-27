@@ -5,8 +5,8 @@ Upgrading from 3.1.5 to 3.1.6
 Before performing an update you should take your site offline by
 replacing the index.php file with a static one.
 
-Step 1: Update your CodeIgniter files
-=====================================
+Step 1: Update your Customigniter files
+=======================================
 
 Replace all files and directories in your *system/* directory.
 
@@ -21,7 +21,7 @@ deprecated, as the APC extension is effectively dead, as explained in its
 `PHP Manual page <https://secure.php.net/manual/en/intro.apc.php>`_.
 
 If your application happens to be using it, you can switch to another
-cache driver, as APC support will be removed in a future CodeIgniter
+cache driver, as APC support will be removed in a future Customigniter
 version.
 
 .. note:: The driver is still available, but you're strongly encouraged

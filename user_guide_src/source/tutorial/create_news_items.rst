@@ -2,7 +2,7 @@
 Create news items
 #################
 
-You now know how you can read data from a database using CodeIgniter, but
+You now know how you can read data from a database using Customigniter, but
 you haven't written any information to the database yet. In this section
 you'll expand your news controller and model created earlier to include
 this functionality.
@@ -80,7 +80,7 @@ form validation are set. The ``set_rules()`` method takes three arguments;
 the name of the input field, the name to be used in error messages, and
 the rule. In this case the title and text fields are required.
 
-CodeIgniter has a powerful form validation library as demonstrated
+Customigniter has a powerful form validation library as demonstrated
 above. You can read :doc:`more about this library
 here <../libraries/form_validation>`.
 
@@ -134,9 +134,9 @@ our database.
 Routing
 -------
 
-Before you can start adding news items into your CodeIgniter application
+Before you can start adding news items into your Customigniter application
 you have to add an extra rule to *config/routes.php* file. Make sure your
-file contains the following. This makes sure CodeIgniter sees 'create'
+file contains the following. This makes sure Customigniter sees 'create'
 as a method instead of a news item's slug.
 
 ::
@@ -148,6 +148,6 @@ as a method instead of a news item's slug.
     $route['default_controller'] = 'pages/view';
 
 Now point your browser to your local development environment where you
-installed CodeIgniter and add index.php/news/create to the URL.
-Congratulations, you just created your first CodeIgniter application!
+installed Customigniter and add index.php/news/create to the URL.
+Congratulations, you just created your first Customigniter application!
 Add some news and check out the different pages you made.

@@ -5,8 +5,8 @@ Upgrading from 3.1.2 to 3.1.3
 Before performing an update you should take your site offline by
 replacing the index.php file with a static one.
 
-Step 1: Update your CodeIgniter files
-=====================================
+Step 1: Update your Customigniter files
+=======================================
 
 Replace all files and directories in your *system/* directory.
 
@@ -26,7 +26,7 @@ You can replace it with the following:
 	DateTime::createFromFormat($input_format, $input_date)->format($desired_output_format);
 
 Thus, ``nice_date()`` is now deprecated and scheduled for removal in
-CodeIgniter 3.2+.
+Customigniter 3.2+.
 
 .. note:: The function is still available, but you're strongly encouraged
 	to remove its usage sooner rather than later.
@@ -40,7 +40,7 @@ value is on your system - if you've set ``$config['standardize_newlines']``
 to ``TRUE`` in your *application/config/config.php*.
 
 This functionality is now deprecated and scheduled for removal in
-CodeIgniter 3.2.+.
+Customigniter 3.2.+.
 
 .. note:: The functionality is still available, but you're strongly
 	encouraged to remove its usage sooner rather than later.

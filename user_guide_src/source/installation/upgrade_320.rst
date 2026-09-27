@@ -5,8 +5,8 @@ Upgrading from 3.1.x to 3.2.x
 Before performing an update you should take your site offline by
 replacing the index.php file with a static one.
 
-Step 1: Update your CodeIgniter files
-=====================================
+Step 1: Update your Customigniter files
+=======================================
 
 Replace all files and directories in your *system/* directory.
 
@@ -19,7 +19,7 @@ Step 2: Check your PHP version
 We recommend always running versions that are `currently supported
 <https://secure.php.net/supported-versions.php>`_, which right now is at least PHP 5.6.
 
-PHP 5.3.x versions are now officially not supported by CodeIgniter, and while 5.4.8+
+PHP 5.3.x versions are now officially not supported by Customigniter, and while 5.4.8+
 may be at least runnable, we strongly discourage you from using any PHP versions below
 the ones listed on the `PHP.net Supported Versions <https://secure.php.net/supported-versions.php>`_
 page.
@@ -28,7 +28,7 @@ Step 3: Remove calls to ``CI_Model::__construct()``
 ===================================================
 
 The class constructor for ``CI_Model`` never contained vital code or useful
-logic, only a single line to log a message. A change in CodeIgniter 3.1.7
+logic, only a single line to log a message. A change in Customigniter 3.1.7
 moved this log message elsewhere and that naturally made the constructor
 completely unnecessary. However, it was left in place to avoid immedate BC
 breaks in a minor release.
@@ -80,7 +80,7 @@ considered a connection failure.
 	drivers).
 
 What this means is that if you're unable to connect to a database, or
-have an erroneous character set configured, CodeIgniter will no longer
+have an erroneous character set configured, Customigniter will no longer
 fail silently, but will throw an exception instead.
 
 You may choose to explicitly catch it (and for that purpose you can't use
@@ -96,7 +96,7 @@ You may choose to explicitly catch it (and for that purpose you can't use
 		// Handle the failure
 	}
 
-Or you may leave it to CodeIgniter's default exception handler, which would
+Or you may leave it to Customigniter's default exception handler, which would
 log the error message and display an error screen if you're running in
 development mode.
 
@@ -112,7 +112,7 @@ Thus, ``db_set_charset()`` is no longer necessary and is removed.
 Step 5: Check logic related to URI parsing of CLI requests
 ==========================================================
 
-When running a CodeIgniter application from the CLI, the
+When running a Customigniter application from the CLI, the
 :doc:`URI Library <../libraries/uri>` will now ignore the
 ``$config['url_suffix']`` and ``$config['permitted_uri_chars']``
 configuration settings.
@@ -197,7 +197,7 @@ Step 10: Remove usage of previously deprecated functionalities
 ==============================================================
 
 The following is a list of functionalities deprecated in previous
-CodeIgniter versions that have been removed in 3.2.0:
+Customigniter versions that have been removed in 3.2.0:
 
 - ``$config['allow_get_array']`` (use ``$_GET = array();`` instead)
 - ``$config['standardize_newlines']``
@@ -236,7 +236,7 @@ CodeIgniter versions that have been removed in 3.2.0:
 - The ``$_after`` parameter from :doc:`Database Forge <../database/forge>` method ``add_column()``.
 - The ``anchor_class`` option from :doc:`Pagination Library <../libraries/pagination>` (use ``class`` instead).
 - The ``unique`` and ``encrypt`` options from :doc:`String Helper <../helpers/string_helper>` function ``random_string()``.
-- The ``underscore`` and ``dash`` options from :doc:`URL Helper <../helpers/url_helper>`` function :php:func:`url_title()`.
+- The ``underscore`` and ``dash`` options from :doc:`URL Helper <../helpers/url_helper>` function :php:func:`url_title()`.
 - The ``$img_path``, ``$img_url`` and ``$font_path`` parameters from
   :doc:`CAPCHA Helper <../helpers/captcha_helper>` function :php:func:`create_captcha()` (pass as array options instead).
 
@@ -270,7 +270,7 @@ That shouldn't be a problem, but you may want to clear them.
 Step 13: Remove usage of OCI8 get_cursor() and stored_procedure() methods
 =========================================================================
 
-The OCI8 :doc:`Database <database/index>` driver no longer has these two
+The OCI8 :doc:`Database <../database/index>` driver no longer has these two
 methods that were specific to it and not present in other database drivers.
 The ``$curs_id`` property is also removed.
 

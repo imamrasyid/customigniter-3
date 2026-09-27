@@ -19,7 +19,7 @@ Using the Table Class
 Initializing the Class
 ======================
 
-Like most other classes in CodeIgniter, the Table class is initialized
+Like most other classes in Customigniter, the Table class is initialized
 in your controller using the ``$this->load->library()`` method::
 
 	$this->load->library('table');

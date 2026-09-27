@@ -58,7 +58,7 @@ The following functions are available:
 		then the directory containing it must be writable.
 
 	.. note:: The path is relative to your main site index.php file, NOT your
-		controller or view files. CodeIgniter uses a front controller so paths
+		controller or view files. Customigniter uses a front controller so paths
 		are always relative to the main site index.
 
 	.. note:: This function acquires an exclusive lock on the file while writing to it.

@@ -2,11 +2,11 @@
 Query Builder Class
 ###################
 
-CodeIgniter gives you access to a Query Builder class. This pattern
+Customigniter gives you access to a Query Builder class. This pattern
 allows information to be retrieved, inserted, and updated in your
 database with minimal scripting. In some cases only one or two lines
 of code are necessary to perform a database action.
-CodeIgniter does not require that each database table be its own class
+Customigniter does not require that each database table be its own class
 file. It instead provides a more simplified interface.
 
 Beyond simplicity, a major benefit to using the Query Builder features
@@ -109,11 +109,11 @@ Permits you to write the SELECT portion of your query::
 	// Executes: SELECT title, content, date FROM mytable
 
 .. note:: If you are selecting all (\*) from a table you do not need to
-	use this function. When omitted, CodeIgniter assumes that you wish
+	use this function. When omitted, Customigniter assumes that you wish
 	to select all fields and automatically adds 'SELECT \*'.
 
 ``$this->db->select()`` accepts an optional second parameter. If you set it
-to FALSE, CodeIgniter will not try to protect your field or table names.
+to FALSE, Customigniter will not try to protect your field or table names.
 This is useful if you need a compound select statement where automatic
 escaping of fields may break them.
 
@@ -269,7 +269,7 @@ methods:
 
 
 ``$this->db->where()`` accepts an optional third parameter. If you set it to
-FALSE, CodeIgniter will not try to protect your field or table names.
+FALSE, Customigniter will not try to protect your field or table names.
 
 ::
 
@@ -439,7 +439,7 @@ You can also pass an array of multiple values as well::
 	// Produces: HAVING title = 'My Title', id < 45
 
 
-If you are using a database that CodeIgniter escapes queries for, you
+If you are using a database that Customigniter escapes queries for, you
 can prevent escaping content by passing an optional third argument, and
 setting it to FALSE.
 

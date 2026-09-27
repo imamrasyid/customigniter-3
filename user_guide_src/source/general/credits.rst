@@ -2,7 +2,7 @@
 Credits
 #######
 
-CodeIgniter was originally developed by `Rick Ellis <https://ellislab.com/>`_
+Customigniter was originally developed by `Rick Ellis <https://ellislab.com/>`_
 (CEO of `EllisLab, Inc. <https://ellislab.com/>`_). The framework was written for
 performance in the real world, with many of the class libraries, helpers, and
 sub-systems borrowed from the code-base of `ExpressionEngine
@@ -11,7 +11,7 @@ sub-systems borrowed from the code-base of `ExpressionEngine
 It was, for years, developed and maintained by EllisLab, the ExpressionEngine
 Development Team and a group of community members called the Reactor Team.
 
-In 2014, CodeIgniter was acquired by the `British Columbia Institute of Technology
+In 2014, Customigniter was acquired by the `British Columbia Institute of Technology
 <https://www.bcit.ca/>`_ and was then officially announced as a community-maintained
 project.
 

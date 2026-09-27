@@ -3,7 +3,7 @@ Security
 ########
 
 This page describes some "best practices" regarding web security, and
-details CodeIgniter's internal security features.
+details Customigniter's internal security features.
 
 .. note:: If you came here looking for a security contact, please refer to
 	our `Contribution Guide <../contributing/index>`.
@@ -11,7 +11,7 @@ details CodeIgniter's internal security features.
 URI Security
 ============
 
-CodeIgniter is fairly restrictive regarding which characters it allows
+Customigniter is fairly restrictive regarding which characters it allows
 in your URI strings in order to help minimize the possibility that
 malicious data can be passed to your application. URIs may only contain
 the following:
@@ -41,7 +41,7 @@ error reporting by setting the internal *display_errors* flag to a value
 of 0. This disables native PHP errors from being rendered as output,
 which may potentially contain sensitive information.
 
-Setting CodeIgniter's **ENVIRONMENT** constant in index.php to a value of
+Setting Customigniter's **ENVIRONMENT** constant in index.php to a value of
 **\'production\'** will turn off these errors. In development mode, it is
 recommended that a value of 'development' is used. More information
 about differentiating between environments can be found on the
@@ -69,13 +69,13 @@ step approach:
 #. Escape the data before submitting it into your database or outputting
    it to a browser.
 
-CodeIgniter provides the following functions and tips to assist you
+Customigniter provides the following functions and tips to assist you
 in this process:
 
 XSS Filtering
 =============
 
-CodeIgniter comes with a Cross Site Scripting filter. This filter
+Customigniter comes with a Cross Site Scripting filter. This filter
 looks for commonly used techniques to embed malicious JavaScript into
 your data, or other types of code that attempt to hijack cookies or
 do other malicious things. The XSS Filter is described
@@ -92,7 +92,7 @@ CSRF protection
 CSRF stands for Cross-Site Request Forgery, which is the process of an
 attacker tricking their victim into unknowingly submitting a request.
 
-CodeIgniter provides CSRF protection out of the box, which will get
+Customigniter provides CSRF protection out of the box, which will get
 automatically triggered for every non-GET HTTP request, but also needs
 you to create your submit forms in a certain way. This is explained in
 the :doc:`Security Library <../libraries/security>` documentation.
@@ -132,7 +132,7 @@ with that. Please read below.
    Only use strong password hashing algorithms like BCrypt, which is used
    in PHP's own `Password Hashing <https://secure.php.net/password>`_ functions.
 
-   Please use them, even if you're not running PHP 5.5+, CodeIgniter
+   Please use them, even if you're not running PHP 5.5+, Customigniter
    provides them for you.
 
 -  DO NOT ever display or send a password in plain-text format!
@@ -158,7 +158,7 @@ with that. Please read below.
 Validate input data
 ===================
 
-CodeIgniter has a :doc:`Form Validation Library
+Customigniter has a :doc:`Form Validation Library
 <../libraries/form_validation>` that assists you in
 validating, filtering, and prepping your data.
 
@@ -194,7 +194,7 @@ allow them to access sensitive data, execute scripts, etc.
 If you're not allowed to do that, you can try using a .htaccess
 file to restrict access to those resources.
 
-CodeIgniter will have an index.html file in all of its
+Customigniter will have an index.html file in all of its
 directories in an attempt to hide some of this data, but have
 it in mind that this is not enough to prevent a serious
 attacker.

@@ -2,7 +2,7 @@
 XML-RPC and XML-RPC Server Classes
 ##################################
 
-CodeIgniter's XML-RPC classes permit you to send requests to another
+Customigniter's XML-RPC classes permit you to send requests to another
 server, or set up your own XML-RPC server to receive requests.
 
 .. contents::
@@ -40,7 +40,7 @@ Using the XML-RPC Class
 Initializing the Class
 ======================
 
-Like most other classes in CodeIgniter, the XML-RPC and XML-RPCS classes
+Like most other classes in Customigniter, the XML-RPC and XML-RPCS classes
 are initialized in your controller using the $this->load->library
 function:
 
@@ -166,7 +166,7 @@ class and method on the right.
 
 The 'object' key is a special key that you pass an instantiated class
 object with, which is necessary when the method you are mapping to is
-not part of the CodeIgniter super object.
+not part of the Customigniter super object.
 
 In other words, if an XML-RPC Client sends a request for the new_post
 method, your server will load the My_blog class and call the new_entry

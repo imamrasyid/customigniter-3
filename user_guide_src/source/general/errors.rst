@@ -2,23 +2,23 @@
 Error Handling
 ##############
 
-CodeIgniter lets you build error reporting into your applications using
+Customigniter lets you build error reporting into your applications using
 the functions described below. In addition, it has an error logging
 class that permits error and debugging messages to be saved as text
 files.
 
-.. note:: By default, CodeIgniter displays all PHP errors. You might
+.. note:: By default, Customigniter displays all PHP errors. You might
 	wish to change this behavior once your development is complete. You'll
 	find the error_reporting() function located at the top of your main
 	index.php file. Disabling error reporting will NOT prevent log files
 	from being written if there are errors.
 
-Unlike most systems in CodeIgniter, the error functions are simple
+Unlike most systems in Customigniter, the error functions are simple
 procedural interfaces that are available globally throughout the
 application. This approach permits error messages to get triggered
 without having to worry about class/function scoping.
 
-CodeIgniter also returns a status code whenever a portion of the core
+Customigniter also returns a status code whenever a portion of the core
 calls ``exit()``. This exit status code is separate from the HTTP status
 code, and serves as a notice to other processes that may be watching of
 whether the script completed successfully, or if not, what kind of
@@ -72,10 +72,10 @@ The following functions let you generate errors:
 	The function expects the string passed to it to be the file path to
 	the page that isn't found. The exit status code will be set to
 	``EXIT_UNKNOWN_FILE``.
-	Note that CodeIgniter automatically shows 404 messages if
+	Note that Customigniter automatically shows 404 messages if
 	controllers are not found.
 
-	CodeIgniter automatically logs any ``show_404()`` calls. Setting the
+	Customigniter automatically logs any ``show_404()`` calls. Setting the
 	optional second parameter to FALSE will skip logging.
 
 .. php:function:: log_message($level, $message)

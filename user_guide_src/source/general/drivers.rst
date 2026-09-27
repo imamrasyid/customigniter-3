@@ -1,6 +1,6 @@
-#########################
-Using CodeIgniter Drivers
-#########################
+###########################
+Using Customigniter Drivers
+###########################
 
 Drivers are a special type of Library that has a parent class and any
 number of potential child classes. Child classes have access to the

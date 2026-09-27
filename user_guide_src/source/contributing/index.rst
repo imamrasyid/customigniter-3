@@ -1,6 +1,6 @@
-###########################
-Contributing to CodeIgniter
-###########################
+#############################
+Contributing to Customigniter
+#############################
 
 .. toctree::
 	:titlesonly:
@@ -8,16 +8,16 @@ Contributing to CodeIgniter
 	../documentation/index
 	../DCO
 
-CodeIgniter is a community driven project and accepts contributions of code
+Customigniter is a community driven project and accepts contributions of code
 and documentation from the community. These contributions are made in the form
 of Issues or `Pull Requests <https://help.github.com/articles/using-pull-requests/>`_ 
-on the `CodeIgniter repository <https://github.com/bcit-ci/CodeIgniter>`_ on GitHub.
+on the `Customigniter repository <https://github.com/imamrasyid/customigniter-3>`_ on GitHub.
 
 Issues are a quick way to point out a bug. If you find a bug or documentation
-error in CodeIgniter then please check a few things first:
+error in Customigniter then please check a few things first:
 
 - There is not already an open Issue
-- The issue has already been fixed (check the develop branch, or look for
+- The issue has already been fixed (check the master branch, or look for
   closed Issues)
 - Is it something really obvious that you fix it yourself?
 
@@ -30,20 +30,20 @@ Support
 *******
 
 Please note that GitHub is not for general support questions! If you are
-having trouble using a feature of CodeIgniter, ask for help on our
-`forums <https://forum.codeigniter.com/>`_ instead.
+having trouble using a feature of Customigniter, ask for help on the
+`upstream CodeIgniter forums <https://forum.codeigniter.com/>`_ instead.
 
 If you are not sure whether you are using something correctly or if you
-have found a bug, again - please ask on the forums first.
+have found a bug, again - please ask there first.
 
 ********
 Security
 ********
 
-Did you find a security issue in CodeIgniter?
+Did you find a security issue in Customigniter?
 
-Please *don't* disclose it publicly, but e-mail us at security@codeigniter.com,
-or report it via our page on `HackerOne <https://hackerone.com/codeigniter>`_.
+Please *don't* disclose it publicly, but report it via
+`GitHub private vulnerability reporting <https://github.com/imamrasyid/customigniter-3/security/advisories/new>`_.
 
 If you've found a critical vulnerability, we'd be happy to credit you in our
 `ChangeLog <../changelog>`.
@@ -56,7 +56,7 @@ Use a descriptive subject line (eg parser library chokes on commas) rather than 
 
 Address a single issue in a report.
 
-Identify the CodeIgniter version (eg 3.0-develop) and the component if you know it (eg. parser library)
+Identify the Customigniter version (eg 0.0.1) and the component if you know it (eg. parser library)
 
 Explain what you expected to happen, and what did happen.
 Include error messages and stacktrace, if any.
@@ -85,8 +85,7 @@ for us to maintain quality of the code-base.
 PHP Style
 =========
 
-All code must meet the `Style Guide
-<https://codeigniter.com/userguide3/general/styleguide.html>`_, which is
+All code must meet the :doc:`Style Guide <../general/styleguide>`, which is
 essentially the `Allman indent style
 <https://en.wikipedia.org/wiki/Indent_style#Allman_style>`_, underscores and
 readable operators. This makes certain that all code is the same format as the
@@ -103,24 +102,20 @@ must also be updated for every change. Also PHPDoc blocks must be maintained.
 Compatibility
 =============
 
-CodeIgniter recommends PHP 5.6 or newer to be used, but it should be
-compatible with PHP 5.4.8 so all code supplied must stick to this
-requirement. If PHP 5.5 (and above) functions or features are used then
-there must be a fallback for PHP 5.4.8.
+Customigniter requires PHP 8.4 or newer. All code supplied must target
+PHP 8.4 — modern syntax such as ``declare(strict_types=1)``, enums,
+attributes and typed properties is welcome.
 
 Branching
 =========
 
-CodeIgniter uses the `Git-Flow
-<https://nvie.com/posts/a-successful-git-branching-model/>`_ branching model
-which requires all pull requests to be sent to the "develop" branch. This is
-where the next planned version will be developed. The "master" branch will
-always contain the latest stable version and is kept clean so a "hotfix" (e.g:
+Customigniter uses the `Git-Flow
+<https://nvie.com/posts/a-successful-git-branching-model/>`_ branching model.
+Pull requests are sent against the "master" branch, which always contains
+the latest stable version and is kept clean so a "hotfix" (e.g:
 an emergency security patch) can be applied to master to create a new version,
-without worrying about other features holding it up. For this reason all
-commits need to be made to "develop" and any sent to "master" will be closed
-automatically. If you have multiple changes to submit, please place all
-changes into their own branch on your fork.
+without worrying about other features holding it up. If you have multiple
+changes to submit, please place all changes into their own branch on your fork.
 
 One thing at a time: A pull request should only contain one change. That does
 not mean only one commit, but one change - however many commits it took. The
@@ -134,7 +129,7 @@ Signing
 You must sign your work, certifying that you either wrote the work or
 otherwise have the right to pass it on to an open source project. git makes
 this trivial as you merely have to use `--signoff` on your commits to your
-CodeIgniter fork.
+Customigniter fork.
 
 .. code-block:: bash
 

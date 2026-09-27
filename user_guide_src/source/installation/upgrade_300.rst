@@ -4,9 +4,9 @@ Upgrading from 2.2.x to 3.0.x
 
 Before performing an update you should take your site offline by replacing the index.php file with a static one.
 
-*************************************
-Step 1: Update your CodeIgniter files
-*************************************
+***************************************
+Step 1: Update your Customigniter files
+***************************************
 
 **Replace** all files and directories in your *system/* directory and
 replace your index.php file. If any modifications were made to your
@@ -23,7 +23,7 @@ index.php they will need to be made fresh in this new one.
 Step 2: Update your classes file names
 **************************************
 
-Starting with CodeIgniter 3.0, all class filenames (libraries, drivers, controllers
+Starting with Customigniter 3.0, all class filenames (libraries, drivers, controllers
 and models) must be named in a Ucfirst-like manner or in other words - they must
 start with a capital letter.
 
@@ -35,7 +35,7 @@ For example, if you have the following library file:
 
 	application/libraries/Mylibrary.php
 
-The same goes for driver libraries and extensions and/or overrides of CodeIgniter's
+The same goes for driver libraries and extensions and/or overrides of Customigniter's
 own libraries and core classes.
 
 	application/libraries/MY_email.php  
@@ -71,7 +71,7 @@ it to *application/config/mimes.php*.
 Step 4: Remove $autoload['core'] from your config/autoload.php
 **************************************************************
 
-Use of the ``$autoload['core']`` config array has been deprecated as of CodeIgniter 1.4.1 and is now removed.
+Use of the ``$autoload['core']`` config array has been deprecated as of Customigniter 1.4.1 and is now removed.
 Move any entries that you might have listed there to ``$autoload['libraries']`` instead.
 
 ***************************************************
@@ -90,7 +90,7 @@ Step 6: Update your Session library usage
 *****************************************
 
 The :doc:`Session Library </libraries/sessions>` has been completely
-re-written in CodeIgniter 3 and now comes with a bunch of new features,
+re-written in Customigniter 3 and now comes with a bunch of new features,
 but that also means that there are changes that you should make ...
 
 Most notably, the library now uses separate storage drivers instead of
@@ -205,14 +205,14 @@ variable to ``$query_builder``::
 Step 8: Replace your error templates
 ************************************
 
-In CodeIgniter 3.0, the error templates are now considered as views and have been moved to the
+In Customigniter 3.0, the error templates are now considered as views and have been moved to the
 *application/views/errors* directory.
 
 Furthermore, we've added support for CLI error templates in plain-text format that unlike HTML,
 is suitable for the command line. This of course requires another level of separation.
 
 It is safe to move your old templates from *application/errors* to *application/views/errors/html*,
-but you'll have to copy the new *application/views/errors/cli* directory from the CodeIgniter archive.
+but you'll have to copy the new *application/views/errors/cli* directory from the Customigniter archive.
 
 ******************************************
 Step 9: Update your config/routes.php file
@@ -221,7 +221,7 @@ Step 9: Update your config/routes.php file
 Routes containing :any
 ======================
 
-Historically, CodeIgniter has always provided the **:any** wildcard in
+Historically, Customigniter has always provided the **:any** wildcard in
 routing, with the intention of providing a way to match any character
 **within** an URI segment.
 
@@ -230,7 +230,7 @@ expression and used to be executed in that manner as **.+**. This is
 considered a bug, as it also matches the / (forward slash) character, which
 is the URI segment delimiter and that was never the intention.
 
-In CodeIgniter 3, the **:any** wildcard will now represent **[^/]+**, so
+In Customigniter 3, the **:any** wildcard will now represent **[^/]+**, so
 that it will not match a forward slash.
 
 There are certainly many developers that have utilized this bug as an actual
@@ -251,7 +251,7 @@ instead.
 
 As already said, this behavior was incidental and was never intended, nor
 documented. If you've relied on it, your application will break with
-CodeIgniter 3.0.
+Customigniter 3.0.
 
 Another notable change in version 3 is that 'default_controller' and
 '404_override' are now applied *per directory*. To explain what this means,
@@ -265,7 +265,7 @@ cause your 'Main' controller to be loaded.
 
 However, what happens if you have an *application/controllers/admin/*
 directory and the user visits ``http://example.com/admin/``?
-In CodeIgniter 3, the router will look for a 'Main' controller under the
+In Customigniter 3, the router will look for a 'Main' controller under the
 admin/ directory as well. If not found, a Not Found (404) will be triggered.
 
 The same rule applies to the '404_override' setting.
@@ -314,7 +314,7 @@ Many methods and functions now return NULL instead of FALSE when the required it
 Step 11: Usage of XSS filtering
 *******************************
 
-Many functions in CodeIgniter allow you to use its XSS filtering feature
+Many functions in Customigniter allow you to use its XSS filtering feature
 on demand by passing a boolean parameter. The default value of that
 parameter used to be boolean FALSE, but it is now changed to NULL and it
 will be dynamically determined by your ``$config['global_xss_filtering']``
@@ -351,7 +351,7 @@ are encountered in a URI segment.
 
 This was aimed at providing some automatic XSS protection, in addition
 to the ``$config['permitted_uri_chars']`` setting, but has proven to be
-problematic and is now removed in CodeIgniter 3.0.
+problematic and is now removed in Customigniter 3.0.
 
 If your application has relied on this feature, you should update it to
 filter URI segments through ``$this->security->xss_clean()`` whenever you
@@ -401,7 +401,7 @@ Step 16: Update usage of Database Forge's drop_table() method
 *************************************************************
 
 Up until now, ``drop_table()`` added an IF EXISTS clause by default or it didn't work
-at all with some drivers. In CodeIgniter 3.0, the IF EXISTS condition is no longer added
+at all with some drivers. In Customigniter 3.0, the IF EXISTS condition is no longer added
 by default and has an optional second parameter that allows that instead and is set to
 FALSE by default.
 
@@ -460,7 +460,7 @@ files and error messages format:
 	'The {field} field does not match the {param} field.'
 
 .. note:: The old formatting still works, but the non-prefixed line keys
-	are DEPRECATED and scheduled for removal in CodeIgniter 3.1+.
+	are DEPRECATED and scheduled for removal in Customigniter 3.1+.
 	Therefore you're encouraged to update its usage sooner rather than
 	later.
 
@@ -468,14 +468,14 @@ files and error messages format:
 Step 19: Make sure your 'base_url' config value is not empty
 ************************************************************
 
-When ``$config['base_url']`` is not set, CodeIgniter tries to automatically
+When ``$config['base_url']`` is not set, Customigniter tries to automatically
 detect what your website's base URL is. This is done purely for convenience
 when you are starting development of a new application.
 
 Auto-detection is never reliable and also has security implications, which
 is why you should **always** have it manually configured!
 
-One of the changes in CodeIgniter 3.0.3 is how this auto-detection works,
+One of the changes in Customigniter 3.0.3 is how this auto-detection works,
 and more specifically it now falls back to the server's IP address instead
 of the hostname requested by the client. Therefore, if you've ever relied
 on auto-detection, it will change how your website works now.
@@ -512,7 +512,7 @@ Step 20: Remove usage of (previously) deprecated functionalities
 ****************************************************************
 
 In addition to the ``$autoload['core']`` configuration setting, there's a
-number of other functionalities that have been removed in CodeIgniter 3.0.0:
+number of other functionalities that have been removed in Customigniter 3.0.0:
 
 The SHA1 library
 ================
@@ -526,14 +526,14 @@ The EXT constant
 ================
 
 Usage of the ``EXT`` constant has been deprecated since dropping support for PHP 4. There's no
-longer a need to maintain different filename extensions and in this new CodeIgniter version,
+longer a need to maintain different filename extensions and in this new Customigniter version,
 the ``EXT`` constant has been removed. Use just '.php' instead.
 
 Smiley helper
 =============
 
 The *Smiley Helper* is a legacy feature from EllisLab's ExpressionEngine product.
-However, it is too specific for a general purpose framework like CodeIgniter
+However, it is too specific for a general purpose framework like Customigniter
 and as such it is now deprecated.
 
 Also, the previously deprecated ``js_insert_smiley()`` (since version 1.7.2) is now removed.
@@ -559,8 +559,8 @@ The Cart library
 ================
 
 The *Cart Library*, similarly to the *Smiley Helper* is too specific for
-CodeIgniter. It is now deprecated and scheduled for removal in
-CodeIgniter 3.1+.
+Customigniter. It is now deprecated and scheduled for removal in
+Customigniter 3.1+.
 
 .. note:: The library is still available, but you're strongly encouraged to
 	remove its usage sooner rather than later.
@@ -569,7 +569,7 @@ Database drivers 'mysql', 'sqlite', 'mssql', 'pdo/dblib'
 ========================================================
 
 The **mysql** driver utilizes the old 'mysql' PHP extension, known for its aging code base and
-many low-level problems. The extension is deprecated as of PHP 5.5 and CodeIgniter deprecates
+many low-level problems. The extension is deprecated as of PHP 5.5 and Customigniter deprecates
 it in version 3.0, switching the default configured MySQL driver to **mysqli**.
 
 Please use either the 'mysqli' or 'pdo/mysql' drivers for MySQL. The old 'mysql' driver will be
@@ -579,7 +579,7 @@ The **sqlite**, **mssql** and **pdo/dblib** (also known as pdo/mssql or pdo/syba
 all depend on PHP extensions that for different reasons no longer exist since PHP 5.3.
 
 Therefore we are now deprecating these drivers as we will have to remove them in one of the next
-CodeIgniter versions. You should use the more advanced, **sqlite3**, **sqlsrv** or **pdo/sqlsrv**
+Customigniter versions. You should use the more advanced, **sqlite3**, **sqlsrv** or **pdo/sqlsrv**
 drivers respectively.
 
 .. note:: These drivers are still available, but you're strongly encouraged to switch to other ones
@@ -589,7 +589,7 @@ Security helper do_hash()
 =========================
 
 :doc:`Security Helper <../helpers/security_helper>` function ``do_hash()`` is now just an alias for
-PHP's native ``hash()`` function. It is deprecated and scheduled for removal in CodeIgniter 3.1+.
+PHP's native ``hash()`` function. It is deprecated and scheduled for removal in Customigniter 3.1+.
 
 .. note:: This function is still available, but you're strongly encouraged to remove its usage sooner
 	rather than later.
@@ -615,7 +615,7 @@ File helper read_file()
 
 :doc:`File Helper <../helpers/file_helper>` function ``read_file()`` is now just an alias for
 PHP's native ``file_get_contents()`` function. It is deprecated and scheduled for removal in
-CodeIgniter 3.1+.
+Customigniter 3.1+.
 
 .. note:: This function is still available, but you're strongly encouraged to remove its usage sooner
 	rather than later.
@@ -624,7 +624,7 @@ String helper repeater()
 ========================
 
 :doc:`String Helper <../helpers/string_helper>` function ``repeater()`` is now just an alias for
-PHP's native ``str_repeat()`` function. It is deprecated and scheduled for removal in CodeIgniter 3.1+.
+PHP's native ``str_repeat()`` function. It is deprecated and scheduled for removal in Customigniter 3.1+.
 
 .. note:: This function is still available, but you're strongly encouraged to remove its usage sooner
 	rather than later.
@@ -634,7 +634,7 @@ String helper trim_slashes()
 
 :doc:`String Helper <../helpers/string_helper>` function ``trim_slashes()`` is now just an alias
 for PHP's native ``trim()`` function (with a slash passed as its second argument). It is deprecated and
-scheduled for removal in CodeIgniter 3.1+.
+scheduled for removal in Customigniter 3.1+.
 
 .. note:: This function is still available, but you're strongly encouraged to remove its usage sooner
 	rather than later.
@@ -660,7 +660,7 @@ The *Email Helper* only has two functions:
  - ``send_email()``
 
 Both of them are now aliases for PHP's native ``filter_var()`` and ``mail()`` functions, respectively.
-Therefore, the *Email Helper* altogether is being deprecated and is scheduled for removal in CodeIgniter 3.1+.
+Therefore, the *Email Helper* altogether is being deprecated and is scheduled for removal in Customigniter 3.1+.
 
 .. note:: These functions are still available, but you're strongly encouraged to remove their usage
 	sooner rather than later.
@@ -689,7 +689,7 @@ its usage:
 	date(DATE_ATOM, $time);
 
 .. note:: This function is still available, but you're strongly encouraged to remove its usage sooner
-	rather than later as it is scheduled for removal in CodeIgniter 3.1+.
+	rather than later as it is scheduled for removal in Customigniter 3.1+.
 
 HTML helpers nbs(), br()
 ========================
@@ -698,7 +698,7 @@ HTML helpers nbs(), br()
 for the native ``str_repeat()`` function used with ``&nbsp;`` and ``<br >`` respectively.
 
 Because there's no point in just aliasing native PHP functions, they are now deprecated and
-scheduled for removal in CodeIgniter 3.1+.
+scheduled for removal in Customigniter 3.1+.
 
 .. note:: These functions are still available, but you're strongly encouraged to remove their usage
 	sooner rather than later.
@@ -710,7 +710,7 @@ The :doc:`Pagination Library <../libraries/pagination>` now supports adding pret
 attribute to your anchors via the 'attributes' configuration setting. This includes passing the
 'class' attribute and using the separate 'anchor_class' setting no longer makes sense.
 As a result of that, the 'anchor_class' setting is now deprecated and scheduled for removal in
-CodeIgniter 3.1+.
+Customigniter 3.1+.
 
 .. note:: This setting is still available, but you're strongly encouraged to remove its usage sooner
 	rather than later.
@@ -721,7 +721,7 @@ String helper random_string() types 'unique' and 'encrypt'
 When using the :doc:`String Helper <../helpers/string_helper>` function :php:func:`random_string()`,
 you should no longer pass the **unique** and **encrypt** randomization types. They are only
 aliases for **md5** and **sha1** respectively and are now deprecated and scheduled for removal
-in CodeIgniter 3.1+.
+in Customigniter 3.1+.
 
 .. note:: These options are still available, but you're strongly encouraged to remove their usage
 	sooner rather than later.
@@ -735,7 +735,7 @@ now accept any character and you should just pass the chosen character directly,
 should write '-' instead of 'dash' and '_' instead of 'underscore'.
 
 **dash** and **underscore** now act as aliases and are deprecated and scheduled for removal
-in CodeIgniter 3.1+.
+in Customigniter 3.1+.
 
 .. note:: These options are still available, but you're strongly encouraged to remove their usage
 	sooner rather than later.
@@ -750,7 +750,7 @@ method ``userdata()`` now allows you to fetch all userdata by simply omitting it
 
 This makes the ``all_userdata()`` method redudant and therefore it is now just an alias for
 ``userdata()`` with the above shown usage and is being deprecated and scheduled for removal
-in CodeIgniter 3.1+.
+in Customigniter 3.1+.
 
 .. note:: This method is still available, but you're strongly encouraged to remove its usage
 	sooner rather than later.
@@ -761,7 +761,7 @@ Database Forge method add_column() with an AFTER clause
 If you have used the **third parameter** for :doc:`Database Forge <../database/forge>` method
 ``add_column()`` to add a field for an AFTER clause, then you should change its usage.
 
-That third parameter has been deprecated and scheduled for removal in CodeIgniter 3.1+.
+That third parameter has been deprecated and scheduled for removal in Customigniter 3.1+.
 
 You should now put AFTER clause field names in the field definition array instead::
 
@@ -807,7 +807,7 @@ Input library method is_cli_request()
 =====================================
 
 Calls to the ``CI_Input::is_cli_request()`` method are necessary at many places
-in the CodeIgniter internals and this is often before the :doc:`Input Library
+in the Customigniter internals and this is often before the :doc:`Input Library
 <../libraries/input>` is loaded. Because of that, it is being replaced by a common
 function named :php:func:`is_cli()` and this method is now just an alias.
 
@@ -822,7 +822,7 @@ The new function is both available at all times for you to use and shorter to ty
 	is_cli();
 
 ``CI_Input::is_cli_request()`` is now now deprecated and scheduled for removal in
-CodeIgniter 3.1+.
+Customigniter 3.1+.
 
 .. note:: This method is still available, but you're strongly encouraged to remove its usage
 	sooner rather than later.
@@ -831,11 +831,11 @@ Config library method system_url()
 ==================================
 
 Usage of ``CI_Config::system_url()`` encourages insecure coding practices.
-Namely, your CodeIgniter *system/* directory shouldn't be publicly accessible
+Namely, your Customigniter *system/* directory shouldn't be publicly accessible
 from a security point of view.
 
 Because of this, this method is now deprecated and scheduled for removal in
-CodeIgniter 3.1+.
+Customigniter 3.1+.
 
 .. note:: This method is still available, but you're strongly encouraged to remove its usage
 	sooner rather than later.
@@ -846,7 +846,7 @@ The Javascript library
 The *Javascript Library* has always had an 'experimental' status and was
 never really useful, nor a proper solution.
 
-It is now deprecated and scheduled for removal in CodeIgniter 3.1+.
+It is now deprecated and scheduled for removal in Customigniter 3.1+.
 
 .. note:: This library is still available, but you're strongly encouraged to remove its usage
 	sooner rather than later.
@@ -859,7 +859,7 @@ The :doc:`Form Validation Library <../libraries/form_validation>` has a
 ``set_rules()`` to automatically perform HTML encoding on input data.
 
 Automatically encoding input (instead of output) data is a bad practice in
-the first place, and CodeIgniter and PHP itself offer other alternatives
+the first place, and Customigniter and PHP itself offer other alternatives
 to this method anyway.
 For example, :doc:`Form Helper <../helpers/form_helper>` functions will
 automatically perform HTML escaping when necessary.

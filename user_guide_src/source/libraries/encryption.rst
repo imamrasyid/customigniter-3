@@ -30,7 +30,7 @@ Using the Encryption Library
 Initializing the Class
 ======================
 
-Like most other classes in CodeIgniter, the Encryption library is
+Like most other classes in Customigniter, the Encryption library is
 initialized in your controller using the ``$this->load->library()``
 method::
 
@@ -76,7 +76,7 @@ must not lose it or you will also lose access to the data.
 It must be noted that to ensure maximum security, such key *should* not
 only be as strong as possible, but also often changed. Such behavior
 however is rarely practical or possible to implement, and that is why
-CodeIgniter gives you the ability to configure a single key that is to be
+Customigniter gives you the ability to configure a single key that is to be
 used (almost) every time.
 
 It goes without saying that you should guard your key carefully. Should
@@ -138,11 +138,11 @@ It is also implemented in a way that aims to match the standard
 implementations in other programming languages and libraries.
 
 Here's a list of the so called "portable" ciphers, where
-"CodeIgniter name" is the string value that you'd have to pass to the
+"Customigniter name" is the string value that you'd have to pass to the
 Encryption library to use that cipher:
 
 ======================== ================== ============================ ===============================
-Cipher name              CodeIgniter name   Key lengths (bits / bytes)   Supported modes
+Cipher name              Customigniter name   Key lengths (bits / bytes)   Supported modes
 ======================== ================== ============================ ===============================
 AES-128 / Rijndael-128   aes-128            128 / 16                     CBC, CTR, CFB, CFB8, OFB, ECB
 AES-192                  aes-192            192 / 24                     CBC, CTR, CFB, CFB8, OFB, ECB
@@ -154,7 +154,7 @@ CAST5 / CAST-128         cast5              88-128 / 11-16               CBC, CF
 RC4 / ARCFour            rc4                40-2048 / 5-256              Stream
 ======================== ================== ============================ ===============================
 
-.. important:: In the original CodeIgniter 3 implementation (which
+.. important:: In the original Customigniter 3 implementation (which
 	supported MCrypt), if you failed to provide a key with the
 	appropriate length, you risked using a different algorithm than
 	the one configured. With OpenSSL, a key that is too short is
@@ -179,7 +179,7 @@ RC4 / ARCFour            rc4                40-2048 / 5-256              Stream
 Driver-specific ciphers
 -----------------------
 
-As noted above, in the original CodeIgniter 3 the MCrypt and OpenSSL
+As noted above, in the original Customigniter 3 the MCrypt and OpenSSL
 extensions supported different sets of encryption ciphers. The MCrypt
 driver no longer exists in Customigniter 3, but the former
 MCrypt-only cipher names below can still be used as aliases
@@ -244,7 +244,7 @@ stick to the CBC mode - it is widely accepted as strong and secure for
 general purposes.
 
 =========== ================== ================= ===================================================================================================================================================
-Mode name   CodeIgniter name   Driver support    Additional info
+Mode name   Customigniter name   Driver support    Additional info
 =========== ================== ================= ===================================================================================================================================================
 CBC         cbc                OpenSSL           A safe default choice
 CTR         ctr                OpenSSL           Considered as theoretically better than CBC, but not as widely available

@@ -2,7 +2,7 @@
 Static pages
 ############
 
-**Note:** This tutorial assumes you've downloaded CodeIgniter and
+**Note:** This tutorial assumes you've downloaded Customigniter and
 :doc:`installed the framework <../installation/index>` in your
 development environment.
 
@@ -44,7 +44,7 @@ methods and variables defined in the ``CI_Controller`` class
 (*system/core/Controller.php*).
 
 The **controller is what will become the center of every request** to
-your web application. In very technical CodeIgniter discussions, it may
+your web application. In very technical Customigniter discussions, it may
 be referred to as the *super object*. Like any php class, you refer to
 it within your controllers as ``$this``. Referring to ``$this`` is how
 you will load libraries, views, and generally command the framework.
@@ -60,7 +60,7 @@ the following code:
 
 	<html lang="en">
 		<head>
-			<title>CodeIgniter Tutorial</title>
+			<title>Customigniter Tutorial</title>
 		</head>
 		<body>
 
@@ -116,7 +116,7 @@ Page not found" error is shown.
 
 The first line in this method checks whether the page actually exists.
 PHP's native ``file_exists()`` function is used to check whether the file
-is where it's expected to be. ``show_404()`` is a built-in CodeIgniter
+is where it's expected to be. ``show_404()`` is a built-in Customigniter
 function that renders the default error page.
 
 In the header template, the ``$title`` variable was used to customize the
@@ -152,10 +152,10 @@ Remove all other code that sets any element in the ``$route`` array.
 	$route['default_controller'] = 'pages/view';
 	$route['(:any)'] = 'pages/view/$1';
 
-CodeIgniter reads its routing rules from top to bottom and routes the
+Customigniter reads its routing rules from top to bottom and routes the
 request to the first matching rule. Each rule is a regular expression
 (left-side) mapped to a controller and method name separated by slashes
-(right-side). When a request comes in, CodeIgniter looks for the first
+(right-side). When a request comes in, Customigniter looks for the first
 match, and calls the appropriate controller and method, possibly with
 arguments.
 

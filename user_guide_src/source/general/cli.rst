@@ -18,7 +18,7 @@ article <https://en.wikipedia.org/wiki/Command-line_interface>`_.
 Why run via the command-line?
 =============================
 
-There are many reasons for running CodeIgniter from the command-line,
+There are many reasons for running Customigniter from the command-line,
 but they are not always obvious.
 
 -  Run your cron-jobs without needing to use *wget* or *curl*
@@ -52,7 +52,7 @@ Now normally you would visit the site using a URL similar to this::
 	example.com/index.php/tools/message/to
 
 Instead, we are going to open the terminal in Mac/Linux or go to Run > "cmd"
-in Windows and navigate to our CodeIgniter project.
+in Windows and navigate to our Customigniter project.
 
 .. code-block:: bash
 

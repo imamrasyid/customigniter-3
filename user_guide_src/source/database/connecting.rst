@@ -147,7 +147,7 @@ or re-establish it.
 Manually closing the Connection
 ===============================
 
-While CodeIgniter intelligently takes care of closing your database
+While Customigniter intelligently takes care of closing your database
 connections, you can explicitly close the connection.
 
 ::

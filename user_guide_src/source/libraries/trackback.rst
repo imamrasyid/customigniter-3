@@ -22,7 +22,7 @@ Using the Trackback Class
 Initializing the Class
 ======================
 
-Like most other classes in CodeIgniter, the Trackback class is
+Like most other classes in Customigniter, the Trackback class is
 initialized in your controller using the ``$this->load->library()`` method::
 
 	$this->load->library('trackback');

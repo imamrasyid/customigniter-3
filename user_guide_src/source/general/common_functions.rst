@@ -2,7 +2,7 @@
 Common Functions
 ################
 
-CodeIgniter uses a few functions for its operation that are globally
+Customigniter uses a few functions for its operation that are globally
 defined, and are available to you at any point. These do not require
 loading any libraries or helpers.
 

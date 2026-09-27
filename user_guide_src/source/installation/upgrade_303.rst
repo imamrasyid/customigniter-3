@@ -5,8 +5,8 @@ Upgrading from 3.0.2 to 3.0.3
 Before performing an update you should take your site offline by
 replacing the index.php file with a static one.
 
-Step 1: Update your CodeIgniter files
-=====================================
+Step 1: Update your Customigniter files
+=======================================
 
 Replace all files and directories in your *system/* directory.
 
@@ -16,14 +16,14 @@ Replace all files and directories in your *system/* directory.
 Step 2: Make sure your 'base_url' config value is not empty
 ===========================================================
 
-When ``$config['base_url']`` is not set, CodeIgniter tries to automatically
+When ``$config['base_url']`` is not set, Customigniter tries to automatically
 detect what your website's base URL is. This is done purely for convenience
 when you are starting development of a new application.
 
 Auto-detection is never reliable and also has security implications, which
 is why you should **always** have it manually configured!
 
-One of the changes in CodeIgniter 3.0.3 is how this auto-detection works,
+One of the changes in Customigniter 3.0.3 is how this auto-detection works,
 and more specifically it now falls back to the server's IP address instead
 of the hostname requested by the client. Therefore, if you've ever relied
 on auto-detection, it will change how your website works now.

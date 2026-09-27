@@ -5,8 +5,8 @@ Upgrading from 3.0.6 to 3.1.0
 Before performing an update you should take your site offline by
 replacing the index.php file with a static one.
 
-Step 1: Update your CodeIgniter files
-=====================================
+Step 1: Update your Customigniter files
+=======================================
 
 Replace all files and directories in your *system/* directory.
 
@@ -19,7 +19,7 @@ Step 2: Check your PHP version
 We recommend always running versions that are `currently supported
 <https://secure.php.net/supported-versions.php>`_, which right now is at least PHP 5.6.
 
-PHP 5.2.x versions are now officially not supported by CodeIgniter, and while 5.3.7+
+PHP 5.2.x versions are now officially not supported by Customigniter, and while 5.3.7+
 may be at least runnable, we strongly discourage you from using any PHP versions below
 the ones listed on the `PHP.net Supported Versions <https://secure.php.net/supported-versions.php>`_
 page.

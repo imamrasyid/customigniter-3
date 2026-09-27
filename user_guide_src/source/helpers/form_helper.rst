@@ -282,7 +282,7 @@ The following functions are available:
 	contain the name of the field, the second parameter will contain an
 	associative array of options, and the third parameter will contain the
 	value you wish to be selected. You can also pass an array of multiple
-	items through the third parameter, and CodeIgniter will create a
+	items through the third parameter, and Customigniter will create a
 	multiple select for you.
 
 	Example::

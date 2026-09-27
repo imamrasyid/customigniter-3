@@ -4,8 +4,8 @@ PHP Style Guide
 
 
 The following page describes the coding styles adhered to when
-contributing to the development of CodeIgniter. There is no requirement
-to use these styles in your own CodeIgniter application, though they
+contributing to the development of Customigniter. There is no requirement
+to use these styles in your own Customigniter application, though they
 are recommended.
 
 .. contents:: Table of Contents
@@ -216,7 +216,7 @@ Constants
 =========
 
 Constants follow the same guidelines as do variables, except constants
-should always be fully uppercase. *Always use CodeIgniter constants when
+should always be fully uppercase. *Always use Customigniter constants when
 appropriate, i.e. SLASH, LD, RD, PATH_CACHE, etc.*
 
 **INCORRECT**::
@@ -339,13 +339,13 @@ Whitespace in Files
 
 No whitespace can precede the opening PHP tag or follow the closing PHP
 tag. Output is buffered, so whitespace in your files can cause output to
-begin before CodeIgniter outputs its content, leading to errors and an
-inability for CodeIgniter to send proper headers.
+begin before Customigniter outputs its content, leading to errors and an
+inability for Customigniter to send proper headers.
 
 Compatibility
 =============
 
-CodeIgniter recommends PHP 5.6 or newer to be used, but it should be
+Customigniter recommends PHP 5.6 or newer to be used, but it should be
 compatible with PHP 5.4.8. Your code must either be compatible with this
 requirement, provide a suitable fallback, or be an optional feature that
 dies quietly without affecting a user's application.
@@ -358,7 +358,7 @@ One File per Class
 ==================
 
 Use separate files for each class, unless the classes are *closely related*.
-An example of a CodeIgniter file that contains multiple classes is the 
+An example of a Customigniter file that contains multiple classes is the 
 Xmlrpc library file.
 
 Whitespace
@@ -496,7 +496,7 @@ functions and increase readability.
 Localized Text
 ==============
 
-CodeIgniter libraries should take advantage of corresponding language files
+Customigniter libraries should take advantage of corresponding language files
 whenever possible.
 
 **INCORRECT**::

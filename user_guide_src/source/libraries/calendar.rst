@@ -21,7 +21,7 @@ Using the Calendaring Class
 Initializing the Class
 ======================
 
-Like most other classes in CodeIgniter, the Calendar class is
+Like most other classes in Customigniter, the Calendar class is
 initialized in your controller using the $this->load->library function::
 
 	$this->load->library('calendar');

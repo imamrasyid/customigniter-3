@@ -9,18 +9,18 @@ you create form elements, **Text Helpers** perform various text formatting
 routines, **Cookie Helpers** set and read cookies, File Helpers help you
 deal with files, etc.
 
-Unlike most other systems in CodeIgniter, Helpers are not written in an
+Unlike most other systems in Customigniter, Helpers are not written in an
 Object Oriented format. They are simple, procedural functions. Each
 helper function performs one specific task, with no dependence on other
 functions.
 
-CodeIgniter does not load Helper Files by default, so the first step in
+Customigniter does not load Helper Files by default, so the first step in
 using a Helper is to load it. Once loaded, it becomes globally available
 in your :doc:`controller <../general/controllers>` and
 :doc:`views <../general/views>`.
 
 Helpers are typically stored in your **system/helpers**, or
-**application/helpers directory**. CodeIgniter will look first in your
+**application/helpers directory**. Customigniter will look first in your
 **application/helpers directory**. If the directory does not exist or the
 specified helper is not located there CI will instead look in your
 global *system/helpers/* directory.
@@ -64,7 +64,7 @@ Auto-loading Helpers
 ====================
 
 If you find that you need a particular helper globally throughout your
-application, you can tell CodeIgniter to auto-load it during system
+application, you can tell Customigniter to auto-load it during system
 initialization. This is done by opening the **application/config/autoload.php**
 file and adding the helper to the autoload array.
 
@@ -135,7 +135,7 @@ libraries and core classes. To set your own prefix, open your
 
 	$config['subclass_prefix'] = 'MY_';
 
-Please note that all native CodeIgniter libraries are prefixed with **CI\_**
+Please note that all native Customigniter libraries are prefixed with **CI\_**
 so DO NOT use that as your prefix.
 
 Now What?

@@ -9,8 +9,8 @@ replacing the index.php file with a static one.
 Update Instructions
 *******************
 
-Step 1: Update your CodeIgniter files
-=====================================
+Step 1: Update your Customigniter files
+=======================================
 
 Replace all files and directories in your "system" folder **except**
 your application folder.
@@ -24,7 +24,7 @@ Step 2: Adjust get_dir_file_info() where necessary
 Version 2.0.0 brings a non-backwards compatible change to
 get_dir_file_info() in the :doc:`File
 Helper <../helpers/file_helper>`. Non-backwards compatible changes
-are extremely rare in CodeIgniter, but this one we feel was warranted
+are extremely rare in Customigniter, but this one we feel was warranted
 due to how easy it was to create serious server performance issues. If
 you *need* recursiveness where you are using this helper function,
 change such instances, setting the second parameter, $top_level_only
@@ -69,7 +69,7 @@ Please read how to use this in the Encrypt library documentation.
 Step 5: Remove loading calls for the compatibility helper.
 ==========================================================
 
-The compatibility helper has been removed from the CodeIgniter core. All
+The compatibility helper has been removed from the Customigniter core. All
 methods in it should be natively available in supported PHP versions.
 
 Step 6: Update Class extension
@@ -81,7 +81,7 @@ Controllers to extend CI_Model and CI_Controller, respectively.
 Step 7: Update Parent Constructor calls
 =======================================
 
-All native CodeIgniter classes now use the PHP 5 \__construct()
+All native Customigniter classes now use the PHP 5 \__construct()
 convention. Please update extended libraries to call
 parent::\__construct().
 

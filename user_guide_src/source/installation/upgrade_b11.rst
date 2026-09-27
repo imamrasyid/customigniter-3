@@ -14,7 +14,7 @@ the new file.
 Step 2: Relocate your config folder
 ===================================
 
-This version of CodeIgniter now permits multiple sets of "applications"
+This version of Customigniter now permits multiple sets of "applications"
 to all share a common set of backend files. In order to enable each
 application to have its own configuration values, the config directory
 must now reside inside of your application folder, so please move it

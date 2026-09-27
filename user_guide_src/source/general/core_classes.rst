@@ -2,14 +2,14 @@
 Creating Core System Classes
 ############################
 
-Every time CodeIgniter runs there are several base classes that are
+Every time Customigniter runs there are several base classes that are
 initialized automatically as part of the core framework. It is possible,
 however, to swap any of the core system classes with your own versions
 or even extend the core versions.
 
 **Most users will never have any need to do this, but the option to
 replace or extend them does exist for those who would like to
-significantly alter the CodeIgniter core.**
+significantly alter the Customigniter core.**
 
 .. note:: Messing with a core system class has a lot of implications, so
 	make sure you know what you are doing before attempting it.
@@ -18,7 +18,7 @@ System Class List
 =================
 
 The following is a list of the core system files that are invoked every
-time CodeIgniter runs:
+time Customigniter runs:
 
 -  Benchmark
 -  Config
@@ -90,7 +90,7 @@ application/core/MY_Input.php, and declare your class with::
 **Tip:** Any functions in your class that are named identically to the
 methods in the parent class will be used instead of the native ones
 (this is known as "method overriding"). This allows you to substantially
-alter the CodeIgniter core.
+alter the Customigniter core.
 
 If you are extending the Controller core class, then be sure to extend
 your new class in your application controller's constructors.
@@ -113,5 +113,5 @@ To set your own sub-class prefix, open your
 
 	$config['subclass_prefix'] = 'MY_';
 
-Please note that all native CodeIgniter libraries are prefixed
+Please note that all native Customigniter libraries are prefixed
 with CI\_ so DO NOT use that as your prefix.

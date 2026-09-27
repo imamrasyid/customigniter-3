@@ -2,7 +2,7 @@
 Image Manipulation Class
 ########################
 
-CodeIgniter's Image Manipulation class lets you perform the following
+Customigniter's Image Manipulation class lets you perform the following
 actions:
 
 -  Image Resizing
@@ -30,7 +30,7 @@ ImageMagick
 Initializing the Class
 **********************
 
-Like most other classes in CodeIgniter, the image class is initialized
+Like most other classes in Customigniter, the image class is initialized
 in your controller using the $this->load->library function::
 
 	$this->load->library('image_lib');

@@ -2,7 +2,7 @@
 Database Configuration
 ######################
 
-CodeIgniter has a config file that lets you store your database
+Customigniter has a config file that lets you store your database
 connection values (username, password, database name, etc.). The config
 file is located at application/config/database.php. You can also set
 database connection values for specific
@@ -44,12 +44,12 @@ driver's underlying native PHP extension, like this::
 	// Oracle
 	$db['default']['dsn'] = '//localhost/XE';
 
-.. note:: If you do not specify a DSN string for a driver that requires it, CodeIgniter
+.. note:: If you do not specify a DSN string for a driver that requires it, Customigniter
 	will try to build it with the rest of the provided settings.
 
 .. note:: If you provide a DSN string and it is missing some valid settings (e.g. the
 	database character set), which are present in the rest of the configuration
-	fields, CodeIgniter will append them.
+	fields, Customigniter will append them.
 
 You can also specify failovers for the situation when the main connection cannot connect for some reason.
 These failovers can be specified by setting the failover for a connection like this::
@@ -145,7 +145,7 @@ Explanation of Values:
 **database**		The name of the database you want to connect to.
 **dbdriver**		The database type. ie: mysqli, postgre, odbc, etc. Must be specified in lower case.
 **dbprefix**		An optional table prefix which will added to the table name when running
-			:doc:`Query Builder <query_builder>` queries. This permits multiple CodeIgniter
+			:doc:`Query Builder <query_builder>` queries. This permits multiple Customigniter
 			installations to share one database.
 **pconnect**		TRUE/FALSE (boolean) - Whether to use a persistent connection.
 **db_debug**		TRUE/FALSE (boolean) - Whether database errors should be displayed.

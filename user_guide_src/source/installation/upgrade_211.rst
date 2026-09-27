@@ -5,8 +5,8 @@ Upgrading from 2.1.0 to 2.1.1
 Before performing an update you should take your site offline by
 replacing the index.php file with a static one.
 
-Step 1: Update your CodeIgniter files
-=====================================
+Step 1: Update your Customigniter files
+=======================================
 
 Replace all files and directories in your "system" folder.
 
@@ -23,7 +23,7 @@ Step 3: Update your IP address tables
 =====================================
 
 This upgrade adds support for IPv6 IP addresses. In order to store them, you need
-to enlarge your ip_address columns to 45 characters. For example, CodeIgniter's
+to enlarge your ip_address columns to 45 characters. For example, Customigniter's
 session table will need to change
 
 ::

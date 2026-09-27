@@ -6,7 +6,7 @@ Unit testing is an approach to software development in which tests are
 written for each function in your application. If you are not familiar
 with the concept you might do a little googling on the subject.
 
-CodeIgniter's Unit Test class is quite simple, consisting of an
+Customigniter's Unit Test class is quite simple, consisting of an
 evaluation function and two result functions. It's not intended to be a
 full-blown test suite but rather a simple mechanism to evaluate your
 code to determine if it is producing the correct data type and result.
@@ -25,7 +25,7 @@ Using the Unit Testing Library
 Initializing the Class
 ======================
 
-Like most other classes in CodeIgniter, the Unit Test class is
+Like most other classes in Customigniter, the Unit Test class is
 initialized in your controller using the $this->load->library function::
 
 	$this->load->library('unit_test');

@@ -13,8 +13,8 @@ Customigniter 3 User Guide
 Customigniter 3
 ****************
 
-Customigniter 3 is a modernized fork of CodeIgniter 3, intended for use with
-PHP 8.4+. It retains the CodeIgniter 3 architecture while removing legacy
+Customigniter 3 is a modernized fork of Customigniter 3, intended for use with
+PHP 8.4+. It retains the Customigniter 3 architecture while removing legacy
 compatibility layers and adding modern typed components (see
 :doc:`general/welcome`).
 
@@ -63,9 +63,9 @@ Tutorial
 
 	tutorial/index
 
-***************************
-Contributing to CodeIgniter
-***************************
+*****************************
+Contributing to Customigniter
+*****************************
 
 .. toctree::
 	:glob:

@@ -22,7 +22,7 @@ Accessing input data
 Using POST, GET, COOKIE, or SERVER Data
 =======================================
 
-CodeIgniter comes with helper methods that let you fetch POST, GET,
+Customigniter comes with helper methods that let you fetch POST, GET,
 COOKIE or SERVER items. The main advantage of using the provided
 methods rather than fetching an item directly (``$_POST['something']``)
 is that the methods will check to see if the item is set and return
@@ -32,7 +32,7 @@ you might do something like this::
 
 	$something = isset($_POST['something']) ? $_POST['something'] : NULL;
 
-With CodeIgniter's built in methods you can simply do this::
+With Customigniter's built in methods you can simply do this::
 
 	$something = $this->input->post('something');
 
@@ -53,7 +53,7 @@ the ``$_POST`` array, because it will always exist and you can try
 and access multiple variables without caring that you might only have
 one shot at all of the POST data.
 
-CodeIgniter will take care of that for you, and you can read the data
+Customigniter will take care of that for you, and you can read the data
 from the **php://input** stream at any time, just by using the
 ``$raw_input_stream`` property::
 
@@ -189,7 +189,7 @@ Class Reference
 			$this->input->get_post('some_data', TRUE);
 
 		.. note:: This method used to act EXACTLY like ``post_get()``, but it's
-			behavior has changed in CodeIgniter 3.0.
+			behavior has changed in Customigniter 3.0.
 
 	.. php:method:: cookie([$index = NULL[, $xss_clean = FALSE]])
 
