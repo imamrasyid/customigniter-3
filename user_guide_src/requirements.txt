@@ -1,0 +1,8 @@
+# Python dependencies for building the Customigniter user guide.
+# Install with:  python -m pip install -r requirements.txt
+#
+# The Pygments lexer for code samples ("ci") is bundled in this repository
+# and installed separately with:  python -m pip install ./cilexer
+sphinx>=8,<9
+sphinx-rtd-theme>=3,<4
+sphinxcontrib-phpdomain>=0.13,<1

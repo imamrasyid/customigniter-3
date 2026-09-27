@@ -1,0 +1,10 @@
+/*
+ * Customigniter overrides for the Read the Docs theme.
+ * Loaded after the theme stylesheet via html_css_files in conf.py.
+ */
+
+.highlighted {
+	padding: 0 !important;
+	font-weight: inherit !important;
+	background-color: #f1d40f !important;
+}

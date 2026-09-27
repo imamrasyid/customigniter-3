@@ -36,17 +36,17 @@ Tools Required
 **************
 
 To see the rendered HTML, ePub, PDF, etc., you will need to install Sphinx
-along with the PHP domain extension for Sphinx.  The underlying requirement
-is to have Python installed.  Lastly, you will install the CI Lexer for
-Pygments, so that code blocks can be properly highlighted.
+along with the PHP domain extension and the Read the Docs theme for Sphinx.
+The underlying requirement is to have Python installed.  Lastly, you will
+install the CI Lexer for Pygments, so that code blocks can be properly
+highlighted.  From the repository root, run::
 
-.. code-block:: bash
+	python -m pip install -r user_guide_src/requirements.txt
+	python -m pip install user_guide_src/cilexer
 
-	easy_install "sphinx==1.2.3"
-	easy_install "sphinxcontrib-phpdomain==0.1.3.post1"
-
-Then follow the directions in the README file in the :samp:`cilexer` folder
-inside the documentation repository to install the CI Lexer.
+The first command installs the packages pinned in the :file:`requirements.txt`
+file of the :file:`user_guide_src` directory, the second installs the CI Lexer
+from the :samp:`cilexer` folder inside the documentation repository.
 
 
 

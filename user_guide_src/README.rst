@@ -1,35 +1,34 @@
-######################
-CodeIgniter User Guide
-######################
+########################
+Customigniter User Guide
+########################
 
 ******************
 Setup Instructions
 ******************
 
-The CodeIgniter user guide uses Sphinx to manage the documentation and
+The Customigniter user guide uses Sphinx to manage the documentation and
 output it to various formats.  Pages are written in human-readable
-`ReStructured Text <http://sphinx.pocoo.org/rest.html>`_ format.
+`ReStructured Text <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_ format.
 
 Prerequisites
 =============
 
-Sphinx requires Python 2.7.  If you are on OS X, then you already have Python.
-You can confirm in a Terminal window by executing the ``python`` command
-without any parameters.  It should load up and tell you which version you have
-installed.
-
-Note: If you're not on Python 2.7, then you must upgrade. E.g. Install 2.7.2
-from https://python.org/download/releases/2.7.2/
+You need Python 3.9 or newer.  You can confirm your version by executing
+``python --version`` in a Terminal window.
 
 Installation
 ============
 
-1. Install `easy_install <http://peak.telecommunity.com/DevCenter/EasyInstall#installing-easy-install>`_
-2. ``easy_install "sphinx==1.6.3"``
-3. ``easy_install "sphinxcontrib-phpdomain==0.1.3.post1"``
-4. Install the CI Lexer which allows PHP, HTML, CSS, and JavaScript syntax highlighting in code examples (see *cilexer/README*)
-5. ``cd user_guide_src``
-6. ``make html``
+From the repository root:
+
+1. ``python -m pip install -r user_guide_src/requirements.txt``
+2. ``python -m pip install user_guide_src/cilexer`` (the CI Lexer which allows PHP, HTML, CSS, and JavaScript syntax highlighting in code examples; see *cilexer/README*)
+3. ``cd user_guide_src``
+4. ``make html``
+
+On Windows, or if ``make`` is not available, run step 4 as::
+
+	python -m sphinx -b html source build/html
 
 Editing and Creating Documentation
 ==================================
@@ -37,7 +36,7 @@ Editing and Creating Documentation
 All of the source files exist under *source/* and is where you will add new
 documentation or modify existing documentation.  Just as with code changes,
 we recommend working from feature branches and making pull requests to
-the *develop* branch of this repo.
+the *master* branch of this repo.
 
 So where's the HTML?
 ====================
@@ -46,8 +45,8 @@ Obviously, the HTML documentation is what we care most about, as it is the
 primary documentation that our users encounter.  Since revisions to the built
 files are not of value, they are not under source control.  This also allows
 you to regenerate as necessary if you want to "preview" your work.  Generating
-the HTML is very simple.  From the root directory of your user guide repo
-fork issue the command you used at the end of the installation instructions::
+the HTML is very simple.  From the *user_guide_src* directory issue the
+command you used at the end of the installation instructions::
 
 	make html
 
@@ -62,4 +61,4 @@ Style Guideline
 ***************
 
 Please refer to source/documentation/index.rst for general guidelines for
-using Sphinx to document CodeIgniter.
+using Sphinx to document Customigniter.
