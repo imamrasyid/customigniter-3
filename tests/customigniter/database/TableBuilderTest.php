@@ -8,7 +8,7 @@ class TableBuilderTest extends TestCase
 {
 	// --------------------------------------------------------------------
 
-	public function test_id_adds_auto_increment_primary_key()
+	public function test_id_adds_auto_increment_primary_key(): void
 	{
 		$builder = new TableBuilder('users');
 		$builder->id();
@@ -23,7 +23,7 @@ class TableBuilderTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_id_custom_name()
+	public function test_id_custom_name(): void
 	{
 		$builder = new TableBuilder('users');
 		$builder->id('user_id');
@@ -35,7 +35,7 @@ class TableBuilderTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_string_column()
+	public function test_string_column(): void
 	{
 		$builder = new TableBuilder('users');
 		$builder->string('email', 191);
@@ -47,7 +47,7 @@ class TableBuilderTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_text_column()
+	public function test_text_column(): void
 	{
 		$builder = new TableBuilder('posts');
 		$builder->text('body', true);
@@ -59,7 +59,7 @@ class TableBuilderTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_integer_column()
+	public function test_integer_column(): void
 	{
 		$builder = new TableBuilder('counters');
 		$builder->integer('count', 10, true);
@@ -72,7 +72,7 @@ class TableBuilderTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_bigInteger_column()
+	public function test_bigInteger_column(): void
 	{
 		$builder = new TableBuilder('logs');
 		$builder->bigInteger('event_id');
@@ -83,7 +83,7 @@ class TableBuilderTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_boolean_column()
+	public function test_boolean_column(): void
 	{
 		$builder = new TableBuilder('settings');
 		$builder->boolean('active', true);
@@ -95,7 +95,7 @@ class TableBuilderTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_datetime_column()
+	public function test_datetime_column(): void
 	{
 		$builder = new TableBuilder('events');
 		$builder->datetime('starts_at', true);
@@ -107,7 +107,7 @@ class TableBuilderTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_timestamp_column()
+	public function test_timestamp_column(): void
 	{
 		$builder = new TableBuilder('posts');
 		$builder->timestamp('created_at');
@@ -119,7 +119,7 @@ class TableBuilderTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_json_column()
+	public function test_json_column(): void
 	{
 		$builder = new TableBuilder('configs');
 		$builder->json('data', true);
@@ -131,7 +131,7 @@ class TableBuilderTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_float_column()
+	public function test_float_column(): void
 	{
 		$builder = new TableBuilder('products');
 		$builder->float('price', 4);
@@ -143,7 +143,7 @@ class TableBuilderTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_decimal_column()
+	public function test_decimal_column(): void
 	{
 		$builder = new TableBuilder('products');
 		$builder->decimal('price', 10, 2);
@@ -155,7 +155,7 @@ class TableBuilderTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_unique_key()
+	public function test_unique_key(): void
 	{
 		$builder = new TableBuilder('users');
 		$builder->string('email')->unique('email');
@@ -165,7 +165,7 @@ class TableBuilderTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_index_key()
+	public function test_index_key(): void
 	{
 		$builder = new TableBuilder('posts');
 		$builder->string('status')->index('status');
@@ -175,7 +175,7 @@ class TableBuilderTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_default_value()
+	public function test_default_value(): void
 	{
 		$builder = new TableBuilder('settings');
 		$builder->string('theme');
@@ -187,7 +187,7 @@ class TableBuilderTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_nullable()
+	public function test_nullable(): void
 	{
 		$builder = new TableBuilder('users');
 		$builder->string('bio');
@@ -199,7 +199,7 @@ class TableBuilderTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_fluent_chaining()
+	public function test_fluent_chaining(): void
 	{
 		$builder = new TableBuilder('users');
 		$result = $builder->id()
@@ -218,7 +218,7 @@ class TableBuilderTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_composite_primary_key()
+	public function test_composite_primary_key(): void
 	{
 		$builder = new TableBuilder('pivot');
 		$builder->integer('user_id', 11, false, false)

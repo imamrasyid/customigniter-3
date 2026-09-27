@@ -16,7 +16,7 @@ class ServiceContainerTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_set_and_get()
+	public function test_set_and_get(): void
 	{
 		$this->container->set('foo', fn () => 'bar');
 		$this->assertEquals('bar', $this->container->get('foo'));
@@ -24,7 +24,7 @@ class ServiceContainerTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_factory_returns_new_instance_each_time()
+	public function test_factory_returns_new_instance_each_time(): void
 	{
 		$count = 0;
 		$this->container->set('counter', function () use (&$count): object {
@@ -41,7 +41,7 @@ class ServiceContainerTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_singleton_returns_same_instance()
+	public function test_singleton_returns_same_instance(): void
 	{
 		$this->container->singleton('foo', fn () => new \stdClass());
 
@@ -53,7 +53,7 @@ class ServiceContainerTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_instance_registers_resolved_value()
+	public function test_instance_registers_resolved_value(): void
 	{
 		$obj = new \stdClass();
 		$obj->name = 'test';
@@ -64,7 +64,7 @@ class ServiceContainerTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_has_returns_true_when_registered()
+	public function test_has_returns_true_when_registered(): void
 	{
 		$this->assertFalse($this->container->has('foo'));
 		$this->container->set('foo', fn () => 'bar');
@@ -73,7 +73,7 @@ class ServiceContainerTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_get_throws_on_unregistered_service()
+	public function test_get_throws_on_unregistered_service(): void
 	{
 		$this->expectException(\RuntimeException::class);
 		$this->expectExceptionMessage("Service 'nonexistent' is not registered");
@@ -82,17 +82,21 @@ class ServiceContainerTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_extend_modifies_resolved_service()
+	public function test_extend_modifies_resolved_service(): void
 	{
 		$this->container->set('foo', fn () => 'bar');
-		$this->container->extend('foo', fn (mixed $val): string => strtoupper($val));
+		$this->container->extend('foo', function (mixed $val): string {
+			$this->assertIsString($val);
+
+			return strtoupper($val);
+		});
 
 		$this->assertEquals('BAR', $this->container->get('foo'));
 	}
 
 	// --------------------------------------------------------------------
 
-	public function test_fluent_interface()
+	public function test_fluent_interface(): void
 	{
 		$result = $this->container
 			->set('a', fn () => 1)
@@ -104,7 +108,7 @@ class ServiceContainerTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_flush_clears_all()
+	public function test_flush_clears_all(): void
 	{
 		$this->container->set('foo', fn () => 'bar');
 		$this->container->singleton('baz', fn () => 'qux');
@@ -116,7 +120,7 @@ class ServiceContainerTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_build_auto_wires_simple_class()
+	public function test_build_auto_wires_simple_class(): void
 	{
 		$this->container->set('dep', fn () => 'resolved');
 		$obj = $this->container->build(SimpleDependency::class);
@@ -127,7 +131,7 @@ class ServiceContainerTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_build_without_constructor()
+	public function test_build_without_constructor(): void
 	{
 		$obj = $this->container->build(NoConstructor::class);
 		$this->assertInstanceOf(NoConstructor::class, $obj);
@@ -135,7 +139,7 @@ class ServiceContainerTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_build_abstract_throws()
+	public function test_build_abstract_throws(): void
 	{
 		$this->expectException(\RuntimeException::class);
 		$this->container->build(AbstractClass::class);
@@ -143,7 +147,7 @@ class ServiceContainerTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_register_provider()
+	public function test_register_provider(): void
 	{
 		$provider = new class implements ServiceProviderInterface {
 			public function register(ServiceContainer $container): void

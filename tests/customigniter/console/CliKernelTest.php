@@ -17,7 +17,7 @@ class CliKernelTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_register_returns_fluent()
+	public function test_register_returns_fluent(): void
 	{
 		$cmd = new FakeCommand('test-cmd', 'A test command');
 		$result = $this->kernel->register($cmd);
@@ -26,7 +26,7 @@ class CliKernelTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_get_commands_returns_registered()
+	public function test_get_commands_returns_registered(): void
 	{
 		$cmds = $this->kernel->getCommands();
 		$this->assertArrayHasKey('list', $cmds);
@@ -36,7 +36,7 @@ class CliKernelTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_get_command_by_name()
+	public function test_get_command_by_name(): void
 	{
 		$cmd = $this->kernel->getCommand('list');
 		$this->assertInstanceOf(CommandInterface::class, $cmd);
@@ -45,14 +45,14 @@ class CliKernelTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_get_command_unknown_returns_null()
+	public function test_get_command_unknown_returns_null(): void
 	{
 		$this->assertNull($this->kernel->getCommand('nonexistent'));
 	}
 
 	// --------------------------------------------------------------------
 
-	public function test_run_no_args_shows_help()
+	public function test_run_no_args_shows_help(): void
 	{
 		$exitCode = $this->kernel->run(['customigniter']);
 		$this->assertEquals(0, $exitCode);
@@ -60,7 +60,7 @@ class CliKernelTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_run_unknown_command_returns_1()
+	public function test_run_unknown_command_returns_1(): void
 	{
 		$exitCode = $this->kernel->run(['customigniter', 'bogus']);
 		$this->assertEquals(1, $exitCode);
@@ -68,7 +68,7 @@ class CliKernelTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_run_list_command()
+	public function test_run_list_command(): void
 	{
 		$this->kernel->register(new FakeCommand('my-cmd', 'My custom command'));
 		$exitCode = $this->kernel->run(['customigniter', 'list']);
@@ -77,7 +77,7 @@ class CliKernelTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_run_help_flag()
+	public function test_run_help_flag(): void
 	{
 		$exitCode = $this->kernel->run(['customigniter', '--help']);
 		$this->assertEquals(0, $exitCode);
@@ -85,7 +85,7 @@ class CliKernelTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_run_command_help()
+	public function test_run_command_help(): void
 	{
 		$exitCode = $this->kernel->run(['customigniter', 'list', '--help']);
 		$this->assertEquals(0, $exitCode);
@@ -93,7 +93,7 @@ class CliKernelTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_custom_command_is_executed()
+	public function test_custom_command_is_executed(): void
 	{
 		$this->kernel->register(new FakeCommand('custom', 'Custom test', 42));
 		$exitCode = $this->kernel->run(['customigniter', 'custom']);
@@ -102,7 +102,7 @@ class CliKernelTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_command_receives_args()
+	public function test_command_receives_args(): void
 	{
 		$cmd = new ArgCaptureCommand();
 		$this->kernel->register($cmd);
@@ -137,6 +137,9 @@ class FakeCommand extends Command
 
 class ArgCaptureCommand extends Command
 {
+	/**
+	 * @var array<int, string>
+	 */
 	public array $capturedArgs = [];
 
 	public function getName(): string { return 'capture'; }

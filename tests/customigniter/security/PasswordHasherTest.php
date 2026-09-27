@@ -8,17 +8,16 @@ class PasswordHasherTest extends TestCase
 {
 	// --------------------------------------------------------------------
 
-	public function test_hash_returns_string()
+	public function test_hash_returns_string(): void
 	{
 		$hasher = new PasswordHasher();
 		$hash = $hasher->hash('secret123');
-		$this->assertIsString($hash);
 		$this->assertNotEmpty($hash);
 	}
 
 	// --------------------------------------------------------------------
 
-	public function test_hash_different_each_time()
+	public function test_hash_different_each_time(): void
 	{
 		$hasher = new PasswordHasher();
 		$hash1 = $hasher->hash('secret123');
@@ -28,7 +27,7 @@ class PasswordHasherTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_verify_correct_password()
+	public function test_verify_correct_password(): void
 	{
 		$hasher = new PasswordHasher();
 		$hash = $hasher->hash('secret123');
@@ -37,7 +36,7 @@ class PasswordHasherTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_verify_wrong_password()
+	public function test_verify_wrong_password(): void
 	{
 		$hasher = new PasswordHasher();
 		$hash = $hasher->hash('secret123');
@@ -46,7 +45,7 @@ class PasswordHasherTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_verify_empty_password()
+	public function test_verify_empty_password(): void
 	{
 		$hasher = new PasswordHasher();
 		$hash = $hasher->hash('secret123');
@@ -55,7 +54,7 @@ class PasswordHasherTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_hash_with_bcrypt()
+	public function test_hash_with_bcrypt(): void
 	{
 		if ( ! PasswordHasher::isAlgorithmAvailable('bcrypt'))
 		{
@@ -70,7 +69,7 @@ class PasswordHasherTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_hash_with_argon2id_if_available()
+	public function test_hash_with_argon2id_if_available(): void
 	{
 		if ( ! PasswordHasher::isAlgorithmAvailable('argon2id'))
 		{
@@ -85,7 +84,7 @@ class PasswordHasherTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_hash_with_auto_selects_best()
+	public function test_hash_with_auto_selects_best(): void
 	{
 		$hasher = new PasswordHasher();
 		$hash = $hasher->hash('secret123', 'auto');
@@ -95,16 +94,16 @@ class PasswordHasherTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_needs_rehash_returns_bool()
+	public function test_needs_rehash_is_false_for_fresh_hash(): void
 	{
 		$hasher = new PasswordHasher();
 		$hash = $hasher->hash('secret123');
-		$this->assertIsBool($hasher->needsRehash($hash));
+		$this->assertFalse($hasher->needsRehash($hash));
 	}
 
 	// --------------------------------------------------------------------
 
-	public function test_info_returns_array()
+	public function test_info_returns_array(): void
 	{
 		$hasher = new PasswordHasher();
 		$hash = $hasher->hash('secret123');
@@ -116,7 +115,7 @@ class PasswordHasherTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_is_algorithm_available_static()
+	public function test_is_algorithm_available_static(): void
 	{
 		$this->assertTrue(PasswordHasher::isAlgorithmAvailable('auto'));
 		$this->assertFalse(PasswordHasher::isAlgorithmAvailable('invalid_algo'));
@@ -129,7 +128,7 @@ class PasswordHasherTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_invalid_algorithm_throws_exception()
+	public function test_invalid_algorithm_throws_exception(): void
 	{
 		$this->expectException(\RuntimeException::class);
 		$hasher = new PasswordHasher();
@@ -138,7 +137,7 @@ class PasswordHasherTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_preferred_algorithm_in_constructor()
+	public function test_preferred_algorithm_in_constructor(): void
 	{
 		$best = (new PasswordHasher())->getBestAvailableAlgorithm();
 		$hasher = new PasswordHasher($best);
@@ -149,7 +148,7 @@ class PasswordHasherTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_unicode_password()
+	public function test_unicode_password(): void
 	{
 		$hasher = new PasswordHasher();
 		$password = 'kata_sandi_kata_sandi';
@@ -159,7 +158,7 @@ class PasswordHasherTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_long_password()
+	public function test_long_password(): void
 	{
 		$hasher = new PasswordHasher();
 		$password = str_repeat('a', 72);

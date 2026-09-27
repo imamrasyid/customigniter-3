@@ -2,8 +2,10 @@ parameters:
 	level: max
 	paths:
 		- src
+		- tests/customigniter
 	bootstrapFiles:
 		- tests/phpstan_bootstrap.php
 	scanDirectories:
 		- system/core
 		- system/database
+		- tests/mocks

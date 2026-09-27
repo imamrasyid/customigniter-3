@@ -8,7 +8,7 @@ class HttpStatusTest extends TestCase
 {
 	// --------------------------------------------------------------------
 
-	public function test_from_code_returns_enum()
+	public function test_from_code_returns_enum(): void
 	{
 		$status = HttpStatus::fromCode(200);
 		$this->assertEquals(HttpStatus::OK, $status);
@@ -16,7 +16,7 @@ class HttpStatusTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_from_code_invalid_returns_null()
+	public function test_from_code_invalid_returns_null(): void
 	{
 		$status = HttpStatus::fromCode(999);
 		$this->assertNull($status);
@@ -24,7 +24,7 @@ class HttpStatusTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_phrase()
+	public function test_phrase(): void
 	{
 		$this->assertEquals('OK', HttpStatus::OK->phrase());
 		$this->assertEquals('Not Found', HttpStatus::NotFound->phrase());
@@ -34,7 +34,7 @@ class HttpStatusTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_is_success()
+	public function test_is_success(): void
 	{
 		$this->assertTrue(HttpStatus::OK->isSuccess());
 		$this->assertTrue(HttpStatus::Created->isSuccess());
@@ -45,7 +45,7 @@ class HttpStatusTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_is_redirect()
+	public function test_is_redirect(): void
 	{
 		$this->assertTrue(HttpStatus::MovedPermanently->isRedirect());
 		$this->assertTrue(HttpStatus::Found->isRedirect());
@@ -55,7 +55,7 @@ class HttpStatusTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_is_client_error()
+	public function test_is_client_error(): void
 	{
 		$this->assertTrue(HttpStatus::BadRequest->isClientError());
 		$this->assertTrue(HttpStatus::NotFound->isClientError());
@@ -66,7 +66,7 @@ class HttpStatusTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_is_server_error()
+	public function test_is_server_error(): void
 	{
 		$this->assertTrue(HttpStatus::InternalServerError->isServerError());
 		$this->assertTrue(HttpStatus::BadGateway->isServerError());
@@ -77,7 +77,7 @@ class HttpStatusTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_is_error()
+	public function test_is_error(): void
 	{
 		$this->assertTrue(HttpStatus::NotFound->isError());
 		$this->assertTrue(HttpStatus::InternalServerError->isError());
@@ -87,7 +87,7 @@ class HttpStatusTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_value_matches_code()
+	public function test_value_matches_code(): void
 	{
 		$this->assertEquals(200, HttpStatus::OK->value);
 		$this->assertEquals(404, HttpStatus::NotFound->value);
@@ -98,25 +98,47 @@ class HttpStatusTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_try_from_valid()
+	/**
+	 * @dataProvider provide_valid_statuses
+	 */
+	public function test_try_from_valid(int $code, HttpStatus $expected): void
 	{
-		$this->assertNotNull(HttpStatus::tryFrom(200));
-		$this->assertNotNull(HttpStatus::tryFrom(404));
-		$this->assertNotNull(HttpStatus::tryFrom(500));
+		$this->assertSame($expected, HttpStatus::tryFrom($code));
+	}
+
+	/**
+	 * @return array<int, array{int, HttpStatus}>
+	 */
+	public static function provide_valid_statuses(): array
+	{
+		return [
+			[200, HttpStatus::OK],
+			[404, HttpStatus::NotFound],
+			[500, HttpStatus::InternalServerError],
+		];
 	}
 
 	// --------------------------------------------------------------------
 
-	public function test_try_from_invalid()
+	/**
+	 * @dataProvider provide_invalid_statuses
+	 */
+	public function test_try_from_invalid(int $code): void
 	{
-		$this->assertNull(HttpStatus::tryFrom(999));
-		$this->assertNull(HttpStatus::tryFrom(0));
-		$this->assertNull(HttpStatus::tryFrom(-1));
+		$this->assertNull(HttpStatus::tryFrom($code));
+	}
+
+	/**
+	 * @return array<int, array{int}>
+	 */
+	public static function provide_invalid_statuses(): array
+	{
+		return [[999], [0], [-1]];
 	}
 
 	// --------------------------------------------------------------------
 
-	public function test_all_success_codes()
+	public function test_all_success_codes(): void
 	{
 		$successCodes = [200, 201, 202, 203, 204, 205, 206];
 		foreach ($successCodes as $code)

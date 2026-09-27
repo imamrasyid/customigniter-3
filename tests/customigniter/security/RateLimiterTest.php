@@ -25,14 +25,14 @@ class RateLimiterTest extends \CI_TestCase
         return new RateLimiter($this->tmpDir, $max, $decay);
     }
 
-    public function test_allows_under_limit()
+    public function test_allows_under_limit(): void
     {
         $limiter = $this->createLimiter(3);
         $this->assertTrue($limiter->attempt('test'));
         $this->assertEquals(1, $limiter->attempts('test'));
     }
 
-    public function test_blocks_after_limit()
+    public function test_blocks_after_limit(): void
     {
         $limiter = $this->createLimiter(2);
         $this->assertTrue($limiter->attempt('test'));
@@ -40,7 +40,7 @@ class RateLimiterTest extends \CI_TestCase
         $this->assertFalse($limiter->attempt('test'));
     }
 
-    public function test_remaining_count()
+    public function test_remaining_count(): void
     {
         $limiter = $this->createLimiter(5);
         $this->assertEquals(5, $limiter->remaining('test'));
@@ -49,7 +49,7 @@ class RateLimiterTest extends \CI_TestCase
         $this->assertEquals(3, $limiter->remaining('test'));
     }
 
-    public function test_reset()
+    public function test_reset(): void
     {
         $limiter = $this->createLimiter(2);
         $limiter->attempt('test');
@@ -61,7 +61,7 @@ class RateLimiterTest extends \CI_TestCase
         $this->assertEquals(1, $limiter->attempts('test'));
     }
 
-    public function test_separate_keys()
+    public function test_separate_keys(): void
     {
         $limiter = $this->createLimiter(1);
         $this->assertTrue($limiter->attempt('a'));
@@ -69,21 +69,21 @@ class RateLimiterTest extends \CI_TestCase
         $this->assertTrue($limiter->attempt('b'));
     }
 
-    public function test_custom_max_per_attempt()
+    public function test_custom_max_per_attempt(): void
     {
         $limiter = $this->createLimiter(10);
         $this->assertTrue($limiter->attempt('test', 1));
         $this->assertFalse($limiter->attempt('test', 1));
     }
 
-    public function test_fluent_config()
+    public function test_fluent_config(): void
     {
         $limiter = $this->createLimiter();
         $result  = $limiter->setMaxAttempts(100)->setDecayMinutes(5);
         $this->assertSame($limiter, $result);
     }
 
-    public function test_initial_zero_attempts()
+    public function test_initial_zero_attempts(): void
     {
         $limiter = $this->createLimiter();
         $this->assertEquals(0, $limiter->attempts('fresh_key'));

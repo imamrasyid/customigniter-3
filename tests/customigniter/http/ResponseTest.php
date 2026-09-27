@@ -5,13 +5,13 @@ use Customigniter\Http\Response;
 
 class ResponseTest extends \CI_TestCase
 {
-    public function test_default_status()
+    public function test_default_status(): void
     {
         $response = new Response();
         $this->assertEquals(200, $response->getStatusCode());
     }
 
-    public function test_status_fluent()
+    public function test_status_fluent(): void
     {
         $response = new Response();
         $result = $response->status(404);
@@ -19,7 +19,7 @@ class ResponseTest extends \CI_TestCase
         $this->assertEquals(404, $response->getStatusCode());
     }
 
-    public function test_header_fluent()
+    public function test_header_fluent(): void
     {
         $response = new Response();
         $result = $response->header('X-Custom', 'value');
@@ -27,14 +27,14 @@ class ResponseTest extends \CI_TestCase
         $this->assertEquals(['X-Custom' => 'value'], $response->getHeaders());
     }
 
-    public function test_headers_bulk()
+    public function test_headers_bulk(): void
     {
         $response = new Response();
         $response->headers(['A' => '1', 'B' => '2']);
         $this->assertEquals(['A' => '1', 'B' => '2'], $response->getHeaders());
     }
 
-    public function test_body_fluent()
+    public function test_body_fluent(): void
     {
         $response = new Response();
         $result = $response->body('hello');
@@ -42,7 +42,7 @@ class ResponseTest extends \CI_TestCase
         $this->assertEquals('hello', $response->getBody());
     }
 
-    public function test_json()
+    public function test_json(): void
     {
         $response = new Response();
         $response->json(['key' => 'value']);
@@ -50,7 +50,7 @@ class ResponseTest extends \CI_TestCase
         $this->assertEquals('application/json; charset=UTF-8', $response->getHeaders()['Content-Type']);
     }
 
-    public function test_html()
+    public function test_html(): void
     {
         $response = new Response();
         $response->html('<h1>Hello</h1>');
@@ -58,7 +58,7 @@ class ResponseTest extends \CI_TestCase
         $this->assertEquals('text/html; charset=UTF-8', $response->getHeaders()['Content-Type']);
     }
 
-    public function test_text()
+    public function test_text(): void
     {
         $response = new Response();
         $response->text('plain');
@@ -66,7 +66,7 @@ class ResponseTest extends \CI_TestCase
         $this->assertEquals('text/plain; charset=UTF-8', $response->getHeaders()['Content-Type']);
     }
 
-    public function test_redirect()
+    public function test_redirect(): void
     {
         $response = new Response();
         $response->redirect('/login', 301);
@@ -74,7 +74,7 @@ class ResponseTest extends \CI_TestCase
         $this->assertEquals('/login', $response->getHeaders()['Location']);
     }
 
-    public function test_cache()
+    public function test_cache(): void
     {
         $response = new Response();
         $response->cache(3600);
@@ -82,14 +82,14 @@ class ResponseTest extends \CI_TestCase
         $this->assertStringContainsString('public', $response->getHeaders()['Cache-Control']);
     }
 
-    public function test_private_cache()
+    public function test_private_cache(): void
     {
         $response = new Response();
         $response->cache(600, false);
         $this->assertStringContainsString('private', $response->getHeaders()['Cache-Control']);
     }
 
-    public function test_no_cache()
+    public function test_no_cache(): void
     {
         $response = new Response();
         $response->noCache();
@@ -97,7 +97,7 @@ class ResponseTest extends \CI_TestCase
         $this->assertEquals('no-cache', $response->getHeaders()['Pragma']);
     }
 
-    public function test_no_content()
+    public function test_no_content(): void
     {
         $response = new Response();
         $response->noContent();
@@ -105,7 +105,7 @@ class ResponseTest extends \CI_TestCase
         $this->assertEquals('', $response->getBody());
     }
 
-    public function test_fluent_chaining()
+    public function test_fluent_chaining(): void
     {
         $response = new Response();
         $result = $response

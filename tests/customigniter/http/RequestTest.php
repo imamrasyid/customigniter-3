@@ -5,7 +5,7 @@ use Customigniter\Http\Request;
 
 class RequestTest extends \CI_TestCase
 {
-    public function test_get_method()
+    public function test_get_method(): void
     {
         $request = new Request(server: ['REQUEST_METHOD' => 'GET']);
         $this->assertEquals('GET', $request->method());
@@ -13,7 +13,7 @@ class RequestTest extends \CI_TestCase
         $this->assertFalse($request->isPost());
     }
 
-    public function test_post_method()
+    public function test_post_method(): void
     {
         $request = new Request(server: ['REQUEST_METHOD' => 'POST']);
         $this->assertEquals('POST', $request->method());
@@ -21,7 +21,7 @@ class RequestTest extends \CI_TestCase
         $this->assertFalse($request->isGet());
     }
 
-    public function test_put_and_delete()
+    public function test_put_and_delete(): void
     {
         $put    = new Request(server: ['REQUEST_METHOD' => 'PUT']);
         $delete = new Request(server: ['REQUEST_METHOD' => 'DELETE']);
@@ -29,7 +29,7 @@ class RequestTest extends \CI_TestCase
         $this->assertTrue($delete->isDelete());
     }
 
-    public function test_query_params()
+    public function test_query_params(): void
     {
         $request = new Request(query: ['page' => '2', 'sort' => 'name']);
         $this->assertEquals('2', $request->query('page'));
@@ -38,14 +38,14 @@ class RequestTest extends \CI_TestCase
         $this->assertEquals('default', $request->query('missing', 'default'));
     }
 
-    public function test_post_params()
+    public function test_post_params(): void
     {
         $request = new Request(post: ['name' => 'John', 'age' => '30']);
         $this->assertEquals('John', $request->post('name'));
         $this->assertEquals('30', $request->post('age'));
     }
 
-    public function test_input_merges_post_and_query()
+    public function test_input_merges_post_and_query(): void
     {
         $request = new Request(
             query: ['id' => '5'],
@@ -56,7 +56,7 @@ class RequestTest extends \CI_TestCase
         $this->assertEquals('Test', $request->input('name'));
     }
 
-    public function test_is_ajax()
+    public function test_is_ajax(): void
     {
         $ajax = new Request(server: ['HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest']);
         $this->assertTrue($ajax->isAjax());
@@ -65,7 +65,7 @@ class RequestTest extends \CI_TestCase
         $this->assertFalse($normal->isAjax());
     }
 
-    public function test_is_secure()
+    public function test_is_secure(): void
     {
         $https = new Request(server: ['HTTPS' => 'on']);
         $this->assertTrue($https->isSecure());
@@ -77,7 +77,7 @@ class RequestTest extends \CI_TestCase
         $this->assertTrue($forwarded->isSecure());
     }
 
-    public function test_ip()
+    public function test_ip(): void
     {
         $request = new Request(server: ['REMOTE_ADDR' => '192.168.1.1']);
         $this->assertEquals('192.168.1.1', $request->ip());
@@ -101,7 +101,7 @@ class RequestTest extends \CI_TestCase
         $this->assertEquals('192.168.1.1', $invalid->ip());
     }
 
-    public function test_has_and_filled()
+    public function test_has_and_filled(): void
     {
         $request = new Request(query: ['a' => '1'], post: ['b' => '', 'c' => 'val']);
         $this->assertTrue($request->has('a'));
@@ -113,14 +113,14 @@ class RequestTest extends \CI_TestCase
         $this->assertTrue($request->filled('c'));
     }
 
-    public function test_only_and_except()
+    public function test_only_and_except(): void
     {
         $request = new Request(query: ['a' => '1', 'b' => '2', 'c' => '3']);
         $this->assertEquals(['a' => '1', 'c' => '3'], $request->only(['a', 'c']));
         $this->assertEquals(['b' => '2'], $request->except(['a', 'c']));
     }
 
-    public function test_accepts()
+    public function test_accepts(): void
     {
         $request = new Request(server: ['HTTP_ACCEPT' => 'text/html,application/json']);
         $this->assertTrue($request->accepts('json'));
@@ -128,13 +128,13 @@ class RequestTest extends \CI_TestCase
         $this->assertFalse($request->accepts('xml'));
     }
 
-    public function test_user_agent()
+    public function test_user_agent(): void
     {
         $request = new Request(server: ['HTTP_USER_AGENT' => 'Mozilla/5.0']);
         $this->assertEquals('Mozilla/5.0', $request->userAgent());
     }
 
-    public function test_default_method_is_get()
+    public function test_default_method_is_get(): void
     {
         $request = new Request(server: []);
         $this->assertEquals('GET', $request->method());

@@ -10,33 +10,33 @@ class PsrLoggerTest extends TestCase
 {
 	// --------------------------------------------------------------------
 
-	public function test_psr_logger_implements_abstract_logger()
+	public function test_psr_logger_implements_abstract_logger(): void
 	{
 		$this->assertInstanceOf(\Psr\Log\LoggerInterface::class, new PsrLogger());
 	}
 
 	// --------------------------------------------------------------------
 
-	public function test_log_does_not_throw()
+	public function test_log_does_not_throw(): void
 	{
 		$logger = new PsrLogger();
 		// Should not throw — CI_Log writes to file
 		$logger->log(LogLevel::INFO, 'Test message');
-		$this->assertTrue(true);
+		$this->expectNotToPerformAssertions();
 	}
 
 	// --------------------------------------------------------------------
 
-	public function test_log_with_context()
+	public function test_log_with_context(): void
 	{
 		$logger = new PsrLogger();
 		$logger->log(LogLevel::ERROR, 'User {id} not found', ['id' => 42]);
-		$this->assertTrue(true);
+		$this->expectNotToPerformAssertions();
 	}
 
 	// --------------------------------------------------------------------
 
-	public function test_all_levels()
+	public function test_all_levels(): void
 	{
 		$logger = new PsrLogger();
 
@@ -55,12 +55,12 @@ class PsrLoggerTest extends TestCase
 			$logger->log($level, "Test message at level {$level}");
 		}
 
-		$this->assertTrue(true);
+		$this->expectNotToPerformAssertions();
 	}
 
 	// --------------------------------------------------------------------
 
-	public function test_stringable_message()
+	public function test_stringable_message(): void
 	{
 		$logger = new PsrLogger();
 		$msg = new class implements \Stringable {
@@ -71,31 +71,31 @@ class PsrLoggerTest extends TestCase
 		};
 
 		$logger->log(LogLevel::INFO, $msg);
-		$this->assertTrue(true);
+		$this->expectNotToPerformAssertions();
 	}
 
 	// --------------------------------------------------------------------
 
-	public function test_context_non_string_values_ignored()
+	public function test_context_non_string_values_ignored(): void
 	{
 		$logger = new PsrLogger();
 		// Integer values should not replace placeholders
 		$logger->log(LogLevel::INFO, 'Count: {count}', ['count' => 42]);
-		$this->assertTrue(true);
+		$this->expectNotToPerformAssertions();
 	}
 
 	// --------------------------------------------------------------------
 
-	public function test_empty_context()
+	public function test_empty_context(): void
 	{
 		$logger = new PsrLogger();
 		$logger->log(LogLevel::DEBUG, 'No context here');
-		$this->assertTrue(true);
+		$this->expectNotToPerformAssertions();
 	}
 
 	// --------------------------------------------------------------------
 
-	public function test_null_logger_from_psr_log()
+	public function test_null_logger_from_psr_log(): void
 	{
 		// Verify our logger works the same as NullLogger (contract test)
 		$logger = new PsrLogger();

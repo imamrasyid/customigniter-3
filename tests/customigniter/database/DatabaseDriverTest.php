@@ -8,21 +8,32 @@ class DatabaseDriverTest extends TestCase
 {
 	// --------------------------------------------------------------------
 
-	public function test_from_string_mysqli()
+	public function test_from_string_mysqli(): void
 	{
 		$this->assertEquals(DatabaseDriver::MySQL, DatabaseDriver::tryFrom('mysqli'));
 	}
 
 	// --------------------------------------------------------------------
 
-	public function test_from_string_invalid()
+	/**
+	 * @dataProvider provide_invalid_drivers
+	 */
+	public function test_from_string_invalid(string $value): void
 	{
-		$this->assertNull(DatabaseDriver::tryFrom('invalid'));
+		$this->assertNull(DatabaseDriver::tryFrom($value));
+	}
+
+	/**
+	 * @return array<int, array{string}>
+	 */
+	public static function provide_invalid_drivers(): array
+	{
+		return [['invalid'], [''], ['unknown']];
 	}
 
 	// --------------------------------------------------------------------
 
-	public function test_display_name()
+	public function test_display_name(): void
 	{
 		$this->assertEquals('MySQL', DatabaseDriver::MySQL->displayName());
 		$this->assertEquals('PostgreSQL', DatabaseDriver::PostgreSQL->displayName());
@@ -32,7 +43,7 @@ class DatabaseDriverTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_default_port()
+	public function test_default_port(): void
 	{
 		$this->assertEquals(3306, DatabaseDriver::MySQL->defaultPort());
 		$this->assertEquals(5432, DatabaseDriver::PostgreSQL->defaultPort());
@@ -42,7 +53,7 @@ class DatabaseDriverTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_supports_transactions()
+	public function test_supports_transactions(): void
 	{
 		$this->assertTrue(DatabaseDriver::MySQL->supportsTransactions());
 		$this->assertTrue(DatabaseDriver::PostgreSQL->supportsTransactions());
@@ -52,7 +63,7 @@ class DatabaseDriverTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_supports_savepoints()
+	public function test_supports_savepoints(): void
 	{
 		$this->assertTrue(DatabaseDriver::MySQL->supportsSavepoints());
 		$this->assertTrue(DatabaseDriver::PostgreSQL->supportsSavepoints());
@@ -62,7 +73,7 @@ class DatabaseDriverTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_supports_upsert()
+	public function test_supports_upsert(): void
 	{
 		$this->assertTrue(DatabaseDriver::MySQL->supportsUpsert());
 		$this->assertTrue(DatabaseDriver::PostgreSQL->supportsUpsert());
@@ -72,7 +83,7 @@ class DatabaseDriverTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_supports_json_columns()
+	public function test_supports_json_columns(): void
 	{
 		$this->assertTrue(DatabaseDriver::MySQL->supportsJsonColumns());
 		$this->assertTrue(DatabaseDriver::PostgreSQL->supportsJsonColumns());
@@ -82,7 +93,7 @@ class DatabaseDriverTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_supports_full_text()
+	public function test_supports_full_text(): void
 	{
 		$this->assertTrue(DatabaseDriver::MySQL->supportsFullText());
 		$this->assertTrue(DatabaseDriver::PostgreSQL->supportsFullText());
@@ -92,7 +103,7 @@ class DatabaseDriverTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_all_drivers_have_display_name()
+	public function test_all_drivers_have_display_name(): void
 	{
 		foreach (DatabaseDriver::cases() as $driver)
 		{
@@ -102,7 +113,7 @@ class DatabaseDriverTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_all_drivers_have_positive_port_or_zero()
+	public function test_all_drivers_have_positive_port_or_zero(): void
 	{
 		foreach (DatabaseDriver::cases() as $driver)
 		{

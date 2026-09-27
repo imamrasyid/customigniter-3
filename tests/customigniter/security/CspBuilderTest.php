@@ -8,7 +8,7 @@ class CspBuilderTest extends TestCase
 {
 	// --------------------------------------------------------------------
 
-	public function test_empty_builder_produces_empty_string()
+	public function test_empty_builder_produces_empty_string(): void
 	{
 		$builder = new CspBuilder();
 		$this->assertEquals('', $builder->build());
@@ -16,7 +16,7 @@ class CspBuilderTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_default_src()
+	public function test_default_src(): void
 	{
 		$builder = new CspBuilder();
 		$result = $builder->defaultSrc("'self'")->build();
@@ -25,7 +25,7 @@ class CspBuilderTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_script_src()
+	public function test_script_src(): void
 	{
 		$builder = new CspBuilder();
 		$result = $builder->scriptSrc("'self'", 'https://cdn.example.com')->build();
@@ -34,7 +34,7 @@ class CspBuilderTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_style_src()
+	public function test_style_src(): void
 	{
 		$builder = new CspBuilder();
 		$result = $builder->styleSrc("'self'", 'https://fonts.googleapis.com')->build();
@@ -43,7 +43,7 @@ class CspBuilderTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_multiple_directives()
+	public function test_multiple_directives(): void
 	{
 		$builder = new CspBuilder();
 		$result = $builder
@@ -62,7 +62,7 @@ class CspBuilderTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_nonce_script()
+	public function test_nonce_script(): void
 	{
 		$builder = new CspBuilder();
 		$result = $builder->scriptNonce('abc123base64')->build();
@@ -71,7 +71,7 @@ class CspBuilderTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_nonce_style()
+	public function test_nonce_style(): void
 	{
 		$builder = new CspBuilder();
 		$result = $builder->styleNonce('xyz789')->build();
@@ -80,7 +80,7 @@ class CspBuilderTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_script_hash()
+	public function test_script_hash(): void
 	{
 		$builder = new CspBuilder();
 		$result = $builder->scriptHash('sha256-abc123=')->build();
@@ -89,7 +89,7 @@ class CspBuilderTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_deduplicates_sources()
+	public function test_deduplicates_sources(): void
 	{
 		$builder = new CspBuilder();
 		$result = $builder
@@ -102,7 +102,7 @@ class CspBuilderTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_report_uri()
+	public function test_report_uri(): void
 	{
 		$builder = new CspBuilder();
 		$result = $builder
@@ -114,7 +114,7 @@ class CspBuilderTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_report_only_mode()
+	public function test_report_only_mode(): void
 	{
 		$builder = new CspBuilder();
 		$builder->setReportOnly(true)->defaultSrc("'self'");
@@ -129,7 +129,7 @@ class CspBuilderTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_send_header_builds_correctly()
+	public function test_send_header_builds_correctly(): void
 	{
 		$builder = new CspBuilder();
 		$builder->defaultSrc("'self'")->scriptSrc("'self'");
@@ -141,7 +141,7 @@ class CspBuilderTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_add_source()
+	public function test_add_source(): void
 	{
 		$builder = new CspBuilder();
 		$result = $builder->addSource('connect-src', 'https://api.example.com')->build();
@@ -150,7 +150,7 @@ class CspBuilderTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_fluent_interface_returns_self()
+	public function test_fluent_interface_returns_self(): void
 	{
 		$builder = new CspBuilder();
 		$this->assertSame($builder, $builder->defaultSrc("'self'"));
@@ -168,7 +168,7 @@ class CspBuilderTest extends TestCase
 
 	// --------------------------------------------------------------------
 
-	public function test_empty_send_header_does_nothing()
+	public function test_empty_send_header_does_nothing(): void
 	{
 		$builder = new CspBuilder();
 		// Should not throw or send anything
