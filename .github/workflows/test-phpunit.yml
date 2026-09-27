@@ -47,7 +47,7 @@ jobs:
           POSTGRES_DB: ci_test
         ports:
           - 5432:5432
-        options: --health-cmd=pg_isready --health-interval=10s --health-timeout=5s --health-retries=3
+        options: --health-cmd="pg_isready -U postgres -d ci_test" --health-interval=10s --health-timeout=5s --health-retries=3
 
       mysql:
         image: mysql:8.0
@@ -74,7 +74,7 @@ jobs:
           tools: composer, pecl
           extensions: imagick, sqlite3, pgsql, mysqli, pdo, pdo_mysql, pdo_pgsql, pdo_sqlite, mbstring
           ini-values: ${{ env.PHP_INI_VALUES }}
-          coverage: xdebug
+          coverage: ${{ matrix.compiler == 'jit' && 'none' || 'xdebug' }}
 
       - name: Get composer cache directory
         id: composer-cache
@@ -92,7 +92,13 @@ jobs:
         run: |
           php -d error_reporting=E_ALL -d zend.enable_gc=0 -d date.timezone=UTC vendor/bin/phpunit --no-coverage --configuration tests/phpunit.xml --testsuite "Customigniter Test Suite"
 
-      - name: PHPUnit Test
+      - name: PHPUnit Test without coverage
+        if: matrix.compiler == 'jit'
+        run: |
+          php -d error_reporting=E_ALL -d zend.enable_gc=0 -d date.timezone=UTC vendor/bin/phpunit --no-coverage --configuration tests/travis/${{ matrix.DB }}.phpunit.xml
+
+      - name: PHPUnit Test with coverage
+        if: matrix.compiler != 'jit'
         run: |
           php -d error_reporting=E_ALL -d zend.enable_gc=0 -d date.timezone=UTC vendor/bin/phpunit --coverage-text --configuration tests/travis/${{ matrix.DB }}.phpunit.xml
         env:
