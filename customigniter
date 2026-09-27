@@ -1,0 +1,43 @@
+#!/usr/bin/env php
+<?php
+declare(strict_types=1);
+
+/**
+ * Customigniter 3 - Console entry point
+ *
+ * Usage:
+ *   php customigniter <command> [options] [args]
+ *   customigniter list
+ */
+
+if (PHP_SAPI !== 'cli')
+{
+	fwrite(STDERR, "The Customigniter console must be run from the command line." . PHP_EOL);
+	exit(1);
+}
+
+use Customigniter\Console\CliKernel;
+
+define('FCPATH', __DIR__ . DIRECTORY_SEPARATOR);
+define('BASEPATH', FCPATH . 'system' . DIRECTORY_SEPARATOR);
+define('APPPATH', FCPATH . 'application' . DIRECTORY_SEPARATOR);
+define('VIEWPATH', APPPATH . 'views' . DIRECTORY_SEPARATOR);
+define('ENVIRONMENT', getenv('CI_ENVIRONMENT') ?: 'development');
+
+// Minimal superglobals so config files behave under CLI.
+$_SERVER['REMOTE_ADDR']    = $_SERVER['REMOTE_ADDR']    ?? '127.0.0.1';
+$_SERVER['SERVER_NAME']    = $_SERVER['SERVER_NAME']    ?? 'localhost';
+$_SERVER['HTTP_HOST']      = $_SERVER['HTTP_HOST']      ?? 'localhost';
+$_SERVER['REQUEST_URI']    = $_SERVER['REQUEST_URI']    ?? '/';
+$_SERVER['REQUEST_METHOD'] = $_SERVER['REQUEST_METHOD'] ?? 'GET';
+
+if ( ! file_exists(FCPATH . 'vendor/autoload.php'))
+{
+	fwrite(STDERR, "Composer autoloader not found. Run 'composer install' first." . PHP_EOL);
+	exit(1);
+}
+
+require FCPATH . 'vendor/autoload.php';
+require BASEPATH . 'core/Common.php';
+
+exit((new CliKernel())->run($argv));
