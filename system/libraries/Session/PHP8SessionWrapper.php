@@ -31,7 +31,7 @@ declare(strict_types=1);
  * @author	EllisLab Dev Team
  * @copyright	Copyright (c) 2022, CodeIgniter Foundation (https://codeigniter.com/)
  * @license	https://opensource.org/licenses/MIT	MIT License
- * @link	https://codeigniter.com
+ * @link	https://github.com/imamrasyid/customigniter-3
  * @since	Version 3.0.0
  * @filesource
  */

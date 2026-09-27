@@ -32,7 +32,7 @@
  * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
  * @copyright	Copyright (c) 2019 - 2022, CodeIgniter Foundation (https://codeigniter.com/)
  * @license	https://opensource.org/licenses/MIT	MIT License
- * @link	https://codeigniter.com
+ * @link	https://github.com/imamrasyid/customigniter-3
  * @since	Version 1.3.0
  * @filesource
  */

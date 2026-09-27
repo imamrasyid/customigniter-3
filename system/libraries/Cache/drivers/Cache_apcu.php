@@ -32,7 +32,7 @@ declare(strict_types=1);
  * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
  * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
  * @license	https://opensource.org/licenses/MIT	MIT License
- * @link	https://codeigniter.com
+ * @link	https://github.com/imamrasyid/customigniter-3
  * @since	Version 3.2.0
  * @filesource
  */

@@ -33,6 +33,7 @@ phpstan.neon export-ignore
 
 # Misc other files
 readme.rst export-ignore
+SECURITY.md export-ignore
 
 # They don't want all of our tests...
 tests/codeigniter/** export-ignore
