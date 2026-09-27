@@ -1,80 +1,125 @@
 #########################
-What is Customigniter 3
+Customigniter 3
 #########################
 
-Customigniter 3 is a modernized fork of CodeIgniter 3, an Application
-Development Framework - a toolkit - for people who build web sites using
-PHP. Its goal is to enable you to develop projects much faster than you
-could if you were writing code from scratch, by providing a rich set of
-libraries for commonly needed tasks, as well as a simple interface and
-logical structure to access these libraries. Customigniter lets you
-creatively focus on your project by minimizing the amount of code needed
-for a given task.
+.. image:: https://github.com/imamrasyid/customigniter-3/actions/workflows/test-phpunit.yml/badge.svg
+    :alt: PHPUnit
+    :target: https://github.com/imamrasyid/customigniter-3/actions/workflows/test-phpunit.yml
 
-***************
-Customigniter 3
-***************
+**Customigniter 3** is a modernized, independently developed fork of
+`CodeIgniter 3`_, re-targeted at **PHP 8.4+**. It keeps the framework you
+know — the MVC structure, the query builder, the drivers, the user guide —
+while stripping out years of pre-PHP-8 compatibility baggage and adding a
+typed, modern component layer under ``src/``.
 
-This repository is a modernized continuation of the legacy CodeIgniter 3
-framework, re-targeted for **PHP 8.4+**. It strips out pre-PHP-8
-compatibility layers (``is_php()`` checks, mbstring.func_overload, legacy
-database drivers), adds typed modern components under ``src/`` (PSR-11
-service container, migrations, security helpers, console), and is developed
-independently as its own project.
+.. _CodeIgniter 3: https://codeigniter.com
 
-********************************
-Differences from CodeIgniter 3
-********************************
+***********
+Requirements
+***********
 
-- Requires PHP 8.4+ (CodeIgniter 3 targeted PHP 5.6+)
-- Removed all internal ``is_php()`` runtime version checks
-- Removed ``mbstring.func_overload`` handling (removed in PHP 8.0)
-- Legacy database drivers (mysql, cubrid, mssql, ibase, oci8, odbc) emit
-  ``E_USER_DEPRECATED``; use ``mysqli`` or ``pdo``
-- Added ``src/`` namespace with a PSR-11 service container, typed HTTP
-  request/response, password hashing, CSP builder, rate limiter, migrations
-  and a CLI kernel
-- Modernized ``system/`` internals with ``declare(strict_types=1)`` and
-  PHP 8 attributes where applicable
+-  PHP 8.4 or newer
+-  The extensions commonly required by CodeIgniter (``mbstring``,
+   ``mysqli`` and/or ``pdo_mysql``, ``sqlite3``, ``pgsql`` as needed)
+-  Composer (for development: dependencies, tests, static analysis)
 
-*******************
-Release Information
-*******************
-
-This repo contains in-development code for future releases.
-
-**************************
-Changelog and New Features
-**************************
-
-You can find a list of all changes for each release in the `user
-guide change log <user_guide_src/source/changelog.rst>`_.
-
-*******************
-Server Requirements
-*******************
-
-PHP version 8.4 or newer is required.
-
-****************
+************
 Installation
-****************
+************
 
 Copy the repository contents into your web root and point your browser at
 the ``index.php`` front controller.
+
+For development::
+
+    git clone https://github.com/imamrasyid/customigniter-3.git
+    cd customigniter-3
+    composer install
+
+**********
+Quickstart
+**********
+
+Web
+===
+
+Serve the project with PHP's built-in server from the CLI::
+
+    php customigniter serve --port=8080
+
+or point any web server (Apache, nginx + php-fpm, Caddy) at the project
+root; ``index.php`` is the front controller, exactly like CodeIgniter 3.
+
+Command line
+============
+
+The ``customigniter`` binary is a small console kernel::
+
+    customigniter list           # show all available commands
+    customigniter serve          # run the development server
+    customigniter cache:clear    # empty the application cache directory
+
+******************************
+What's new compared to CodeIgniter 3
+******************************
+
+-  Requires PHP 8.4+ (CodeIgniter 3 targeted PHP 5.6+); all internal
+   ``is_php()`` runtime version checks and ``mbstring.func_overload``
+   handling are gone
+-  Legacy database drivers (``mysql``, ``cubrid``, ``mssql``, ``ibase``,
+   ``oci8``, ``odbc``, ``sqlsrv``) are **removed**; the supported drivers
+   are ``mysqli``, ``pdo`` (MySQL/PostgreSQL/SQLite), ``postgre`` and
+   ``sqlite3``
+-  Pre-PHP-8 compatibility stubs removed from ``system/core/compat``
+   (the gutted ``hash.php``, ``password.php`` and ``standard.php`` shims;
+   only the ``mbstring`` layer remains)
+-  Modern, typed components under ``src/`` (namespace ``Customigniter\``):
+   PSR-11 service container, PSR-3 logger bridge, typed HTTP request and
+   response, input sanitizer, CSP header builder, password hasher, file-based
+   rate limiter, migration runner with schema builder, opcache helpers and
+   a CLI kernel
+-  ``system/`` internals run with ``declare(strict_types=1)`` and PHP 8
+   attributes where applicable
+-  Static analysis with PHPStan at **level max** over ``src/`` runs in CI
+
+***************
+Testing & tools
+***************
+
+::
+
+    composer test                          # PHPUnit, full suite
+    vendor/bin/phpstan analyse             # PHPStan, level max, src/
+
+The PHPUnit configuration lives in ``tests/phpunit.xml``; driver-specific
+suites are under ``tests/travis/``. Continuous integration runs both the
+full test matrix (MySQL, PostgreSQL, SQLite — with and without JIT) and
+PHPStan on every push.
+
+**********
+Security
+**********
+
+Please do not report security issues publicly. Use
+`GitHub private vulnerability reporting <https://github.com/imamrasyid/customigniter-3/security/advisories/new>`_
+for this repository and include a reproduction. You will receive an
+acknowledgement as soon as the issue is triaged.
+
+************
+Documentation
+************
+
+-  `User guide source <user_guide_src/source/>`_
+-  `Changelog <user_guide_src/source/changelog.rst>`_
+-  `Contributing guide <contributing.md>`_
 
 *******
 License
 *******
 
-Please see the `license agreement <user_guide_src/source/license.rst>`_.
-
-*********
-Resources
-*********
-
--  `User Guide <user_guide_src/source/>`_
--  `Contributing Guide <contributing.md>`_
+Customigniter 3 is open source software released under the MIT license.
+See the `license agreement <user_guide_src/source/license.rst>`_ for
+details.
 
 Acknowledgement
 ===============
