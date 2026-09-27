@@ -1,0 +1,45 @@
+# Runtime application
+application/cache/*
+!application/cache/index.html
+
+application/logs/*
+!application/logs/index.html
+
+!application/*/.htaccess
+
+# Dependencies (composer.lock is tracked for reproducible installs)
+/vendor/
+
+# Tests
+/tests/tests/
+/tests/results/
+tests/mocks/database/ci_test.sqlite
+*.phpunit.result.cache
+
+# Documentation builds
+user_guide_src/build/*
+user_guide_src/cilexer/build/*
+user_guide_src/cilexer/dist/*
+user_guide_src/cilexer/pycilexer.egg-info/*
+__pycache__/
+*.pyc
+
+# Environment
+/.env
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE / editors
+.idea/
+.vscode/
+/nbproject/
+
+## Sublime Text cache files
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
