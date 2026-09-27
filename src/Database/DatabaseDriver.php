@@ -16,8 +16,6 @@ enum DatabaseDriver: string
 	case PostgreSQL = 'postgre';
 	case SQLite     = 'sqlite';
 	case SQLite3    = 'sqlite3';
-	case MSSQL      = 'mssql';
-	case OCI8       = 'oci8';
 
 	/**
 	 * Get the driver's display name
@@ -31,8 +29,6 @@ enum DatabaseDriver: string
 			self::PostgreSQL => 'PostgreSQL',
 			self::SQLite     => 'SQLite',
 			self::SQLite3    => 'SQLite3',
-			self::MSSQL      => 'Microsoft SQL Server',
-			self::OCI8       => 'Oracle',
 		};
 	}
 
@@ -48,8 +44,6 @@ enum DatabaseDriver: string
 			self::PostgreSQL => 5432,
 			self::SQLite     => 0,
 			self::SQLite3    => 0,
-			self::MSSQL      => 1433,
-			self::OCI8       => 1521,
 		};
 	}
 
@@ -65,8 +59,6 @@ enum DatabaseDriver: string
 			self::PostgreSQL => true,
 			self::SQLite     => true,
 			self::SQLite3    => true,
-			self::MSSQL      => true,
-			self::OCI8       => true,
 		};
 	}
 
@@ -82,8 +74,6 @@ enum DatabaseDriver: string
 			self::PostgreSQL => true,
 			self::SQLite     => true,
 			self::SQLite3    => true,
-			self::MSSQL      => false,
-			self::OCI8       => false,
 		};
 	}
 
@@ -99,8 +89,6 @@ enum DatabaseDriver: string
 			self::PostgreSQL => true, // ON CONFLICT
 			self::SQLite     => false,
 			self::SQLite3    => false,
-			self::MSSQL      => true, // MERGE
-			self::OCI8       => false,
 		};
 	}
 
@@ -116,8 +104,6 @@ enum DatabaseDriver: string
 			self::PostgreSQL => true,
 			self::SQLite     => false,
 			self::SQLite3    => false, // TEXT-based workaround
-			self::MSSQL      => true, // 2016+
-			self::OCI8       => false,
 		};
 	}
 
@@ -133,8 +119,6 @@ enum DatabaseDriver: string
 			self::PostgreSQL => true, // tsvector/tsquery
 			self::SQLite     => false,
 			self::SQLite3    => false,
-			self::MSSQL      => true,
-			self::OCI8       => true, // Oracle Text
 		};
 	}
 }

@@ -510,7 +510,7 @@ abstract class CI_DB_driver {
 	// --------------------------------------------------------------------
 
 	/**
-	 * The name of the platform in use (mysql, mssql, etc...)
+	 * The name of the platform in use (mysqli, postgre, etc...)
 	 *
 	 * @return	string
 	 */

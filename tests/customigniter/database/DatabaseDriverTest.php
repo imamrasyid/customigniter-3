@@ -28,8 +28,6 @@ class DatabaseDriverTest extends TestCase
 		$this->assertEquals('PostgreSQL', DatabaseDriver::PostgreSQL->displayName());
 		$this->assertEquals('SQLite', DatabaseDriver::SQLite->displayName());
 		$this->assertEquals('SQLite3', DatabaseDriver::SQLite3->displayName());
-		$this->assertEquals('Microsoft SQL Server', DatabaseDriver::MSSQL->displayName());
-		$this->assertEquals('Oracle', DatabaseDriver::OCI8->displayName());
 	}
 
 	// --------------------------------------------------------------------
@@ -38,8 +36,6 @@ class DatabaseDriverTest extends TestCase
 	{
 		$this->assertEquals(3306, DatabaseDriver::MySQL->defaultPort());
 		$this->assertEquals(5432, DatabaseDriver::PostgreSQL->defaultPort());
-		$this->assertEquals(1433, DatabaseDriver::MSSQL->defaultPort());
-		$this->assertEquals(1521, DatabaseDriver::OCI8->defaultPort());
 		$this->assertEquals(0, DatabaseDriver::SQLite->defaultPort());
 		$this->assertEquals(0, DatabaseDriver::SQLite3->defaultPort());
 	}
@@ -52,8 +48,6 @@ class DatabaseDriverTest extends TestCase
 		$this->assertTrue(DatabaseDriver::PostgreSQL->supportsTransactions());
 		$this->assertTrue(DatabaseDriver::SQLite->supportsTransactions());
 		$this->assertTrue(DatabaseDriver::SQLite3->supportsTransactions());
-		$this->assertTrue(DatabaseDriver::MSSQL->supportsTransactions());
-		$this->assertTrue(DatabaseDriver::OCI8->supportsTransactions());
 	}
 
 	// --------------------------------------------------------------------
@@ -62,8 +56,8 @@ class DatabaseDriverTest extends TestCase
 	{
 		$this->assertTrue(DatabaseDriver::MySQL->supportsSavepoints());
 		$this->assertTrue(DatabaseDriver::PostgreSQL->supportsSavepoints());
-		$this->assertFalse(DatabaseDriver::MSSQL->supportsSavepoints());
-		$this->assertFalse(DatabaseDriver::OCI8->supportsSavepoints());
+		$this->assertTrue(DatabaseDriver::SQLite->supportsSavepoints());
+		$this->assertTrue(DatabaseDriver::SQLite3->supportsSavepoints());
 	}
 
 	// --------------------------------------------------------------------
@@ -73,7 +67,7 @@ class DatabaseDriverTest extends TestCase
 		$this->assertTrue(DatabaseDriver::MySQL->supportsUpsert());
 		$this->assertTrue(DatabaseDriver::PostgreSQL->supportsUpsert());
 		$this->assertFalse(DatabaseDriver::SQLite->supportsUpsert());
-		$this->assertTrue(DatabaseDriver::MSSQL->supportsUpsert());
+		$this->assertFalse(DatabaseDriver::SQLite3->supportsUpsert());
 	}
 
 	// --------------------------------------------------------------------
@@ -83,6 +77,7 @@ class DatabaseDriverTest extends TestCase
 		$this->assertTrue(DatabaseDriver::MySQL->supportsJsonColumns());
 		$this->assertTrue(DatabaseDriver::PostgreSQL->supportsJsonColumns());
 		$this->assertFalse(DatabaseDriver::SQLite->supportsJsonColumns());
+		$this->assertFalse(DatabaseDriver::SQLite3->supportsJsonColumns());
 	}
 
 	// --------------------------------------------------------------------
@@ -92,6 +87,7 @@ class DatabaseDriverTest extends TestCase
 		$this->assertTrue(DatabaseDriver::MySQL->supportsFullText());
 		$this->assertTrue(DatabaseDriver::PostgreSQL->supportsFullText());
 		$this->assertFalse(DatabaseDriver::SQLite->supportsFullText());
+		$this->assertFalse(DatabaseDriver::SQLite3->supportsFullText());
 	}
 
 	// --------------------------------------------------------------------
