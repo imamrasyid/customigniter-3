@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpdoc>
+	<title>Customigniter 3 v0.0.1 API</title>
+    <parser>
+        <target>./api/</target>
+    </parser>
+    <transformer>
+        <target>./api/</target>
+    </transformer>
+    <files>
+        <directory>./system</directory>
+        <directory>./src</directory>
+    </files>
+
+    <logging>
+        <level>warn</level>
+        <paths>
+            <default>./api/log/{DATE}.log</default>
+            <errors>./api/{DATE}.errors.log</errors>
+        </paths>
+    </logging>
+</phpdoc>
