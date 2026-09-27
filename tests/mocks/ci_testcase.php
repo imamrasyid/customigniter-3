@@ -34,7 +34,7 @@ class CI_TestCase extends \PHPUnit\Framework\TestCase {
 
 	// --------------------------------------------------------------------
 
-	public function setUp()
+	public function setUp(): void
 	{
 		// Setup VFS with base directories
 		$this->ci_vfs_root = vfsStream::setup('');
@@ -51,7 +51,7 @@ class CI_TestCase extends \PHPUnit\Framework\TestCase {
 
 	// --------------------------------------------------------------------
 
-	public function tearDown()
+	public function tearDown(): void
 	{
 		if (method_exists($this, 'tear_down'))
 		{
@@ -348,7 +348,7 @@ class CI_TestCase extends \PHPUnit\Framework\TestCase {
 	 * happen in setUp, but someone is bound to forget to
 	 * call the parent method and debugging this is no fun.
 	 */
-	public function runBare()
+	public function runBare(): void
 	{
 		self::$ci_test_instance = $this;
 		parent::runBare();
