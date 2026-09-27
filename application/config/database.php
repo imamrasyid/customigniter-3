@@ -58,7 +58,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | 				NOTE: Disabling this will also effectively disable both
 | 				$this->db->last_query() and profiling of DB queries.
 | 				When you run a query, with this setting set to TRUE (default),
-| 				CodeIgniter will store the SQL statement for debugging purposes.
+| 				Customigniter will store the SQL statement for debugging purposes.
 | 				However, this may cause high memory usage, especially if you run
 | 				a lot of SQL queries ... disable this to avoid that problem.
 |
