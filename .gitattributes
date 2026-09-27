@@ -1,23 +1,42 @@
-# This file tells which files and directories should be ignored and
-# NOT downloaded when using composer to pull down a project with
-# the --prefer-dist option selected. Used to remove development
-# specific files so user has a clean download.
+# Normalize line endings: the repository always stores LF, while the working
+# tree keeps whatever the local platform uses.
+* text=auto
+
+# Scripts need native line endings to run.
+*.bat text eol=crlf
+*.sh text eol=lf
+
+# Binary assets are never converted.
+*.eot binary
+*.gif binary
+*.ico binary
+*.jpg binary
+*.otf binary
+*.png binary
+*.ttf binary
+*.woff binary
+*.woff2 binary
+*.zip binary
+
+# The rules below mark files that are NOT downloaded when using composer to
+# pull down a project with the --prefer-dist option, so users only get the
+# files they need.
 
 # git files
 .gitattributes export-ignore
 # .gitignore
 
 # helper config files
-.travis.yml export-ignore
+.github/** export-ignore
 phpdoc.dist.xml export-ignore
+phpstan.neon export-ignore
 
 # Misc other files
-readme.rst
+readme.rst export-ignore
 
 # They don't want all of our tests...
-tests/codeigniter/ export-ignore
-tests/travis/ export-ignore
+tests/codeigniter/** export-ignore
+tests/travis/** export-ignore
 
 # User Guide source files and compiled files
-user_guide_src export-ignore
-user_guide export-ignore
+user_guide_src/** export-ignore
