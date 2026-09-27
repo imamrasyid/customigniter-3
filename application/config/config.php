@@ -22,8 +22,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | If you need to allow multiple domains, remember that this file is still
 | a PHP script and you can easily do that on your own.
 |
+| This value may also be supplied from the .env file, e.g.:
+| BASE_URL=https://example.com/
+|
 */
-$config['base_url'] = '';
+$config['base_url'] = env('BASE_URL', '');
 
 /*
 |--------------------------------------------------------------------------
@@ -313,7 +316,7 @@ $config['cache_query_string'] = FALSE;
 | https://codeigniter.com/userguide3/libraries/encryption.html
 |
 */
-$config['encryption_key'] = '';
+$config['encryption_key'] = env('ENCRYPTION_KEY', '');
 
 /*
 |--------------------------------------------------------------------------

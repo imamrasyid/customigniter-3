@@ -128,6 +128,10 @@ class CI_Hooks {
 	 *
 	 * Calls a particular hook. Called by CodeIgniter.php.
 	 *
+	 * Every hook point is also mirrored onto the event dispatcher,
+	 * so listeners can subscribe via Customigniter\Events\Events
+	 * even when no hook is configured (or hooks are disabled).
+	 *
 	 * @uses	CI_Hooks::_run_hook()
 	 *
 	 * @param	string	$which	Hook name
@@ -135,6 +139,11 @@ class CI_Hooks {
 	 */
 	public function call_hook($which = '')
 	{
+		if (is_string($which) AND $which !== '' AND class_exists('Customigniter\Events\Events'))
+		{
+			\Customigniter\Events\Events::trigger($which, array('hook' => $which));
+		}
+
 		if ( ! $this->enabled OR ! isset($this->hooks[$which]))
 		{
 			return FALSE;

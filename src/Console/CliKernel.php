@@ -5,6 +5,18 @@ namespace Customigniter\Console;
 
 use Customigniter\Console\Commands\CliCommand;
 use Customigniter\Console\Commands\ClearCacheCommand;
+use Customigniter\Console\Commands\MakeControllerCommand;
+use Customigniter\Console\Commands\MakeHelperCommand;
+use Customigniter\Console\Commands\MakeLibraryCommand;
+use Customigniter\Console\Commands\MakeMigrationCommand;
+use Customigniter\Console\Commands\MakeModelCommand;
+use Customigniter\Console\Commands\MakeSeederCommand;
+use Customigniter\Console\Commands\MakeViewCommand;
+use Customigniter\Console\Commands\MigrateCommand;
+use Customigniter\Console\Commands\MigrateRollbackCommand;
+use Customigniter\Console\Commands\MigrateStatusCommand;
+use Customigniter\Console\Commands\OptimizeCommand;
+use Customigniter\Console\Commands\SeedCommand;
 use Customigniter\Console\Commands\ServeCommand;
 
 /**
@@ -45,6 +57,22 @@ class CliKernel
 		$this->register(new CliCommand());
 		$this->register(new ClearCacheCommand());
 		$this->register(new ServeCommand());
+		$this->register(new OptimizeCommand());
+
+		// Scaffolding
+		$this->register(new MakeControllerCommand());
+		$this->register(new MakeModelCommand());
+		$this->register(new MakeLibraryCommand());
+		$this->register(new MakeHelperCommand());
+		$this->register(new MakeViewCommand());
+		$this->register(new MakeMigrationCommand());
+		$this->register(new MakeSeederCommand());
+
+		// Database
+		$this->register(new MigrateCommand());
+		$this->register(new MigrateRollbackCommand());
+		$this->register(new MigrateStatusCommand());
+		$this->register(new SeedCommand());
 	}
 
 	// --------------------------------------------------------------------

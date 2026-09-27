@@ -194,6 +194,12 @@ class CI_Exceptions {
 
 	// --------------------------------------------------------------------
 
+	/**
+	 * Render an uncaught Throwable for display
+	 *
+	 * @param	\Throwable	$exception
+	 * @return	void
+	 */
 	public function show_exception($exception)
 	{
 		$templates_path = config_item('error_views_path');

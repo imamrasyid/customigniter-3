@@ -50,7 +50,19 @@
  *
  * NOTE: If you change these, also change the error_reporting() code below
  */
-	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
+	// Load .env values before the environment is resolved, so that
+	// CI_ENVIRONMENT may come from the .env file. The loader has no
+	// dependencies and is safe to require before Composer's autoloader.
+	$_env_loader = __DIR__.DIRECTORY_SEPARATOR.'src'.DIRECTORY_SEPARATOR.'Core'.DIRECTORY_SEPARATOR.'EnvLoader.php';
+	if (is_file($_env_loader))
+	{
+		require_once $_env_loader;
+		\Customigniter\Core\EnvLoader::load(__DIR__);
+	}
+
+	define('ENVIRONMENT', isset($_SERVER['CI_ENV'])
+		? $_SERVER['CI_ENV']
+		: (getenv('CI_ENVIRONMENT') ?: (getenv('CI_ENV') ?: 'development')));
 
 /*
  *---------------------------------------------------------------

@@ -68,11 +68,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => '',
-	'password' => '',
-	'database' => '',
-	'dbdriver' => 'mysqli',
+	'hostname' => env('DB_HOST', 'localhost'),
+	'username' => env('DB_USERNAME', ''),
+	'password' => env('DB_PASSWORD', ''),
+	'database' => env('DB_DATABASE', ''),
+	'dbdriver' => env('DB_DRIVER', 'mysqli'),
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),

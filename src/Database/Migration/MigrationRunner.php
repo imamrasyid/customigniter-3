@@ -16,16 +16,18 @@ class MigrationRunner
 	private \CI_DB_query_builder $db;
 	private \CI_DB_forge $forge;
 	private string $migrationPath;
-	private string $migrationTable = 'migrations';
+	private string $migrationTable;
 
 	public function __construct(
 		\CI_DB_query_builder $db,
 		\CI_DB_forge $forge,
-		string $migrationPath
+		string $migrationPath,
+		string $migrationTable = 'migrations'
 	) {
 		$this->db = $db;
 		$this->forge = $forge;
 		$this->migrationPath = rtrim($migrationPath, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
+		$this->migrationTable = $migrationTable;
 	}
 
 	// --------------------------------------------------------------------
@@ -64,6 +66,10 @@ class MigrationRunner
 	/**
 	 * Discover all migration files
 	 *
+	 * Only files following the {timestamp}_{Name}.php convention are
+	 * considered (timestamp = YYYYMMDDHHIISS or sequential digits),
+	 * so stray PHP files in the directory are ignored.
+	 *
 	 * @return	array<int, string>	Sorted list of migration file paths
 	 */
 	public function discover(): array
@@ -73,6 +79,11 @@ class MigrationRunner
 		if ($files === false) {
 			return [];
 		}
+
+		$files = array_values(array_filter(
+			$files,
+			static fn (string $file): bool => preg_match('/^\d+_.+\.php$/', basename($file)) === 1
+		));
 
 		sort($files, SORT_STRING);
 
@@ -84,12 +95,21 @@ class MigrationRunner
 	/**
 	 * Load a migration class from a file
 	 *
+	 * File names carry a numeric prefix ({timestamp}_{Name}.php); the
+	 * PHP class itself uses the unprefixed name, because identifiers
+	 * may not start with a digit.
+	 *
 	 * @param	string	$file
 	 * @return	MigrationInterface
 	 */
 	private function loadMigration(string $file): MigrationInterface
 	{
-		$className = basename($file, '.php');
+		$className = preg_replace('/^\d+/', '', basename($file, '.php'));
+		$className = ltrim($className === null ? '' : $className, '_');
+
+		if ($className === '') {
+			throw new \RuntimeException("Cannot derive a class name from migration file: {$file}");
+		}
 
 		require_once $file;
 

@@ -22,7 +22,16 @@ define('FCPATH', __DIR__ . DIRECTORY_SEPARATOR);
 define('BASEPATH', FCPATH . 'system' . DIRECTORY_SEPARATOR);
 define('APPPATH', FCPATH . 'application' . DIRECTORY_SEPARATOR);
 define('VIEWPATH', APPPATH . 'views' . DIRECTORY_SEPARATOR);
-define('ENVIRONMENT', getenv('CI_ENVIRONMENT') ?: 'development');
+
+// Load .env before the environment is resolved (no autoloader needed yet),
+// so CI_ENVIRONMENT may come from the .env file.
+$_env_loader = FCPATH . 'src' . DIRECTORY_SEPARATOR . 'Core' . DIRECTORY_SEPARATOR . 'EnvLoader.php';
+if (is_file($_env_loader)) {
+    require_once $_env_loader;
+    \Customigniter\Core\EnvLoader::load(FCPATH);
+}
+
+define('ENVIRONMENT', getenv('CI_ENVIRONMENT') ?: (getenv('CI_ENV') ?: 'development'));
 
 // Minimal superglobals so config files behave under CLI.
 $_SERVER['REMOTE_ADDR']    = $_SERVER['REMOTE_ADDR']    ?? '127.0.0.1';

@@ -343,6 +343,82 @@ if ( ! function_exists('config_item'))
 
 // ------------------------------------------------------------------------
 
+if ( ! function_exists('env'))
+{
+	/**
+	 * Reads an environment variable
+	 *
+	 * Resolution order: real environment variables (putenv/$_ENV),
+	 * then values loaded from the .env file. When neither has been
+	 * loaded yet, a lazy attempt is made from FCPATH.
+	 *
+	 * Casting (skipped for values quoted in .env):
+	 *   true/TRUE/(true)  => bool
+	 *   false/FALSE/(false) => bool
+	 *   null/NULL/(null)  => NULL
+	 *   empty/(empty)     => ''
+	 *   integer/float     => int/float
+	 *
+	 * @param	string	$key
+	 * @param	mixed	$default	Value returned when the key is missing
+	 * @return	mixed
+	 */
+	function env(string $key, $default = NULL)
+	{
+		if (class_exists('Customigniter\Core\EnvLoader'))
+		{
+			if ( ! \Customigniter\Core\EnvLoader::isLoaded() AND defined('FCPATH'))
+			{
+				\Customigniter\Core\EnvLoader::load(FCPATH);
+			}
+
+			$value = \Customigniter\Core\EnvLoader::get($key);
+
+			if ($value === NULL)
+			{
+				return $default;
+			}
+
+			if (\Customigniter\Core\EnvLoader::isQuoted($key))
+			{
+				return $value;
+			}
+		}
+		else
+		{
+			$value = getenv($key);
+
+			if ($value === FALSE)
+			{
+				return $default;
+			}
+		}
+
+		switch (strtolower($value))
+		{
+			case 'true':
+			case '(true)':
+				return TRUE;
+			case 'false':
+			case '(false)':
+				return FALSE;
+			case 'null':
+			case '(null)':
+				return NULL;
+			case 'empty':
+			case '(empty)':
+				return '';
+			default:
+				// Numeric strings become int/float, everything else stays a string.
+				return preg_match('/^-?\d+$/', $value) === 1
+					? (int) $value
+					: (preg_match('/^-?\d*\.\d+$/', $value) === 1 ? (float) $value : $value);
+		}
+	}
+}
+
+// ------------------------------------------------------------------------
+
 if ( ! function_exists('get_mimes'))
 {
 	/**
@@ -686,13 +762,29 @@ if ( ! function_exists('_exception_handler'))
 	 * only if display_errors is On so that they don't show up in
 	 * production environments.
 	 *
-	 * @param	Exception	$exception
+	 * Accepts any Throwable (Exception and PHP 7+ Error). The whole
+	 * previous-exception chain is logged, deepest cause last.
+	 *
+	 * @param	\Throwable	$exception
 	 * @return	void
 	 */
 	function _exception_handler($exception)
 	{
 		$_error =& load_class('Exceptions', 'core');
-		$_error->log_exception('error', 'Exception: '.$exception->getMessage(), $exception->getFile(), $exception->getLine());
+
+		$current = $exception;
+		$depth = 0;
+		while ($current instanceof Throwable AND $depth < 10)
+		{
+			$_error->log_exception(
+				'error',
+				($depth === 0 ? '' : 'Caused by: ').get_class($current).': '.$current->getMessage(),
+				$current->getFile(),
+				$current->getLine()
+			);
+			$current = $current->getPrevious();
+			$depth++;
+		}
 
 		is_cli() OR set_status_header(500);
 		// Should we display the error?
