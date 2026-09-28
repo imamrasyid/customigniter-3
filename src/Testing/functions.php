@@ -13,10 +13,17 @@ if ( ! function_exists('get_instance'))
 	/**
 	 * Reference to the CI_Controller singleton
 	 *
-	 * @return	object
+	 * @return	CI_Controller
 	 */
 	function &get_instance()
 	{
-		return CI_Controller::get_instance();
+		$instance = &CI_Controller::get_instance();
+
+		if ( ! $instance instanceof CI_Controller)
+		{
+			throw new RuntimeException('No CI_Controller instance is available');
+		}
+
+		return $instance;
 	}
 }
