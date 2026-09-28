@@ -78,6 +78,14 @@ What's new compared to CodeIgniter 3
    response, input sanitizer, CSP header builder, password hasher, file-based
    rate limiter, migration runner with schema builder, opcache helpers and
    a CLI kernel
+-  New in the Customigniter phases: a ``.env`` loader with ``env()``, a
+   typed event dispatcher bridged to the hook system, exception logging
+   with file/line context, a self-contained debug toolbar
+   (``DEBUG_TOOLBAR=true``), HTTP testing helpers
+   (``Customigniter\Testing\TestCase``), a view engine with layouts,
+   sections and components, a file-backed job queue drained by
+   ``queue:work``, tagged cache invalidation and a rule-based
+   validator (``Customigniter\Validation\Validator``)
 -  ``system/`` internals run with ``declare(strict_types=1)`` and PHP 8
    attributes where applicable
 -  Static analysis with PHPStan at **level max** over ``src/`` runs in CI

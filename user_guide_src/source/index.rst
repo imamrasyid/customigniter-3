@@ -73,6 +73,15 @@ Contributing to Customigniter
 
 	contributing/index
 
+*******************
+Customigniter Adds
+*******************
+
+.. toctree::
+	:titlesonly:
+
+	customigniter/index
+
 **************
 General Topics
 **************

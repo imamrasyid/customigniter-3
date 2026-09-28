@@ -31,6 +31,7 @@
 			<directory suffix="Test.php">./customigniter/view</directory>
 			<directory suffix="Test.php">./customigniter/queue</directory>
 			<directory suffix="Test.php">./customigniter/cache</directory>
+			<directory suffix="Test.php">./customigniter/validation</directory>
 		</testsuite>
 	</testsuites>
 	<coverage>
