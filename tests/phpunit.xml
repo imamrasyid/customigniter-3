@@ -29,6 +29,8 @@
 			<directory suffix="Test.php">./customigniter/debug</directory>
 			<directory suffix="Test.php">./customigniter/testing</directory>
 			<directory suffix="Test.php">./customigniter/view</directory>
+			<directory suffix="Test.php">./customigniter/queue</directory>
+			<directory suffix="Test.php">./customigniter/cache</directory>
 		</testsuite>
 	</testsuites>
 	<coverage>

@@ -153,6 +153,40 @@ class Response
         return $this;
     }
 
+    public function download(string $filename, string $contents): static
+    {
+        $safe = str_replace(["\r", "\n", '"'], '', $filename);
+
+        $this->header('Content-Disposition', 'attachment; filename="' . $safe . '"');
+        $this->header('Content-Type', 'application/octet-stream');
+        $this->body = $contents;
+        return $this;
+    }
+
+    public function jsonp(string $callback, mixed $data, int $options = JSON_UNESCAPED_UNICODE): static
+    {
+        if (!preg_match('/^[A-Za-z_$][A-Za-z0-9_$.]*$/', $callback)) {
+            throw new \InvalidArgumentException('Invalid JSONP callback name.');
+        }
+
+        $encoded = json_encode($data, $options);
+
+        if ($encoded === false) {
+            throw new \RuntimeException('Failed to encode response as JSON: ' . json_last_error_msg());
+        }
+
+        $this->body = $callback . '(' . $encoded . ');';
+        $this->headers['Content-Type'] = 'application/javascript; charset=UTF-8';
+        return $this;
+    }
+
+    public function xml(string $content): static
+    {
+        $this->body = $content;
+        $this->headers['Content-Type'] = 'application/xml; charset=UTF-8';
+        return $this;
+    }
+
     public function send(): void
     {
         if ( ! headers_sent()) {

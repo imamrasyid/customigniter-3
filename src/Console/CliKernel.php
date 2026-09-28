@@ -16,6 +16,7 @@ use Customigniter\Console\Commands\MigrateCommand;
 use Customigniter\Console\Commands\MigrateRollbackCommand;
 use Customigniter\Console\Commands\MigrateStatusCommand;
 use Customigniter\Console\Commands\OptimizeCommand;
+use Customigniter\Console\Commands\QueueWorkCommand;
 use Customigniter\Console\Commands\SeedCommand;
 use Customigniter\Console\Commands\ServeCommand;
 
@@ -58,6 +59,7 @@ class CliKernel
 		$this->register(new ClearCacheCommand());
 		$this->register(new ServeCommand());
 		$this->register(new OptimizeCommand());
+		$this->register(new QueueWorkCommand());
 
 		// Scaffolding
 		$this->register(new MakeControllerCommand());

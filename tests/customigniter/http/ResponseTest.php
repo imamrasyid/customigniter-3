@@ -105,6 +105,43 @@ class ResponseTest extends \CI_TestCase
         $this->assertEquals('', $response->getBody());
     }
 
+    public function test_download(): void
+    {
+        $response = new Response();
+        $response->download("report\".csv", "col\r\n1");
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals('attachment; filename="report.csv"', $response->getHeaders()['Content-Disposition']);
+        $this->assertEquals('application/octet-stream', $response->getHeaders()['Content-Type']);
+        $this->assertEquals("col\r\n1", $response->getBody());
+    }
+
+    public function test_jsonp(): void
+    {
+        $response = new Response();
+        $response->jsonp('cb', ['key' => 'value']);
+
+        $this->assertEquals('cb({"key":"value"});', $response->getBody());
+        $this->assertEquals('application/javascript; charset=UTF-8', $response->getHeaders()['Content-Type']);
+    }
+
+    public function test_jsonp_rejects_invalid_callback(): void
+    {
+        $response = new Response();
+
+        $this->expectException(InvalidArgumentException::class);
+        $response->jsonp('bad callback', []);
+    }
+
+    public function test_xml(): void
+    {
+        $response = new Response();
+        $response->xml('<root><item/></root>');
+
+        $this->assertEquals('<root><item/></root>', $response->getBody());
+        $this->assertEquals('application/xml; charset=UTF-8', $response->getHeaders()['Content-Type']);
+    }
+
     public function test_fluent_chaining(): void
     {
         $response = new Response();
