@@ -13,7 +13,10 @@ if ( ! function_exists('get_instance'))
 	/**
 	 * Reference to the CI_Controller singleton
 	 *
-	 * @return	CI_Controller
+	 * The core helper only documents an object return type, so callers
+	 * must narrow with instanceof before touching controller properties.
+	 *
+	 * @return	object
 	 */
 	function &get_instance()
 	{

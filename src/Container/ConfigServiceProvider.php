@@ -47,7 +47,14 @@ class ConfigServiceProvider implements ServiceProviderInterface
 	{
 		// Register the CI_Config instance itself
 		$container->singleton('config', static function (): \CI_Config {
-			return get_instance()->config;
+			$ci = get_instance();
+
+			if ( ! $ci instanceof \CI_Controller)
+			{
+				throw new \RuntimeException('get_instance() did not return a CI_Controller instance');
+			}
+
+			return $ci->config;
 		});
 
 		// Register individual config items
