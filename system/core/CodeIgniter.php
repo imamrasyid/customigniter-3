@@ -154,6 +154,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 /*
  * ------------------------------------------------------
+ *  Customigniter: attach the debug toolbar when enabled
+ * ------------------------------------------------------
+ */
+	if (class_exists('Customigniter\Debug\Toolbar') && \Customigniter\Debug\Toolbar::isEnabled())
+	{
+		\Customigniter\Debug\Toolbar::attach();
+	}
+
+/*
+ * ------------------------------------------------------
  *  Start the timer... tick tock tick tock...
  * ------------------------------------------------------
  */

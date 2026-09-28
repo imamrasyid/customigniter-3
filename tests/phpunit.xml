@@ -25,6 +25,9 @@
 			<directory suffix="Test.php">./customigniter/log</directory>
 			<directory suffix="Test.php">./customigniter/http</directory>
 			<directory suffix="Test.php">./customigniter/performance</directory>
+			<directory suffix="Test.php">./customigniter/events</directory>
+			<directory suffix="Test.php">./customigniter/debug</directory>
+			<directory suffix="Test.php">./customigniter/testing</directory>
 		</testsuite>
 	</testsuites>
 	<coverage>
