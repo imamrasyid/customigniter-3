@@ -28,6 +28,7 @@
 			<directory suffix="Test.php">./customigniter/events</directory>
 			<directory suffix="Test.php">./customigniter/debug</directory>
 			<directory suffix="Test.php">./customigniter/testing</directory>
+			<directory suffix="Test.php">./customigniter/view</directory>
 		</testsuite>
 	</testsuites>
 	<coverage>
